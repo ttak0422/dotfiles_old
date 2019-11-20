@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# Copyright (c) 2016 Kohei Arao
+# 以下を改変
 # https://github.com/koara-local/dotfiles/edit/master/bin/get_os_info
-# Released under the Unlicense
-# http://unlicense.org/
 
 # Get OS bit
 # 32bit : i686
@@ -12,59 +10,61 @@ get_os_bit() {
     echo $(uname -m);
 }
 
-# Get Linux distribution name
-get_os_distribution() {
+# Get OS type name
+get_os_type() {
     if   [ -e /etc/debian_version ] ||
          [ -e /etc/debian_release ]; then
         # Check Ubuntu or Debian
         if [ -e /etc/lsb-release ]; then
             # Ubuntu
-            distri_name="ubuntu"
+            type="ubuntu"
         else
             # Debian
-            distri_name="debian"
+            type="debian"
         fi
     elif [ -e /etc/fedora-release ]; then
         # Fedra
-        distri_name="fedora"
+        type="fedora"
     elif [ -e /etc/redhat-release ]; then
         if [ -e /etc/oracle-release ]; then
             # Oracle Linux
-            distri_name="oracle"
+            type="oracle"
         else
             # Red Hat Enterprise Linux
-            distri_name="redhat"
+            type="redhat"
         fi
     elif [ -e /etc/arch-release ]; then
         # Arch Linux
-        distri_name="arch"
+        type="arch"
     elif [ -e /etc/turbolinux-release ]; then
         # Turbolinux
-        distri_name="turbol"
+        type="turbol"
     elif [ -e /etc/SuSE-release ]; then
         # SuSE Linux
-        distri_name="suse"
+        type="suse"
     elif [ -e /etc/mandriva-release ]; then
         # Mandriva Linux
-        distri_name="mandriva"
+        type="mandriva"
     elif [ -e /etc/vine-release ]; then
         # Vine Linux
-        distri_name="vine"
+        type="vine"type
     elif [ -e /etc/gentoo-release ]; then
         # Gentoo Linux
-        distri_name="gentoo"
+        type="gentoo"
+    elif [ "$(uname)" == 'Darwin' ]; then 
+        type="mac"
     else
         # Other
         echo "unkown distribution"
-        distri_name="unkown"
+        type="unkown"
     fi
 
-    echo ${distri_name}
+    echo ${type}
 }
 
 # Get distribution and bit
 get_os_info() {
-   echo $(get_os_distribution) $(get_os_bit)
+   echo $(get_os_type) $(get_os_bit)
 }
 
 get_os_info
