@@ -18,6 +18,7 @@ case ${os_info[0]} in
         "libssl-dev"
         "libreadline-dev"
         "zlib1g-dev"
+        "uidmap"
     )
     ;;
   *)
@@ -36,15 +37,9 @@ case ${os_info[0]} in
   ubuntu)
     # zplugin
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-    # Docker stable
-    sudo apt-get update
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-        $(lsb_release -cs) \
-        stable"
-    sudo apt-get update
-    sudo apt-get install -y docker-ce
+    # rootless docker
+    curl -fsSL https://get.docker.com/rootless | sh
+    echo 'curl -fsSL https://get.docker.com/rootless | sh' >> ~/.zprofile
     # rbenv
     if [ ! -e "$HOME/.rbenv" ]; then
       git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
