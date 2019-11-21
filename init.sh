@@ -39,17 +39,17 @@ case ${os_info[0]} in
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
     # rootless docker
     curl -fsSL https://get.docker.com/rootless | sh
-    echo 'curl -fsSL https://get.docker.com/rootless | sh' >> ~/.zprofile
+    echo 'curl -fsSL https://get.docker.com/rootless | sh' >> ~/.zshrc
     # rbenv
     if [ ! -e "$HOME/.rbenv" ]; then
       git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-      echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zprofile
-      echo 'eval "$(rbenv init -)"' >> ~/.zprofile
+      echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+      echo 'eval "$(rbenv init -)"' >> ~/.zshrc
       git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-      source ~/.zprofile
+      source ~/.zshrc
     fi
     ## ruby
-    source ~/.zprofile
+    source ~/.zshrc
     rbenv install 2.6.0
     rbenv global 2.6.0
     # .NET Core3.0
@@ -82,8 +82,8 @@ case ${os_info[0]} in
     source "$HOME/.sdkman/bin/sdkman-init.sh"
     ## Java
     sdk install java
-    echo 'export JAVA_HOME=$HOME/.sdkman/candidates/java/current' >> ~/.zprofile
-    echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.zprofile
+    echo 'export JAVA_HOME=$HOME/.sdkman/candidates/java/current' >> ~/.zshrc
+    echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.zshrc
     ## groovy
     sdk install groovy
     ## kotlin 
@@ -105,10 +105,10 @@ case ${os_info[0]} in
     mkdir ~/haxelib && haxelib setup ~/haxelib
     # Pythpackage_liston
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-    echo 'eval "$(pyenv init -)"' >> ~/.zprofile
-    source ~/.zprofile
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    source ~/.zshrc
     pyenv install 3.8.0
     pyenv global 3.8.0
     ;;

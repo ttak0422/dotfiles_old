@@ -20,3 +20,7 @@ setopt hist_reduce_blanks
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
 zstyle ':completion:*:default' menu select=2
+
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+   zcompile ~/.zshrc
+fi
