@@ -1,3 +1,11 @@
+[core]
+	autocrlf = false
+	pager = less -r
+	editor = vim
+[color]
+	ui = auto
+[push]
+	default = current
 [user]
 	name = ttak0422
 	email = bgdaewalkman@gmail.com
