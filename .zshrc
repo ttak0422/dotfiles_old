@@ -32,4 +32,5 @@ export PATH=$JAVA_HOME/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export PATH=/home/tak/bin:$PATH
+export DOCKER_HOST=unix:///run/user/1000/docker.sock

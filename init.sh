@@ -39,7 +39,9 @@ case ${os_info[0]} in
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
     # rootless docker
     curl -fsSL https://get.docker.com/rootless | sh
-    echo 'curl -fsSL https://get.docker.com/rootless | sh' >> ~/.zshrc
+    # TODO: path関連の管理をいいかんじに
+    #echo 'export PATH=/home/tak/bin:$PATH' >> ~/.zshrc
+    #echo 'export DOCKER_HOST=unix:///run/user/1000/docker.sock' >> ~/.zshrc
     # rbenv
     if [ ! -e "$HOME/.rbenv" ]; then
       git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
