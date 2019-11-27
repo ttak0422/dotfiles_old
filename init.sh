@@ -111,6 +111,8 @@ case ${os_info[0]} in
     source ~/.zshrc
     pyenv install 3.8.0
     pyenv global 3.8.0
+    # Guake
+    sudo apt-get install guake -y
     ;;
   *)
     echo "not supported"
