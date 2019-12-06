@@ -15,4 +15,4 @@
 	process = git-lfs filter-process
 	required = true
 [commit]
-	template = $HOME/.commit_template
+	template = ~/.commit_template
