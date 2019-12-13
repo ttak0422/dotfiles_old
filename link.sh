@@ -10,6 +10,7 @@ cd ${DOT_DIRECTORY}
 for f in .??*
 do
     [ "$f" = ".git" ] && continue
+    [[ -e $HOME/$f ]] && continue
     ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
 done
 
