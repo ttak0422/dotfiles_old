@@ -22,14 +22,25 @@ setopt hist_ignore_all_dups
 zstyle ':completion:*:default' menu select=2
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
-   zcompile ~/.zshrc
+  zcompile ~/.zshrc
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export JAVA_HOME=$HOME/.sdkman/candidates/java/current
-export PATH=$JAVA_HOME/bin:$PATH
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# rbenv
+if [[ -d $HOME/.rbenv ]]; then 
+  export PATH=$HOME/.rbenv/bin:$PATH
+  eval "$(rbenv init -)"
+fi
+
+# pyenv
+if [[ -d $HOME/.pyenv ]]; then 
+  export PYENV_ROOT=$HOME/.pyenv
+  export PATH=$PYENV_ROOT/bin:$PATH
+  eval "$(pyenv init -)"
+fi  
+
+if [[ -d $HOME.sdkman ]]; then 
+  export JAVA_HOME=$HOME/.sdkman/candidates/java/current
+  export PATH=$JAVA_HOME/bin:$PATH
+fi 
+
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
