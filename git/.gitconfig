@@ -4,6 +4,7 @@
 	editor = vim
 [color]
 	ui = auto
+	autocrlf = false
 [push]
 	default = current
 [user]
