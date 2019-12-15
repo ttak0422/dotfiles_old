@@ -4,6 +4,7 @@
 	editor = vim
 [color]
 	ui = auto
+	autocrlf = false
 [push]
 	default = current
 [user]
@@ -15,4 +16,4 @@
 	process = git-lfs filter-process
 	required = true
 [commit]
-	template = .commit_template
+	template = ~/.commit_template
