@@ -1,3 +1,5 @@
+declare -r os=($(bin/get_os))
+
 # rbenv
 if [[ -d $HOME/.rbenv ]]; then 
   export PATH=$HOME/.rbenv/bin:$PATH
@@ -18,5 +20,13 @@ if [[ -d $HOME.sdkman ]]; then
   export PATH=$JAVA_HOME/bin:$PATH
 fi 
 
-export ZPLUG_HOME=$HOME/.zplug
-# export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+case ${os} in 
+  ubuntu)
+    export ZPLUG_HOME=$HOME/.zplug
+    ;;
+  wsl_ubuntu)    
+    ;;
+  *)
+    echo "not supported"
+    ;;
+esac
