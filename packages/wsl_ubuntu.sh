@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/bin/bash -e
 
 declare -r SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 
@@ -41,22 +41,42 @@ install_python() {
   fi
 }
 
+install_go() {
+  source ~/.zshenv
+  # goenv
+  if [[ ! -d $HOME/.goenv ]]; then
+    git clone https://github.com/syndbg/goenv.git ~/.goenv
+  fi
+  # go
+  if ! is_installed_package go ; then
+    goenv install 1.13.0
+  fi
+}
+
 install_dotnet() {
   # .NET Core3.0
-  wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-  sudo dpkg -i packages-microsoft-prod.deb
-  rm packages-microsoft-prod.deb
-  sudo add-apt-repository universe
-  sudo apt-get update
-  sudo apt-get install -y apt-transport-https
-  sudo apt-get update
-  sudo apt-get install -y dotnet-sdk-3.0
+  if ! is_installed_package dotnet ; then 
+    wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+    sudo dpkg -i packages-microsoft-prod.deb
+    rm packages-microsoft-prod.deb
+    sudo add-apt-repository universe
+    sudo apt-get update
+    sudo apt-get install -y apt-transport-https
+    sudo apt-get update
+    sudo apt-get install -y dotnet-sdk-3.0
+  fi
   # mono
-  sudo apt install -y mono-devel
+  if ! is_installed_package mono ; then 
+    sudo apt install -y mono-devel
+  fi
   # FAKE
-  dotnet tool install fake-cli -g
+  if ! is_installed_package fake ; then
+    dotnet tool install fake-cli -g
+  fi
   # Paket
-  dotnet tool install --global Paket
+  if ! is_installed_package paket ; then
+    dotnet tool install --global Paket
+  fi
 }
 
 install_jvm() {
@@ -153,5 +173,8 @@ install_jvm
 install_node
 install_elm
 install_haxe
+install_go
 
 sudo apt-get -y autoremove
+
+source ~/.zshenv

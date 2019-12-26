@@ -1,5 +1,5 @@
-declare SCRIPT_DIR=$(cd $(dirname $0); pwd)
-declare OS=($($SCRIPT_DIR/dotfiles/bin/get_os))
+# TODO 
+declare OS=($($HOME/dotfiles/bin/get_os))
 
 # rbenv
 if [[ -d $HOME/.rbenv ]]; then 
@@ -21,12 +21,18 @@ if [[ -d $HOME/.goenv ]]; then
   eval "$(goenv init -)"
 fi
 
-if [[ -d $HOME.sdkman ]]; then 
-  export SDKMAN_DIR="/home/tak/.sdkman"
-  [[ -s "/home/tak/.sdkman/bin/sdkman-init.sh" ]] && source "/home/tak/.sdkman/bin/sdkman-init.sh"
+# sdkman
+if [[ -d $HOME/.sdkman ]]; then 
+  export SDKMAN_DIR="$HOME/.sdkman"
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
   export JAVA_HOME=$HOME/.sdkman/candidates/java/current
   export PATH=$JAVA_HOME/bin:$PATH
 fi 
+
+# dotnet
+if [[ -d $HOME/.dotnet/tools ]]; then
+  export PATH=$HOME/.dotnet/tools:$PATH
+fi
 
 case ${OS} in 
   ubuntu)
