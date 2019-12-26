@@ -50,6 +50,8 @@ install_go() {
   # go
   if ! is_installed_package go ; then
     goenv install 1.13.0
+    goenv global 1.13.0
+    goenv rehash
   fi
 }
 
