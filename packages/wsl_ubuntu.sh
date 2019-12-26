@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 declare -r SCRIPT_DIR=$(cd $(dirname $0) && pwd)
+declare -r GITHUB_USERNAME=ttak0422
 
 cd $SCRIPT_DIR
 
@@ -49,9 +50,16 @@ install_go() {
   fi
   # go
   if ! is_installed_package go ; then
-    goenv install 1.13.0
-    goenv global 1.13.0
+    goenv install $GO_VERSION
+    goenv global $GO_VERSION
     goenv rehash
+  fi
+  # go workspace
+  if [[ ! -d $GOPATH/src/github.com ]]; then 
+    mkdir $GOPATH/src/github.com
+  fi
+  if [[ ! -d $GOPATH/src/github.com/$GITHUB_USERNAME ]]; then
+    mkdir $GOPATH/src/github.com/$GITHUB_USERNAME
   fi
 }
 
