@@ -1,4 +1,5 @@
-declare -r os=($(bin/get_os))
+declare SCRIPT_DIR=$(cd $(dirname $0); pwd)
+declare OS=($($SCRIPT_DIR/dotfiles/bin/get_os))
 
 # rbenv
 if [[ -d $HOME/.rbenv ]]; then 
@@ -11,7 +12,14 @@ if [[ -d $HOME/.pyenv ]]; then
   export PYENV_ROOT=$HOME/.pyenv
   export PATH=$PYENV_ROOT/bin:$PATH
   eval "$(pyenv init -)"
-fi  
+fi 
+
+# goenv
+if [[ -d $HOME/.goenv ]]; then 
+  export GOENV_ROOT=$HOME/.goenv
+  export PATH=$GOENV_ROOT/bin:$PATH
+  eval "$(goenv init -)"
+fi
 
 if [[ -d $HOME.sdkman ]]; then 
   export SDKMAN_DIR="/home/tak/.sdkman"
@@ -20,7 +28,7 @@ if [[ -d $HOME.sdkman ]]; then
   export PATH=$JAVA_HOME/bin:$PATH
 fi 
 
-case ${os} in 
+case ${OS} in 
   ubuntu)
     export ZPLUG_HOME=$HOME/.zplug
     ;;
