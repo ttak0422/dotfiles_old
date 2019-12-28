@@ -49,6 +49,7 @@ case ${OS} in
     export ZPLUG_HOME=$HOME/.zplug
     ;;
   wsl_ubuntu)    
+    export DISPLAY=localhost:0.0
     ;;
   *)
     echo "not supported"

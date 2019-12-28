@@ -215,6 +215,9 @@ sudo apt-get -y upgrade
 declare -ar packages=(
   'zsh'
   'build-essential'
+  # X転送
+  'openssh-server'
+  'x11-apps'
   # ruby
   'libssl-dev'
   'libreadline-dev'
