@@ -6,6 +6,7 @@ declare -r GITHUB_USERNAME=ttak0422
 # VERSION
 declare -r GO_VERSION=1.13
 declare -r OCAML_VERSION=4.06.0
+declare -r COQ_VERSION=8.10.2
 
 cd $SCRIPT_DIR
 
@@ -183,6 +184,31 @@ install_ocaml() {
   fi
 }
 
+install_coq() {
+  declare -ar dependencies=(
+    # coq ide
+    'libcairo2-dev'
+    'libexpat1-dev'
+    'libgtk-3-dev'
+    'libgtksourceview-3.0-dev'
+  )
+  
+  for p in ${dependencies[@]}; do
+    sudo apt-get install -y ${p}
+  done
+
+  if is_installed_package opam ; then
+    if ! is_installed_package coqc ; then
+      opam repo add coq-released http://coq.inria.fr/opam/released
+      # coq
+      # https://github.com/ocaml/opam/issues/3526
+      opam pin add coq $COQ_VERSION
+      # coq ide
+      opam install coqide
+    fi
+  fi
+}
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -214,6 +240,7 @@ install_elm
 install_haxe
 install_go
 install_ocaml
+install_coq
 
 sudo apt-get -y autoremove
 
