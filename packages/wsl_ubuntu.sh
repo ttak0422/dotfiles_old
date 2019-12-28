@@ -205,6 +205,8 @@ install_coq() {
       opam pin add coq $COQ_VERSION
       # coq ide
       opam install coqide
+      # library
+      opam install coq-mathcomp-ssreflect
     fi
   fi
 }
