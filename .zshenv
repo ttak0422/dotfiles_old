@@ -1,6 +1,11 @@
 # TODO 
 declare OS=($($HOME/dotfiles/bin/get_os))
 
+
+is_installed_package() {
+  command -v "$1" > /dev/null;
+}
+
 # rbenv
 if [[ -d $HOME/.rbenv ]]; then 
   export PATH=$HOME/.rbenv/bin:$PATH
@@ -32,6 +37,11 @@ fi
 # dotnet
 if [[ -d $HOME/.dotnet/tools ]]; then
   export PATH=$HOME/.dotnet/tools:$PATH
+fi
+
+# ocaml
+if is_installed_package opam ; then
+  eval $(opam config env)
 fi
 
 case ${OS} in 

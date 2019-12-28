@@ -3,6 +3,10 @@
 declare -r SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 declare -r GITHUB_USERNAME=ttak0422
 
+# VERSION
+declare -r GO_VERSION=1.13
+declare -r OCAML_VERSION=4.06.0
+
 cd $SCRIPT_DIR
 
 is_installed_package() {
@@ -154,6 +158,31 @@ install_haxe() {
   fi
 }
 
+install_ocaml() {
+  # WSL1では未サポート
+  # bubblewrap for opam
+  # if ! is_installed_package bwrap ; then 
+  #   sudo apt install bubblewrap
+  # fi
+  # m4 for opam
+  if ! is_installed_package m4 ; then
+    sudo apt install m4
+  fi
+  {
+    # opam
+    if ! is_installed_package opam ; then
+      sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
+    fi
+  } & 
+  wait
+  # ocaml
+  if ! is_installed_package ocaml ; then
+    source ~/.zshenv
+    # bwrapがWSL1で動作させることができないので--disable-sandboxing
+    opam init --comp $OCAML_VERSION --disable-sandboxing
+  fi
+}
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -184,6 +213,7 @@ install_node
 install_elm
 install_haxe
 install_go
+install_ocaml
 
 sudo apt-get -y autoremove
 
