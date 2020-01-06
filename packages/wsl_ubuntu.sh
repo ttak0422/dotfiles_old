@@ -60,11 +60,8 @@ install_go() {
     goenv rehash
   fi
   # go workspace
-  if [[ ! -d $GOPATH/src/github.com ]]; then 
-    mkdir $GOPATH/src/github.com
-  fi
   if [[ ! -d $GOPATH/src/github.com/$GITHUB_USERNAME ]]; then
-    mkdir $GOPATH/src/github.com/$GITHUB_USERNAME
+    mkdir -p $GOPATH/src/github.com/$GITHUB_USERNAME
   fi
 }
 
