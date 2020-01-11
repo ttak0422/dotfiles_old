@@ -208,6 +208,12 @@ install_coq() {
   fi
 }
 
+install_rust() {
+  if ! is_installed_package cargo ; then
+    curl https://sh.rustup.rs -sSf | sh
+  fi
+}
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -243,6 +249,7 @@ install_haxe
 install_go
 install_ocaml
 install_coq
+install_rust
 
 sudo apt-get -y autoremove
 
