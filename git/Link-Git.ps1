@@ -1,3 +1,9 @@
-New-Item -Type SymbolicLink $HOME\.gitconfig -Value $PSScriptRoot\.gitconfig
-New-Item -Type SymbolicLink $HOME\.commit_template -Value $PSScriptRoot\.commit_template
-New-Item -Type SymbolicLink $HOME\.gitignore_global $PSScriptRoot\.gitignore_global
+Get-ChildItem -Path $PSScriptRoot\.* | ForEach-Object{
+    $targetPath = $PSScriptRoot + '\' + $_.Name
+    $symbolicPath = $HOME + '\' + $_.Name
+    if (-Not(Test-Path $symbolicPath)) {
+        New-Item -Type SymbolicLink $symbolicPath -Value $targetPath
+        # Verbose?
+        Write-Output "'$symbolicPath' => '$targetPath}'"
+    }
+}
