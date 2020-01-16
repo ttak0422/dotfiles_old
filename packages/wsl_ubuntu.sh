@@ -60,11 +60,8 @@ install_go() {
     goenv rehash
   fi
   # go workspace
-  if [[ ! -d $GOPATH/src/github.com ]]; then 
-    mkdir $GOPATH/src/github.com
-  fi
   if [[ ! -d $GOPATH/src/github.com/$GITHUB_USERNAME ]]; then
-    mkdir $GOPATH/src/github.com/$GITHUB_USERNAME
+    mkdir -p $GOPATH/src/github.com/$GITHUB_USERNAME
   fi
 }
 
@@ -211,6 +208,12 @@ install_coq() {
   fi
 }
 
+install_rust() {
+  if ! is_installed_package cargo ; then
+    curl https://sh.rustup.rs -sSf | sh
+  fi
+}
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -246,6 +249,7 @@ install_haxe
 install_go
 install_ocaml
 install_coq
+install_rust
 
 sudo apt-get -y autoremove
 

@@ -44,6 +44,11 @@ if is_installed_package opam ; then
   eval $(opam config env)
 fi
 
+# rust 
+if [[ -d $HOME/.cargo ]]; then
+  export PATH=$HOME/.cargo/env:$PATH
+fi
+
 case ${OS} in 
   ubuntu)
     export ZPLUG_HOME=$HOME/.zplug
