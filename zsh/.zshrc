@@ -1,19 +1,26 @@
-### Added by Zplugin's installer
-source "$HOME/.zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin installer's chunk
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p $HOME/.zinit
+    command git clone https://github.com/zdharma/zinit $HOME/.zinit/bin && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%F" || \
+        print -P "%F{160}▓▒░ The clone has failed.%F"
+fi
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit installer's chunk
 
 # 補完
-zplugin load 'zsh-users/zsh-autosuggestions'
-zplugin load 'zsh-users/zsh-completions'
-zplugin load 'zsh-users/zsh-history-substring-search'
+zinit load 'zsh-users/zsh-autosuggestions'
+zinit load 'zsh-users/zsh-completions'
+zinit load 'zsh-users/zsh-history-substring-search'
 
 # Load the pure theme, with zsh-async library that's bundled with it.
-zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
+zinit ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
 
 # 構文のハイライト
-zplugin load 'zsh-users/zsh-syntax-highlighting'
+zinit load 'zsh-users/zsh-syntax-highlighting'
 
 # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
@@ -24,13 +31,3 @@ zstyle ':completion:*:default' menu select=2
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
-
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export JAVA_HOME=$HOME/.sdkman/candidates/java/current
-export PATH=$JAVA_HOME/bin:$PATH
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-export PATH=/home/tak/bin:$PATH
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
