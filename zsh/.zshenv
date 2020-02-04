@@ -56,6 +56,8 @@ case ${OS} in
   wsl_ubuntu)    
     export DISPLAY=localhost:0.0
     ;;
+  mac)
+    ;;
   *)
     echo "not supported"
     ;;
