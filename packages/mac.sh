@@ -10,6 +10,14 @@ if [[ $OS != 'mac' ]]; then
     exit 1;
 fi
 
+is_installed_brew_package() {
+    brew list | grep $1 > /dev/null
+}
+
+is_installed_brew_cask_package() {
+    brew cask list | grep $1 > /dev/null
+}
+
 install_zinit() {
     if [[ ! -d $HOME/.zinit ]]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
@@ -25,15 +33,22 @@ declare -ar brew_cask_packages=(
     'jetbrains-toolbox'
     'dotnet-sdk'
     'iterm2'
+    'karabiner-elements'
 )
 
 declare -ar brew_packages=(
+    'rustup'
 )
 
 for p in ${brew_cask_packages[@]}; do
-    brew cask install $p
+    if ! is_installed_brew_cask_package $p ; then
+        brew cask install $p
+    fi
 done
 
 for p in ${brew_packages[@]}; do 
-    brew install $p 
+    if ! is_installed_brew_package $p ; then
+        brew install $p 
+    fi
 done
+
