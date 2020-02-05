@@ -3,6 +3,13 @@
 declare -r SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 cd $SCRIPT_DIR
 
+declare OS=($(./../bin/get_os));
+
+if [[ $OS != 'mac' ]]; then 
+    echo "not supported";
+    exit 1;
+fi
+
 install_zinit() {
     if [[ ! -d $HOME/.zinit ]]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
