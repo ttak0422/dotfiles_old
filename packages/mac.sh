@@ -53,3 +53,9 @@ for p in ${brew_packages[@]}; do
     fi
 done
 
+# check rustup-init
+if is_installed_brew_package 'rustup' ; then
+    if [[ ! -d $HOME/.cargo ]]; then 
+        rustup-init
+    fi
+fi
