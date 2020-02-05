@@ -17,6 +17,7 @@ declare -ar brew_cask_packages=(
     'visual-studio-code'
     'jetbrains-toolbox'
     'dotnet-sdk'
+    'iterm2'
 )
 
 declare -ar brew_packages=(
