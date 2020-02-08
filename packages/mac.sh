@@ -34,6 +34,7 @@ declare -ar brew_cask_packages=(
     'dotnet-sdk'
     'iterm2'
     'karabiner-elements'
+    'java'
 )
 
 declare -ar brew_packages=(
