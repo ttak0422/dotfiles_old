@@ -41,6 +41,7 @@ declare -ar brew_packages=(
     'rustup'
     'bat'
     'mono'
+    'yarn'
 )
 
 for p in ${brew_cask_packages[@]}; do
