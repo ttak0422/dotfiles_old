@@ -21,6 +21,13 @@ install_rootless_docker() {
   fi
 }
 
+install_compose() {
+  if [[ ! -d /usr/local/bin/docker-compose ]]; then 
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+  fi
+}
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -41,6 +48,7 @@ source ../zsh/.zshenv
 
 install_zinit
 install_rootless_docker
+install_compose
 
 sudo apt-get -y autoremove
 source ../zsh/.zshenv
