@@ -51,7 +51,8 @@ fi
 
 case ${OS} in 
   ubuntu)
-    export ZPLUG_HOME=$HOME/.zplug
+    export PATH=/home/tak/bin:$PATH
+    export DOCKER_HOST=unix:///run/user/1000/docker.sock
     ;;
   wsl_ubuntu)    
     export DISPLAY=localhost:0.0
