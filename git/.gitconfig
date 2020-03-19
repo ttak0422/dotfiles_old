@@ -2,7 +2,6 @@
 	autocrlf = false
 	pager = less -r
 	editor = vim
-	excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
 	autocrlf = false
@@ -16,5 +15,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[commit]
-	template = ~/.commit_template
+[includeIf "gitdir:~/repo/local"]
+	path = ~/.gitconfig_local
