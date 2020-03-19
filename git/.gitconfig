@@ -15,5 +15,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[includeIf "gitdir:~/repo/local"]
+[includeIf "gitdir:~/repo/local/"]
 	path = ~/.gitconfig_local
