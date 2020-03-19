@@ -14,17 +14,6 @@ install_zinit() {
   fi
 }
 
-install_rootless_docker() {
-  #
-  # To control docker service run:
-  # systemctl --user (start|stop|restart) docker
-  #
-  if [[ ! -d /home/$USER/bin/docker ]] ; then 
-    curl -fsSL https://get.docker.com/rootless | sh && wait
-    systemctl --user start docker
-  fi
-}
-
 install_docker() {
   if [[ ! -d /usr/bin/docker ]]; then
     sudo apt-get -y install \
@@ -40,6 +29,7 @@ install_docker() {
       stable"
     sudo apt-get -y update
     sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+    sudo usermod -aG docker $USER
   fi
 }
 
@@ -69,7 +59,6 @@ done
 source ../zsh/.zshenv
 
 install_zinit
-install_rootless_docker
 install_docker
 install_compose
 
