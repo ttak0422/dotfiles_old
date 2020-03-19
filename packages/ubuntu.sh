@@ -15,9 +15,31 @@ install_zinit() {
 }
 
 install_rootless_docker() {
-  if ! is_installed_package docker ; then 
+  #
+  # To control docker service run:
+  # systemctl --user (start|stop|restart) docker
+  #
+  if [[ ! -d /home/$USER/bin/docker ]] ; then 
     curl -fsSL https://get.docker.com/rootless | sh && wait
     systemctl --user start docker
+  fi
+}
+
+install_docker() {
+  if [[ ! -d /usr/bin/docker ]]; then
+    sudo apt-get -y install \
+      apt-transport-https \
+      ca-certificates \
+      curl \
+      gnupg-agent \
+      software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository \
+      "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) \
+      stable"
+    sudo apt-get -y update
+    sudo apt-get -y install docker-ce docker-ce-cli containerd.io
   fi
 }
 
@@ -48,6 +70,7 @@ source ../zsh/.zshenv
 
 install_zinit
 install_rootless_docker
+install_docker
 install_compose
 
 sudo apt-get -y autoremove
