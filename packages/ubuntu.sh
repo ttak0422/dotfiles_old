@@ -15,7 +15,7 @@ install_zinit() {
 }
 
 install_docker() {
-  if [[ ! -d /usr/bin/docker ]]; then
+  if [[ ! -e /usr/bin/docker ]]; then
     sudo apt-get -y install \
       apt-transport-https \
       ca-certificates \
@@ -35,7 +35,7 @@ install_docker() {
 }
 
 install_compose() {
-  if [[ ! -d /usr/local/bin/docker-compose ]]; then 
+  if [[ ! -e /usr/local/bin/docker-compose ]]; then 
     sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
   fi
@@ -51,6 +51,7 @@ declare -ar packages=(
   'unzip'
   'zip'
   'uidmap'
+  'tmux'
 )
 
 for p in ${packages[@]}; do 
