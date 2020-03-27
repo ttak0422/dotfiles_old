@@ -31,3 +31,4 @@ zstyle ':completion:*:default' menu select=2
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
+### End of Zinit's installer chunk
