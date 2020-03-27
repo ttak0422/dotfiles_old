@@ -17,6 +17,7 @@ function InstallBrowserApps()
 function InstallFonts()
 {
     choco install firacode --limit-output
+    choco install cascadiacode --limit-output
 }
 
 function InstallDevTools()
@@ -47,7 +48,7 @@ if (-not(([Security.Principal.WindowsPrincipal] `
 
 EnableAllowConfirmation
 InstallBrowserApps
-
+InstallFonts
 InstallDevTools
 DisableAllowConfirmation
 
@@ -61,5 +62,3 @@ function InstallFlutter()
         Write-Output "Already installed flutter"
     }
 }
-
-InstallFlutter
