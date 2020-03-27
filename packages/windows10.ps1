@@ -18,6 +18,7 @@ function InstallFonts()
 {
     choco install firacode --limit-output
     choco install cascadiacode --limit-output
+    choco install cica --limit-output
 }
 
 function InstallDevTools()
