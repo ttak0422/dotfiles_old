@@ -70,6 +70,8 @@ declare -ar packages=(
   'libreadline-dev'
   'libsqlite3-dev'
   'zlib1g-dev'
+  'powerline'
+  'tree'
 )
 
 for p in ${packages[@]}; do 
