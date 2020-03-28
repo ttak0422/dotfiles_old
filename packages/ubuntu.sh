@@ -41,6 +41,19 @@ install_compose() {
   fi
 }
 
+install_python() {
+  # pyenv
+  if [[ ! -d $HOME/.pyenv ]]; then
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv    
+  fi
+  source ~/.zshenv
+  # python
+  if ! is_installed_package python ; then
+    pyenv install -s 3.8.0
+    pyenv global 3.8.0
+  fi
+}
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -52,6 +65,11 @@ declare -ar packages=(
   'zip'
   'uidmap'
   'tmux'
+  'libssl-dev'
+  'libbz2-dev'
+  'libreadline-dev'
+  'libsqlite3-dev'
+  'zlib1g-dev'
 )
 
 for p in ${packages[@]}; do 
@@ -63,6 +81,7 @@ source ../zsh/.zshenv
 install_zinit
 install_docker
 install_compose
+install_python
 
 sudo apt-get -y autoremove
 source ../zsh/.zshenv
