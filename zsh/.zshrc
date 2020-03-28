@@ -27,6 +27,8 @@ setopt hist_reduce_blanks
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
 zstyle ':completion:*:default' menu select=2
+# ビープを鳴らさない
+setopt no_beep
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
