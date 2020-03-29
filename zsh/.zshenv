@@ -51,8 +51,10 @@ fi
 
 case ${OS} in 
   ubuntu)
+    export DOCKER_HOST=tcp://127.0.0.1:9000
     ;;
   wsl_ubuntu)    
+    export DOCKER_HOST=tcp://127.0.0.1:9000
     export DISPLAY=localhost:0.0
     ;;
   mac)
