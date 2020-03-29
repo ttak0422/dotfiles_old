@@ -30,7 +30,7 @@ install_docker() {
     sudo apt-get -y update
     sudo apt-get -y install docker-ce docker-ce-cli containerd.io
     sudo usermod -aG docker $USER
-    sudo service docker --full-restart
+    sudo service docker start
   fi
 }
 
@@ -54,6 +54,17 @@ install_python() {
   fi
 }
 
+install_powerline() {
+  if [[ ! -e /usr/local/bin/powerline-go ]]; then
+    curl -s https://api.github.com/repos/justjanne/powerline-go/releases/latest \
+    | grep -E 'browser_download_url.*linux.*' \
+    | cut -d : -f 2,3 \
+    | tr -d \" \
+    | sudo wget -O /usr/local/bin/powerline-go -qi -
+    sudo chmod +x /usr/local/bin/powerline-go
+  fi
+}
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -70,7 +81,6 @@ declare -ar packages=(
   'libreadline-dev'
   'libsqlite3-dev'
   'zlib1g-dev'
-  'powerline'
   'tree'
 )
 
@@ -84,6 +94,7 @@ install_zinit
 install_docker
 install_compose
 install_python
+install_powerline
 
 sudo apt-get -y autoremove
 source ../zsh/.zshenv
