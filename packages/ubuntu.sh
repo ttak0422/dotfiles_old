@@ -110,6 +110,7 @@ declare -ar packages=(
   'libsqlite3-dev'
   'zlib1g-dev'
   'tree'
+  'tig'
 )
 
 for p in ${packages[@]}; do 
