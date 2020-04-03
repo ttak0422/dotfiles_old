@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/bin/bash -e
 
 declare -r SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 cd $SCRIPT_DIR
@@ -54,6 +54,34 @@ install_python() {
   fi
 }
 
+install_jvm() {
+  # SDKMAN
+  if ! is_installed_package sdk ; then
+    curl -s "https://get.sdkman.io" | bash
+    source $HOME/.sdkman/bin/sdkman-init.sh
+  fi
+  # Java
+  if ! is_installed_package java ; then
+    sdk install java   
+  fi
+  # groovy
+  if ! is_installed_package groovy ; then
+    sdk install groovy
+  fi
+  # kotlin 
+  if ! is_installed_package kotlin ; then
+    sdk install kotlin
+  fi
+  # sbt 
+  if ! is_installed_package sbt ; then 
+    sdk install sbt
+  fi
+  # scala
+  if ! is_installed_package scala ; then
+    sdk install scala
+  fi
+}
+
 install_powerline() {
   if [[ ! -e /usr/local/bin/powerline-go ]]; then
     curl -s https://api.github.com/repos/justjanne/powerline-go/releases/latest \
@@ -93,8 +121,9 @@ source ../zsh/.zshenv
 install_zinit
 install_docker
 install_compose
-install_python
 install_powerline
+install_python
+install_jvm
 
 sudo apt-get -y autoremove
 source ../zsh/.zshenv

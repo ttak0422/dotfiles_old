@@ -29,7 +29,7 @@ setopt no_beep
 
 # powerline-go
 function powerline_precmd() {
-    PS1="$(/usr/local/bin/powerline-go -error $? -shell zsh -modules venv,user,ssh,cwd,perms,git,hg,jobs,exit)"
+    PS1="$(/usr/local/bin/powerline-go -error $? -shell zsh -modules venv,user,ssh,cwd,perms,git,hg,jobs,exit -newline)"
 }
 
 function install_powerline_precmd() {
@@ -48,3 +48,7 @@ fi
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/tak/.sdkman"
+[[ -s "/home/tak/.sdkman/bin/sdkman-init.sh" ]] && source "/home/tak/.sdkman/bin/sdkman-init.sh"
