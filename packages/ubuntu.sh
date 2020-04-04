@@ -66,6 +66,12 @@ install_powerline() {
   fi
 }
 
+install_tpm() {
+  if [[ ! -e $HOME/.tmux/plugins/tpm ]]; then 
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+}
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -96,6 +102,7 @@ install_zinit
 install_powerline
 install_python
 install_jvm
+install_tpm
 
 sudo apt-get -y autoremove
 source ../zsh/.zshenv
