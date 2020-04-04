@@ -48,7 +48,3 @@ fi
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/tak/.sdkman"
-[[ -s "/home/tak/.sdkman/bin/sdkman-init.sh" ]] && source "/home/tak/.sdkman/bin/sdkman-init.sh"
