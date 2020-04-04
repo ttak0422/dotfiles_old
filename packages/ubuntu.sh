@@ -117,7 +117,11 @@ declare -ar packages=(
   'zlib1g-dev'
   'tree'
   'tig'
-  'ssh'
+  'openssh-server'
+  # clion #
+  'cmake'
+  'gdb'
+  #########
 )
 
 for p in ${packages[@]}; do 
