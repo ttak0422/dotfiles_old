@@ -93,8 +93,6 @@ done
 source ../zsh/.zshenv
 
 install_zinit
-install_docker
-install_compose
 install_powerline
 install_python
 install_jvm
