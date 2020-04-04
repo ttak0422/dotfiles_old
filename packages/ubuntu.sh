@@ -90,6 +90,7 @@ declare -ar packages=(
   'zlib1g-dev'
   'tree'
   'tig'
+  'openssh-server'
 )
 
 for p in ${packages[@]}; do 
