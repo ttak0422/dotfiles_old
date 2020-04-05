@@ -11,6 +11,9 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
+# alias & command
+alias codew="~/dotfiles/bin/run_windows_vscode"
+
 # 補完
 zinit load 'zsh-users/zsh-autosuggestions'
 zinit load 'zsh-users/zsh-completions'

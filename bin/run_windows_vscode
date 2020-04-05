@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/mnt/c/Program\ Files/Microsoft\ VS\ Code/Code.exe 1>/dev/null "$@" &
