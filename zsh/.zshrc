@@ -13,6 +13,8 @@ autoload -Uz _zinit
 
 # alias & command
 alias codew="~/dotfiles/bin/run_windows_vscode"
+alias d='docker'
+alias dc='docker-compose'
 
 # 補完
 zinit load 'zsh-users/zsh-autosuggestions'
