@@ -135,8 +135,8 @@ install_powerline
 install_python
 install_jvm
 install_tpm
-install_docker
-install_compose
+# install_docker
+# install_compose
 
 sudo apt-get -y autoremove
 source ../zsh/.zshenv
