@@ -53,7 +53,7 @@ case ${OS} in
   ubuntu)
     ;;
   wsl_ubuntu)    
-    export DISPLAY=localhost:0.0
+    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
     ;;
   mac)
     ;;
