@@ -24,9 +24,26 @@ install_zinit() {
     fi
 }
 
-install_zinit
+install_powerline() {
+  if [[ ! -e /usr/local/bin/powerline-go ]]; then
+    curl -s https://api.github.com/repos/justjanne/powerline-go/releases/latest \
+    | grep -E 'browser_download_url.*darwin.*' \
+    | cut -d : -f 2,3 \
+    | tr -d \" \
+    | sudo wget -O /usr/local/bin/powerline-go -qi -
+    sudo chmod +x /usr/local/bin/powerline-go
+  fi
+}
 
-brew update
+install_tpm() {
+  if [[ ! -e $HOME/.tmux/plugins/tpm ]]; then 
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+}
+
+declare -ar brew_tap_repositories=(
+    'homebrew/cask-fonts'
+)
 
 declare -ar brew_cask_packages=(
     'visual-studio-code'
@@ -35,14 +52,22 @@ declare -ar brew_cask_packages=(
     'iterm2'
     'karabiner-elements'
     'java'
+    'font-hackgen'
 )
 
 declare -ar brew_packages=(
-    'rustup'
     'bat'
+    'wget'
+    'tmux'
+    'tig'
+    'rustup'
     'mono'
     'yarn'
 )
+
+for r in ${brew_tap_repositories[@]}; do 
+    brew tap $r;
+done
 
 for p in ${brew_cask_packages[@]}; do
     if ! is_installed_brew_cask_package $p ; then
@@ -56,9 +81,15 @@ for p in ${brew_packages[@]}; do
     fi
 done
 
+install_zinit
+install_powerline
+install_tpm
+
+brew update
+
 # check rustup-init
-if is_installed_brew_package 'rustup' ; then
-    if [[ ! -d $HOME/.cargo ]]; then 
-        rustup-init
-    fi
-fi
+# if is_installed_brew_package 'rustup' ; then
+#     if [[ ! -d $HOME/.cargo ]]; then 
+#         rustup-init
+#     fi
+# fi
