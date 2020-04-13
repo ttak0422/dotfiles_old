@@ -60,6 +60,7 @@ declare -ar brew_packages=(
     'wget'
     'tmux'
     'tig'
+    'screenfetch'
     'rustup'
     'mono'
     'yarn'
