@@ -4,8 +4,11 @@ readonly SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 
 cd $SCRIPT_DIR
 
-for file in .??*; do
-  if [[ ! -e $HOME/$file && -f $file ]]; then 
-    ln -snfv ${SCRIPT_DIR}/${file} ${HOME}/${file}
-  fi
-done
+if [[ ! -e $HOME/.config ]]; then
+  mkdir .config 
+fi
+
+# home-manager
+if [[ ! -e $HOME/.config/nixpkgs ]]; then
+  ln -snfv $SCRIPT_DIR/nixpkgs $HOME/.config/nixpkgs
+fi
