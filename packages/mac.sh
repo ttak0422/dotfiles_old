@@ -3,6 +3,10 @@
 declare -r SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 cd $SCRIPT_DIR
 
+# TODO: 
+echo "Error: Move to nix";
+exit 1;
+
 declare OS=($(./../bin/get_os));
 
 if [[ $OS != 'mac' ]]; then 
