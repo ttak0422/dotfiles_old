@@ -5,7 +5,9 @@
   imports = [
     ./user/tak.nix
     ./git/index.nix
-    ./teminal/tmux.nix
-    ./teminal/fish.nix
+    ./terminal/tmux.nix
+    ./terminal/fish.nix
+    ./terminal/bash.nix
+    ./terminal/zsh.nix
   ];
 }
