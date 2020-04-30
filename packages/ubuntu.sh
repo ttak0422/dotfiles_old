@@ -6,7 +6,7 @@ cd $SCRIPT_DIR
 install_nix() {
   if [[ ! -e $HOME/.nix-profile ]]; then
     curl https://nixos.org/nix/install | sh;
-    /home/$username/.nix-profile/etc/profile.d/nix.sh;  
+    $HOME/.nix-profile/etc/profile.d/nix.sh;  
     # add unstable channels
     nix-channel --add https://nixos.org/channels/nixpkgs-unstable;
     nix-channel --update;

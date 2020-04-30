@@ -14,7 +14,7 @@
     TMUX_TMPDIR = "/tmp";
   };
   # for bash
-  home.file.".profile".text = lib.mkAfter ". /home/$USER/.nix-profile/etc/profile.d/nix.sh";
+  home.file.".profile".text = lib.mkAfter ". $HOME/.nix-profile/etc/profile.d/nix.sh";
   # https://wiki.archlinux.jp/index.php/Fish
   home.file.".bashrc".text = lib.mkAfter "exec fish";
 }
