@@ -4,6 +4,21 @@ with lib;
 
 let
   cfg = config.programs.tmux;
+  plugins = with pkgs; [
+      tmuxPlugins.sidebar
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      }
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-boot 'on'
+          set -g @continuum-save-interval '5' # minutes
+          set -g @continuum-restore 'on'
+        '';
+      }
+    ];
   tmuxConf = ''
 
     # close window = prefix + shift + x
@@ -31,11 +46,11 @@ let
 
     # right
     set -g status-right "#[fg=red]#[default]#[fg=white,bg=red] #H #[default]"
+
   '';
 in {
 
   programs.tmux = {
-
     enable = true;
     keyMode = "vi";
     escapeTime = 1;
@@ -43,20 +58,7 @@ in {
     shortcut = "a";
     customPaneNavigationAndResize = true;
     resizeAmount = 5;
-    plugins = with pkgs; [
-      tmuxPlugins.sidebar
-      {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '60' # minutes
-        '';
-      }
-    ];
+    plugins = plugins;
   };
-  home.file.".tmux.conf".text = tmuxConf;
+  home.file.".tmux.conf".text = lib.mkAfter tmuxConf;
 }
