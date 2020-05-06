@@ -19,7 +19,7 @@ let
         '';
       }
     ];
-  tmuxConf = ''
+  extraConfig = ''
 
     # close window = prefix + shift + x
     bind X confirm-before -p 'kill-window #I? (y/n)' kill-window
@@ -59,6 +59,6 @@ in {
     customPaneNavigationAndResize = true;
     resizeAmount = 5;
     plugins = plugins;
+    extraConfig = extraConfig;
   };
-  home.file.".tmux.conf".text = lib.mkAfter tmuxConf;
 }
