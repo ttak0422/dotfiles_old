@@ -8,6 +8,7 @@
     ./terminal/tmux.nix
     ./terminal/fish.nix
     ./terminal/bash.nix
+    ./wip/peco.nix
     # ./terminal/zsh.nix
   ];
   home.sessionVariables = {
