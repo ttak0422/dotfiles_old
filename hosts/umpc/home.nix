@@ -10,8 +10,6 @@
     ./../../nixpkgs/wip/peco.nix
   ];
   # for bash
-  home.file.".profile".text =
-    lib.mkAfter ". $HOME/.nix-profile/etc/profile.d/nix.sh";
   # https://wiki.archlinux.jp/index.php/Fish
   home.file.".bashrc".text = lib.mkAfter "exec fish";
 }
