@@ -25,7 +25,7 @@
   environment.pathsToLink = [ "/libexec" ];
 
   fonts = {
-    fonts = with pkgs; [ dejavu_fonts ipafont ];
+    fonts = with pkgs; [ dejavu_fonts ipafont powerline-fonts ];
     fontconfig = {
       defaultFonts = {
         monospace = [ "DejaVu Sans Mono" "IPAGothic" ];
