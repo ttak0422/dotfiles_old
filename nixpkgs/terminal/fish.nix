@@ -7,7 +7,7 @@
   programs.fish = {
     enable = true;
     functions = {
-        fish_prompt = "eval $HOME/.nix-profile/bin/powerline-go -error $status -shell bare -modules venv,user,ssh,cwd,perms,git,hg,jobs,exit -newline";      
+        fish_prompt = "eval $HOME/.nix-profile/bin/powerline-go -error $status -shell bare -modules venv,user,ssh,cwd,perms,git,hg,jobs,exit -newline -modules-right aws, cwd, docker, docker-context, dotenv, duration, exit, git, gitlite, hg, host, jobs, kube, load, newline, nix-shell, node, perlbrew, perms, plenv, root, shell-var, shenv, ssh, svn, termtitle, terraform-workspace, time, user, venv, vgo";      
         # https://github.com/oh-my-fish/plugin-peco/blob/master/functions/peco_select_history.fish
         peco_select_history = ''
           if test (count $argv) = 0
