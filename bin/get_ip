@@ -1,7 +1,0 @@
-#!/bin/bash
-
-get_ip() {
-  echo $(ifconfig eth0 | grep 'inet ' | awk '{print $2}')
-}
-
-get_ip
