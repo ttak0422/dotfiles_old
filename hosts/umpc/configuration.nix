@@ -1,8 +1,20 @@
 { config, pkgs, callPackage, lib, ... }:
 
-{
-  imports = [ ./hardware-configuration.nix <home-manager/nixos> ];
-  home-manager.users.tak = (import ./home.nix);
+let 
+  sources = import ./../../nix/sources.nix;
+in {
+  imports = [
+    ./hardware-configuration.nix
+    "${sources.home-manager}/nixos"
+  ];
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.users.tak = { ... }: {
+    programs.home-manager.enable = true;
+    home.stateVersion = "20.03";
+    imports = [ ./home.nix ];
+  };
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -25,7 +37,17 @@
   environment.pathsToLink = [ "/libexec" ];
 
   fonts = {
-    fonts = with pkgs; [ dejavu_fonts ipafont powerline-fonts ];
+    fonts = with pkgs; [
+      dejavu_fonts
+      ipafont
+      powerline-fonts
+      # rofi
+      fantasque-sans-mono
+      iosevka
+      noto-fonts-cjk
+      comfortaa
+      # (nerdfonts.override { withFont = "Hurmit";})
+    ];
     fontconfig = {
       defaultFonts = {
         monospace = [ "DejaVu Sans Mono" "IPAGothic" ];
@@ -61,7 +83,12 @@
     slack
     neofetch
     google-chrome
-    home-manager
+    # home-manager
+    termite
+    bmon
+    ranger
+    # polybar
+    feh
   ];
 
   virtualisation = {
@@ -81,6 +108,32 @@
   };
 
   services = {
+    picom = {
+      enable = true;
+      shadow = true;
+      # vSync = "opengl-swc";
+      backend = "glx";
+      # todo
+      opacityRules = [
+        "100:class_g = 'URxvt' && focused"
+        "80:class_g = 'URxvt' && !focused"
+      ];
+      activeOpacity = "1.0";
+      inactiveOpacity = "0.8";
+      wintypes = {
+        tooltip = {
+          fade = true;
+          shadow = false;
+          opacity = "0.8";
+        };
+      };
+      fadeDelta = 5;
+      fadeSteps = [ "0.03" "0.03" ];
+      fade = true;
+
+      # extraOptions = ''  
+      # '';
+    };
     gnome3 = { gnome-keyring.enable = true; };
     xserver = {
       enable = true;
@@ -91,7 +144,15 @@
       displayManager = { defaultSession = "none+i3"; };
       windowManager.i3 = {
         enable = true;
-        extraPackages = with pkgs; [ rofi i3status ];
+        package = pkgs.i3-gaps;
+        extraPackages = with pkgs; [
+          rofi
+          i3status
+          i3lock
+          papirus-icon-theme
+          acpi
+          xfce.xfce4-power-manager
+        ];
       };
     };
   };
