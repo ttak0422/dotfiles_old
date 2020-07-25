@@ -1,14 +1,15 @@
-{ config, pkgs, callPackage, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 let 
   sources = import ./../../nix/sources.nix;
+  cfg = config.primary-user;
 in {
   imports = [
     ./hardware-configuration.nix
     "${sources.home-manager}/nixos"
   ];
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = false;
+  home-manager.useGlobalPkgs = false;
   home-manager.users.tak = { ... }: {
     programs.home-manager.enable = true;
     home.stateVersion = "20.03";
@@ -138,6 +139,7 @@ in {
     xserver = {
       enable = true;
       layout = "us";
+      videoDrivers =["displaylink" "modesetting"];
 
       # i3
       desktopManager = { xterm.enable = false; };
