@@ -15,13 +15,18 @@ in {
       ./../../virtualisation
       ./../../language
       ./../../services/xserver
+      ./../../services/picom.nix
       ./../../utils
       ./../../gui
       ./../../cui
     ];
 
   home-manager.users.tak = { ... }: {
-    imports = [ ./../../home ];
+    imports = [ 
+      ./../../home/generic 
+      ./../../home/nixos
+      ];
+
   };
 
   boot.loader = {
