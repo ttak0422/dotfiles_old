@@ -42,6 +42,10 @@ in {
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   
+  environment.systemPackages = [
+    pkgs.linuxPackages.tp_smapi
+  ];
+
   services.xserver = {
     libinput.enable = true;
     # synaptics.enable = true;
