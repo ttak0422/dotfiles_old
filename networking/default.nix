@@ -1,5 +1,6 @@
 { config, lib, ... }:
 {
+  # Wi-Fi
   networking = {
     hostName = "nixos";
     useDHCP = false;
@@ -15,4 +16,9 @@
       nameserver 8.8.4.4
     '';
   };
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
 }
