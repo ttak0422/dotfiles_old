@@ -27,8 +27,13 @@
     };
     shellAbbrs = {
       "d" = "docker";
-      "dc" = "docker-compose";
+      "dc" = "docker-compose";      
       "k" = "kubectl";
     };
+    shellAliases = {
+      "g"  = ''cd (ghq root)'/'(ghq list | peco)'';
+      "gh" = ''hub browse (ghq list | peco | cut -d "/" -f 2,3)'';
+    };
   };
+
 }
