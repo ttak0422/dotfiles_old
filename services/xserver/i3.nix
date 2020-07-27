@@ -7,8 +7,8 @@ let
     set $execi exec --no-startup-id
 
     # font
-    font pango:monospace 14
-
+    # font pango:monospace 14
+    font pango:DejaVu Sans Mono, Awesome 14
     # The combination of xss-lock, nm-applet and pactl is a popular choice, so
     # they are included here as an example. Modify as you see fit.
 
@@ -51,7 +51,7 @@ let
 
     # alternatively, you can use the cursor keys:
     bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
+    bindsym $mod+Down focus down"
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
@@ -152,6 +152,9 @@ let
     # Start i3bar to display a workspace bar (plus the system information i3status
     # finds out, if available)
     bar {
+      font pango:DejaVu Sans Mono, Awesome, 14
+      strip_workspace_numbers yes
+      # strip_workspace_name yes
       colors {
         background #2f343f
         statusline #2f343f
@@ -165,6 +168,11 @@ let
       }
       status_command i3status
     }
+
+    # i3-gaps
+    smart_gaps on
+    gaps inner 4
+    gaps outer 2
 
     # window rules, you can find the window class using xprop
     for_window [class=".*"] border pixel 4
@@ -198,7 +206,6 @@ let
       color_bad = '#ba5e57'
     }
 
-
     order += "load"
     order += "cpu_temperature 1"
     order += "memory"
@@ -211,22 +218,22 @@ let
     order += "tztime local"
 
     load {
-      format = "<span background='#f59335'> Load: %5min </span>"
+      format = "<span background='#ABCE64'>  %5min </span>"
     }
 
     cpu_temperature 1{
-      format = "<span background='#bf616a'> Temp: %degrees °C </span>"
+      format = "<span background='#E6C68F'>  %degrees °C </span>"
       path = "/sys/class/thermal/thermal_zone1/temp"
     }
 
     memory {
-      format = "<span background='#bf616a'> %used </span>"
+      format = "<span background='#73CEFF'>  %free Free </span>"
       threshold_degraded = "10%"
-      format_degraded = "MEM: %free"
+      # format_degraded = "MEM: %free"
     }
 
     disk "/" {
-     format = "<span background='#fec7cd'> Storage: %free Free </span>"
+      format = "<span background='#F88C00'>  %free Free </span>"
     }
 
     # disk "/home" {
@@ -239,13 +246,13 @@ let
     # }
 
     wireless wlp0s20f3 {
-      format_up = "<span background='#b48ead'> WiFi: %essid </span>"
-      format_down = "<span background='#b48ead'> WiFi: Disconnected </span>"
+      format_up = "<span background='#9F6B4D'>  %essid </span>"
+      format_down = "<span background='#9F6B4D'>  Disconnected </span>"
     }
 
     volume master {
-      format = "<span background='#ebcb8b'> Vol: %volume </span>"
-      format_muted = "<span background='#ebcb8b'> Vol: Muted </span>"
+      format = "<span background='#FAF3EE'>  %volume </span>"
+      format_muted = "<span background='#FAF3EE'>  Muted </span>"
       device = "default"
       mixer = "Master"
       mixer_idx = 0
@@ -253,18 +260,18 @@ let
 
     battery 0 {
       last_full_capacity = true
-      format = "<span background='#a3be8c'> ⚡: %status %percentage </span>"
-      format_down = "No Battery"
-      status_chr  = "Charging"
-      status_bat  = "Battery"
-      status_unk  = "Unknown"
-      status_full = "Charged"
+      format = "<span background='#769E42'> %status %percentage </span>"
+      format_down = ""
+      status_chr  = ""
+      status_bat  = ""
+      status_unk  = ""
+      status_full = ""
       path = "/sys/class/power_supply/BAT0/uevent"
       low_threshold = 10
     }
 
     tztime local {
-      format = "<span background='#81a1c1'> %time </span>"
+      format = "<span background='#C477CC'>  %time </span>"
       format_time = "%m/%d %H:%M (%a)"
     }
 
@@ -276,6 +283,7 @@ in {
     windowManager.i3 = {
       enable = true;
       configFile = "/etc/i3.conf";
+      package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
         rofi
         i3status
