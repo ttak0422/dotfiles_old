@@ -8,6 +8,4 @@
     ./git
     ./vim.nix
   ];
-
-  # home.file.".bashrc".text = lib.mkAfter "exec fish";
 }
