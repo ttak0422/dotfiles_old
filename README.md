@@ -31,10 +31,12 @@ WiFi & Bluetooth
 for [niv](https://github.com/nmattia/niv)
 
 ## /nixpkgs
-:construction: wip 
+:wastebasket: wip 
 
 ## /services
 services such as xserver
+￼
+￼
 
 ## /utils
 something
