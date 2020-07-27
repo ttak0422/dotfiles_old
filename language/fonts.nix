@@ -5,11 +5,12 @@
       dejavu_fonts
       ipafont
       powerline-fonts
+      font-awesome-ttf
+      fira-code-symbols
       fantasque-sans-mono
       iosevka
       noto-fonts-cjk
       comfortaa
-      # (nerdfonts.override { withFont = "Hurmit";})
     ];
     fontconfig = {
       defaultFonts = {
