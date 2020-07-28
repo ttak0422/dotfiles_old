@@ -16,6 +16,10 @@ let
     exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
     bindsym $super+l exec i3lock # -i ~/.wallpaper.png
 
+    # backlight
+    bindsym XF86MonBrightnessUp exec  brightnessctl s +10%
+    bindsym XF86MonBrightnessDown exec  brightnessctl s 10%-
+
     # NetworkManager is the most popular way to manage wireless networks on Linux,
     # and nm-applet is a desktop environment-independent system tray GUI for it.
     exec --no-startup-id nm-applet
@@ -121,6 +125,9 @@ let
     bindsym $mod+Shift+r restart
     # exit i3 (logs you out of your X session)
     bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+    # screenshot
+    bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
 
     # resize window (you can also use the mouse for that)
     mode "resize" {
@@ -276,6 +283,10 @@ let
     }
 
   '';
+  brightnessScript = ''
+  xrandr --output (xrandr -q | grep ' connected' | head -n 1 | cut -d ' ' -f1) --brightness 0.5
+
+  '';
 in {
   services.xserver = {
     desktopManager = { xterm.enable = false; };
@@ -290,7 +301,9 @@ in {
         i3lock
         papirus-icon-theme
         acpi
+        scrot
         xfce.xfce4-power-manager
+        brightnessctl
       ];
     };
   };
