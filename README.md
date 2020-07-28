@@ -35,8 +35,6 @@ for [niv](https://github.com/nmattia/niv)
 
 ## /services
 services such as xserver
-￼
-￼
 
 ## /utils
 something
