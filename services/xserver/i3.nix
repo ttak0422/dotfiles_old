@@ -124,7 +124,21 @@ let
     # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
     bindsym $mod+Shift+r restart
     # exit i3 (logs you out of your X session)
-    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+    # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+    set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+    mode "$mode_system" {
+      bindsym l exec --no-startup-id i3exit lock, mode "default"
+      bindsym e exec --no-startup-id i3exit logout, mode "default"
+      bindsym s exec --no-startup-id i3exit suspend, mode "default"
+      bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+      bindsym r exec --no-startup-id i3exit reboot, mode "default"
+      bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+      # back to normal: Enter or Escape
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+    }
+    bindsym $mod+Shift+e mode "$mode_system"
 
     # screenshot
     bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
