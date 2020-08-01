@@ -1,0 +1,4 @@
+[submodule "dotfiles-private"]
+	path = dotfiles-private
+	url = https://github.com/ttak0422/dotfiles-private
+	branch = master

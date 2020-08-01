@@ -1,14 +1,14 @@
 { config, pkgs, lib, ... }:
-
 {
   home.packages = with pkgs; [
-    nixfmt
-    bat
-    zip
-    unzip
-    tree
-    peco
+    git
+    tig
     ghq
     gitAndTools.hub
+  ];
+  imports = [
+    ./config.nix
+    ./template.nix
+    ./ignore.nix
   ];
 }
