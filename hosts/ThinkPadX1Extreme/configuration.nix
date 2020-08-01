@@ -16,6 +16,7 @@ in {
       ./../../language
       ./../../services/xserver
       ./../../services/picom.nix
+      ./../../services/tlp.nix
       ./../../utils
       ./../../gui
       ./../../cui
