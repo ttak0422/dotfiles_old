@@ -6,6 +6,8 @@
 
 let 
   sources = import ./../../nix/sources.nix;
+  # pkgs = import sources.nixpkgs {};
+  nivpkg = import sources.niv {};
 in {
   imports =
     [ 
@@ -45,6 +47,7 @@ in {
   
   environment.systemPackages = [
     pkgs.linuxPackages.tp_smapi
+    nivpkg.niv
   ];
 
   services.xserver = {
