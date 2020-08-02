@@ -43,7 +43,10 @@ in {
   };
 
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+  };
   
   environment.systemPackages = [
     pkgs.linuxPackages.tp_smapi
