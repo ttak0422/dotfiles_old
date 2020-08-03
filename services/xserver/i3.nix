@@ -55,7 +55,7 @@ let
 
     # alternatively, you can use the cursor keys:
     bindsym $mod+Left focus left
-    bindsym $mod+Down focus down"
+    bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
@@ -129,7 +129,7 @@ let
     mode "$mode_system" {
       bindsym l exec --no-startup-id i3exit lock, mode "default"
       bindsym e exec --no-startup-id i3exit logout, mode "default"
-      bindsym s exec --no-startup-id i3exit suspend, mode "default"
+      bindsym s exec --no-startup-id systemctl suspend, mode "default"
       bindsym h exec --no-startup-id i3exit hibernate, mode "default"
       bindsym r exec --no-startup-id i3exit reboot, mode "default"
       bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
