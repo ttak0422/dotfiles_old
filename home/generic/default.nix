@@ -7,6 +7,6 @@
     ./fish.nix
     ./git
     ./vim.nix
-    ./lorri.nix
+#    ./lorri.nix
   ];
 }
