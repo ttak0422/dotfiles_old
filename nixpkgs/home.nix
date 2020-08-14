@@ -18,4 +18,7 @@
   home.file.".profile".text = lib.mkAfter ". $HOME/.nix-profile/etc/profile.d/nix.sh";
   # https://wiki.archlinux.jp/index.php/Fish
   home.file.".bashrc".text = lib.mkAfter "exec fish";
+
+  services.lorri.enable = true;
+  home.packages = [ pkgs.direnv ];
 }
