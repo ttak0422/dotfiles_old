@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, callPackage, pkgs, ... }:
 
 let 
   sources = import ./../../nix/sources.nix;
@@ -24,13 +24,6 @@ in {
       ./../../cui
     ];
 
-  home-manager.users.tak = { ... }: {
-    imports = [ 
-      ./../../home/generic 
-      ./../../home/nixos
-      ];
-
-  };
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -74,6 +67,18 @@ in {
     extraGroups = [ "wheel" "docker" ];
   };
 
+  home-manager.users.tak = { ... }: {
+    imports = [ 
+        ./../../home/generic 
+        ./../../home/nixos
+      ];
+      home.packages = [
+      #  pkgs.direnv
+      #  pkgs.figlet
+      ];
+  };
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
   system.stateVersion = "20.03"; 
 
 }
