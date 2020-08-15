@@ -73,8 +73,7 @@ in {
         ./../../home/nixos
       ];
       home.packages = [
-      #  pkgs.direnv
-      #  pkgs.figlet
+        # pkgs.figlet
       ];
   };
   home-manager.useUserPackages = true;

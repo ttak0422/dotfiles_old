@@ -8,5 +8,6 @@
     ./git
     ./vim.nix
     ./lorri.nix
+    ./tmux.nix
   ];
 }
