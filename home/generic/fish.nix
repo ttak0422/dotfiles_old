@@ -9,7 +9,7 @@ in {
   programs.fish = {
     enable = true;
     functions = {
-        fish_prompt = "eval /etc/profiles/per-user/tak/bin/powerline-go -error $status -shell bare -modules venv,user,ssh,cwd,perms,git,hg,jobs,exit -newline";
+        fish_prompt = "eval (which powerline-go) -error $status -shell bare -modules venv,user,ssh,cwd,perms,git,hg,jobs,exit -newline";
         # https://github.com/oh-my-fish/plugin-peco/blob/master/functions/peco_select_history.fish
         peco_select_history = ''
           if test (count $argv) = 0
@@ -44,7 +44,6 @@ in {
       "d" = "docker";
       "dc" = "docker-compose";      
       "k" = "kubectl";
-      "c" = "cd";
     };
     shellAliases = {
       "g"  = ''cd (ghq root)'/'(ghq list | peco)'';
