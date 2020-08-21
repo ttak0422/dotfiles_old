@@ -1,43 +1,27 @@
 # :construction: WIP :construction:
 
-## /cui
-CPI application for nixos
+## About
 
-## /gui
-GUI application for nixos
+```
+├── cui              # CUI tools
+├── dotfiles-private # 
+├── gui              # GUI tools
+├── home             # home-manager
+├── hosts            # NixOS host
+├── language         # Fonts & IME
+├── networking       # Wi-Fi & Bluetooth
+├── nix              # niv
+├── services         # services such as xserver
+├── utils            # something
+└── virtualisation   # Docker & Kubernetes
+```
 
-## /home
+## Usage
 
-CUI application for [home-manager](https://github.com/rycee/home-manager)
+```bash
+# 1. nixos
+$ sudo nixos-rebuild -I nixos-config=./hosts/ThinkPadX1Extreme/configuration.nix switch
 
-- /home/generic
-
-    for Linux in generic
-
-- /home/nixos
-
-    for NixOS
-
-## /hosts
-host's `configuration.nix`
-
-## /language
-Fonts & IME
-
-## /networking
-WiFi & Bluetooth
-
-## /nix
-for [niv](https://github.com/nmattia/niv)
-
-## /nixpkgs
-:wastebasket: wip 
-
-## /services
-services such as xserver
-
-## /utils
-something
-
-## /virtualisation
-docker & k8s
+# 2. home-manager
+$ home-manager -f ./home/nix-home.nix switch
+```
