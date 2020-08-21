@@ -37,6 +37,11 @@ in {
     pkgs.linuxPackages.tp_smapi
     pkgs.home-manager
     nivpkg.niv
+  environment.systemPackages = with pkgs; [
+    linuxPackages.tp_smapi
+    home-manager
+    niv
+    nixfmt
   ];
 
   services.xserver = {
