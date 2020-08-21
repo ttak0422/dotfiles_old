@@ -1,18 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, callPackage, pkgs, ... }:
 
 let 
   sources = import ./../../nix/sources.nix;
-  # pkgs = import sources.nixpkgs {};
-  nivpkg = import sources.niv {};
 in {
   imports =
     [ 
       ./hardware-configuration.nix
-      "${sources.home-manager}/nixos"
       ./../../networking
       ./../../virtualisation
       ./../../language
@@ -23,7 +16,6 @@ in {
       ./../../gui
       ./../../cui
     ];
-
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -43,6 +35,7 @@ in {
   
   environment.systemPackages = [
     pkgs.linuxPackages.tp_smapi
+    pkgs.home-manager
     nivpkg.niv
   ];
 
@@ -67,17 +60,6 @@ in {
     extraGroups = [ "wheel" "docker" ];
   };
 
-  home-manager.users.tak = { ... }: {
-    imports = [ 
-        ./../../home/generic 
-        ./../../home/nixos
-      ];
-      home.packages = [
-        # pkgs.figlet
-      ];
-  };
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
   system.stateVersion = "20.03"; 
 
 }
