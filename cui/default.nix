@@ -1,14 +1,5 @@
 { config, pkgs, lib, ... }: {
+  # 可能な限りhomeで管理  
   environment.systemPackages = with pkgs; [
-    wget
-    zip
-    unzip
-    tree
-    bat
-    neofetch
-    bmon
-    ranger
-    feh
-    htop
   ];
 }
