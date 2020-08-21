@@ -5,22 +5,22 @@ with lib;
 let
   cfg = config.programs.tmux;
   plugins = with pkgs; [
-      tmuxPlugins.sidebar
-      {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-boot 'on'
-          set -g @continuum-save-interval '5' # minutes
-          set -g @continuum-restore 'on'
-        '';
-      }
-    ];
+    tmuxPlugins.sidebar
+    {
+      plugin = tmuxPlugins.resurrect;
+      extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+    }
+    {
+      plugin = tmuxPlugins.continuum;
+      extraConfig = ''
+        set -g @continuum-boot 'on'
+        set -g @continuum-save-interval '5' # minutes
+        set -g @continuum-restore 'on'
+      '';
+    }
+  ];
   extraConfig = ''
-  
+
     # close window = prefix + shift + x
     bind X confirm-before -p 'kill-window #I? (y/n)' kill-window
 

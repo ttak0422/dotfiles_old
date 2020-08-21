@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   home.file.".config/git/ignore".text = ''
     *~
     .DS_Store

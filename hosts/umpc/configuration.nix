@@ -1,13 +1,10 @@
 { config, pkgs, lib, ... }:
 
-let 
+let
   sources = import ./../../nix/sources.nix;
   cfg = config.primary-user;
 in {
-  imports = [
-    ./hardware-configuration.nix
-    "${sources.home-manager}/nixos"
-  ];
+  imports = [ ./hardware-configuration.nix "${sources.home-manager}/nixos" ];
   home-manager.useUserPackages = false;
   home-manager.useGlobalPkgs = false;
   home-manager.users.tak = { ... }: {
@@ -139,7 +136,7 @@ in {
     xserver = {
       enable = true;
       layout = "us";
-      videoDrivers =["displaylink" "modesetting"];
+      videoDrivers = [ "displaylink" "modesetting" ];
 
       # i3
       desktopManager = { xterm.enable = false; };

@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   fonts = {
     fonts = with pkgs; [
       dejavu_fonts

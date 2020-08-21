@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-let 
+let
   name = "ttak0422";
   email = "bgdaewalkman@gmail.com";
   configDir = ".config/git";
@@ -30,6 +30,4 @@ let
         while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
         curl -L \"https://www.gitignore.io/api/$s\"; }; f"
   '';
-in {
-  home.file."${configDir}/config".text = config;
-}
+in { home.file."${configDir}/config".text = config; }

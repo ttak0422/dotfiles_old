@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   services.dunst = {
     enable = true;
     settings = {
@@ -18,7 +17,9 @@
         font = "Noto Sans 8";
         line_height = 4;
         markup = "full";
-        format = "<b>%s</b>\n%b";
+        format = ''
+          <b>%s</b>
+          %b'';
         alignment = "left";
         show_age_threshold = 60;
         word_wrap = "yes";

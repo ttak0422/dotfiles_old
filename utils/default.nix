@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "Asia/Tokyo";
   nix.gc = {

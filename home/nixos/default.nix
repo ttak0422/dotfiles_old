@@ -1,7 +1,1 @@
-{ config, pkgs, lib, ... }:
-{
-  imports = [
-    ./dunst.nix
-    ./alacritty.nix
-  ];
-}
+{ config, pkgs, lib, ... }: { imports = [ ./dunst.nix ./alacritty.nix ]; }

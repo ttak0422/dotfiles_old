@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   virtualisation = {
     docker = {
       enable = true;
@@ -9,6 +8,6 @@
   environment.systemPackages = [
     pkgs.docker-compose
     # wip    
-    pkgs.kubectl  
+    pkgs.kubectl
   ];
 }

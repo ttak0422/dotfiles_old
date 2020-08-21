@@ -1,7 +1,1 @@
-{ config, pkgs, lib, ... }:
-{
-  imports = [
-    ./fonts.nix
-    ./input.nix
-  ];
-}
+{ config, pkgs, lib, ... }: { imports = [ ./fonts.nix ./input.nix ]; }

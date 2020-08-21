@@ -1,5 +1,4 @@
-{ config, lib, ... }:
-{
+{ config, lib, ... }: {
   # Wi-Fi
   networking = {
     hostName = "nixos";

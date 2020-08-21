@@ -1,6 +1,1 @@
-{ config, pkgs, lib, ... }:
-{
-  programs.alacritty = { 
-    enable = true;
-  };
-}
+{ config, pkgs, lib, ... }: { programs.alacritty = { enable = true; }; }

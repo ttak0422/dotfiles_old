@@ -1,15 +1,12 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   services.picom = {
     enable = true;
     shadow = false;
     # vSync = "opengl-swc";
     backend = "glx";
     # todo
-    opacityRules = [
-      "100:class_g = 'URxvt' && focused"
-      "80:class_g = 'URxvt' && !focused"
-    ];
+    opacityRules =
+      [ "100:class_g = 'URxvt' && focused" "80:class_g = 'URxvt' && !focused" ];
     activeOpacity = "1.0";
     inactiveOpacity = "0.9";
     wintypes = {

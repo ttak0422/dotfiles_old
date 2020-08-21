@@ -214,7 +214,7 @@ let
     client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
     client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
     client.background           #2f343f
-    '';
+  '';
   # TODO: colors
   i3StatusConfig = ''
     general {
@@ -298,7 +298,7 @@ let
 
   '';
   brightnessScript = ''
-  xrandr --output (xrandr -q | grep ' connected' | head -n 1 | cut -d ' ' -f1) --brightness 0.5
+    xrandr --output (xrandr -q | grep ' connected' | head -n 1 | cut -d ' ' -f1) --brightness 0.5
 
   '';
 in {

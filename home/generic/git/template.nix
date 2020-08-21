@@ -1,8 +1,7 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   home.file.".config/git/template".text = ''
 
-  
+
     # ==== Emojis ====
     #:bug: -------------- バグ修正
     #:+1: --------------- 機能改善
