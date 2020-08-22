@@ -15,5 +15,6 @@
     ranger
     feh
     htop
+    lsof
     ];
 }
