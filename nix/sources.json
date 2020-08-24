@@ -1,16 +1,4 @@
 {
-    "fish-kubectl-completions": {
-        "branch": "master",
-        "description": "kubectl completions for fish shell",
-        "homepage": "",
-        "owner": "evanlucas",
-        "repo": "fish-kubectl-completions",
-        "rev": "bc7014cf80ede4e2de7795892afded5db947472b",
-        "sha256": "1jk6kly62h8qpwqz71fpa7wyb3xwkfsp6b3q8p3ciqv62c0drfkk",
-        "type": "tarball",
-        "url": "https://github.com/evanlucas/fish-kubectl-completions/archive/bc7014cf80ede4e2de7795892afded5db947472b.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",
