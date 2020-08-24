@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./i3.nix ];
+  imports = [ ./gnome.nix ];
   services.xserver = {
     enable = true;
     layout = "us";
