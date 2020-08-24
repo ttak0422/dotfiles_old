@@ -15,5 +15,7 @@
     ranger
     feh
     htop
+    niv
+    nixfmt
     ];
 }
