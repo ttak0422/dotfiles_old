@@ -24,7 +24,7 @@ in {
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
-
+  nixpkgs.config.pulseaudio = true;
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
