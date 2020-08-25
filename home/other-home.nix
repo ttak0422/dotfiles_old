@@ -5,7 +5,5 @@
     # nix
     source ~/.nix-profile/etc/profile.d/nix.sh
   '';
-  home.sessionVariables = {
-    TMUX_TMPDIR = "/tmp";
-  };
+  home.sessionVariables = { TMUX_TMPDIR = "/tmp"; };
 }

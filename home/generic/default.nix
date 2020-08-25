@@ -18,5 +18,6 @@
     lsof
     niv
     nixfmt
+    killall
   ];
 }
