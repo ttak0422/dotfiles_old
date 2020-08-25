@@ -7,4 +7,5 @@
     options = "--delete-older-than 7d";
   };
   environment.pathsToLink = [ "/libexec" ];
+  imports = [ ./scripts/battery.nix ./scripts/polybar.nix ];
 }

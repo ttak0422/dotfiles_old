@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }:
+# TODO: refactor
 let
+
   i3Config = ''
     # set
     set $mod Mod4
@@ -7,7 +9,6 @@ let
     set $execi exec --no-startup-id
 
     # font
-    # font pango:monospace 14
     font pango:DejaVu Sans Mono, Awesome 14
     # The combination of xss-lock, nm-applet and pactl is a popular choice, so
     # they are included here as an example. Modify as you see fit.
@@ -25,11 +26,11 @@ let
     exec --no-startup-id nm-applet
 
     # Use pactl to adjust volume in PulseAudio.
-    set $refresh_i3status killall -SIGUSR1 i3status
-    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-    bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-    bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+    # set $refresh_i3status killall -SIGUSR1 i3status
+    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% 
+    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
     # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier $mod
@@ -170,29 +171,12 @@ let
 
     bindsym $mod+r mode "resize"
 
-    # Start i3bar to display a workspace bar (plus the system information i3status
-    # finds out, if available)
-    bar {
-      font pango:DejaVu Sans Mono, Awesome, 14
-      strip_workspace_numbers yes
-      # strip_workspace_name yes
-      colors {
-        background #2f343f
-        statusline #2f343f
-        separator #4b5262
-
-        # colour of border, background, and text
-        focused_workspace       #2f343f #bf616a #d8dee8
-        active_workspace        #2f343f #2f343f #d8dee8
-        inactive_workspace      #2f343f #2f343f #d8dee8
-        urgent_workspacei       #2f343f #ebcb8b #2f343f
-      }
-      status_command i3status
-    }
+    # polybar
+    exec --no-startup-id "polybar top" 
 
     # i3-gaps
     smart_gaps on
-    gaps inner 4
+    gaps inner 12
     gaps outer 2
 
     # window rules, you can find the window class using xprop
@@ -215,97 +199,11 @@ let
     client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
     client.background           #2f343f
   '';
-  # TODO: colors
-  i3StatusConfig = ''
-    general {
-      output_format = "i3bar"
-      colors = false
-      markup = pango
-      interval = 5
-      color_good = '#2f343f'
-      color_degraded = '#ebcb8b'
-      color_bad = '#ba5e57'
-    }
-
-    order += "load"
-    order += "cpu_temperature 1"
-    order += "memory"
-    order += "disk /"
-    # order += "disk /home"
-    # order += "ethernet enp1s0"
-    order += "wireless wlp0s20f3"
-    order += "volume master"
-    order += "battery 0"
-    order += "tztime local"
-
-    load {
-      format = "<span background='#ABCE64'>  %5min </span>"
-    }
-
-    cpu_temperature 1{
-      format = "<span background='#E6C68F'>  %degrees °C </span>"
-      path = "/sys/class/thermal/thermal_zone1/temp"
-    }
-
-    memory {
-      format = "<span background='#73CEFF'>  %free Free </span>"
-      threshold_degraded = "10%"
-      # format_degraded = "MEM: %free"
-    }
-
-    disk "/" {
-      format = "<span background='#F88C00'>  %free Free </span>"
-    }
-
-    # disk "/home" {
-    #   format = "<span background='#a1d569'> Home: %free Free </span>"
-    # }
-
-    # ethernet enp1s0 {
-    #   format_up = "<span background='#88c0d0'> Ethernet: %ip </span>"
-    #   format_down = "<span background='#88c0d0'> Ethernet: Disconnected </span>"
-    # }
-
-    wireless wlp0s20f3 {
-      format_up = "<span background='#9F6B4D'>  %essid </span>"
-      format_down = "<span background='#9F6B4D'>  Disconnected </span>"
-    }
-
-    volume master {
-      format = "<span background='#FAF3EE'>  %volume </span>"
-      format_muted = "<span background='#FAF3EE'>  Muted </span>"
-      device = "default"
-      mixer = "Master"
-      mixer_idx = 0
-    }
-
-    battery 0 {
-      last_full_capacity = true
-      format = "<span background='#769E42'> %status %percentage </span>"
-      format_down = ""
-      status_chr  = ""
-      status_bat  = ""
-      status_unk  = ""
-      status_full = ""
-      path = "/sys/class/power_supply/BAT0/uevent"
-      low_threshold = 10
-    }
-
-    tztime local {
-      format = "<span background='#C477CC'>  %time </span>"
-      format_time = "%m/%d %H:%M (%a)"
-    }
-
-  '';
-  brightnessScript = ''
-    xrandr --output (xrandr -q | grep ' connected' | head -n 1 | cut -d ' ' -f1) --brightness 0.5
-
-  '';
 in {
+
   services.xserver = {
-    desktopManager = { 
-      # default = "xfce";
-      xterm.enable = false; 
+    desktopManager = {
+      xterm.enable = false;
       xfce = {
         enable = true;
         noDesktop = true;
@@ -317,20 +215,11 @@ in {
       enable = true;
       configFile = "/etc/i3.conf";
       package = pkgs.i3-gaps;
-      extraPackages = with pkgs; [
-        rofi
-        i3status
-        i3lock
-        papirus-icon-theme
-        acpi
-        scrot
-        xfce.xfce4-power-manager
-        brightnessctl
-      ];
+      extraPackages = with pkgs; [ rofi i3lock acpi scrot brightnessctl ];
     };
   };
   environment.etc."i3.conf".text = i3Config;
   # TODO: hm?
   # ln -s /etc/i3status.conf ~/.config/i3status/config
-  environment.etc."i3status.conf".text = i3StatusConfig;
+  # environment.etc."i3status.conf".text = i3StatusConfig;
 }
