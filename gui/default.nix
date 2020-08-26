@@ -6,6 +6,5 @@
     termite
     slack
     teams
-    jetbrains.clion
   ];
 }
