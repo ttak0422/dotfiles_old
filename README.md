@@ -18,14 +18,21 @@
 
 ## Usage
 
-```bash
-# nixos
-$ sudo nixos-rebuild -I nixos-config=./hosts/ThinkPadX1Extreme/configuration.nix switch
-$ home-manager -f ./home/nix-home.nix switch
+- nixos
 
-# darwin
-$ # wip
+    ```bash
+    $ sudo nixos-rebuild -I nixos-config=./hosts/ThinkPadX1Extreme/configuration.nix switch
+    $ home-manager -f ./home/nix-home.nix switch
+    ```
 
-# other (install home-manager)
-$ home-manager -f ./home/other-home.nix switch
-```
+- darwin
+
+    ```bash
+    $ # wip
+    ```
+
+- other (install home-manager)
+
+    ```bash
+    $ home-manager -f ./home/other-home.nix switch
+    ```
