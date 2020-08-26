@@ -12,7 +12,9 @@ in {
     ./../../services/tlp.nix
     ./../../utils
     ./../../gui
+    ./../../gui/jetbrains.nix
     ./../../cui
+    ./../../android
   ];
 
   boot.loader = {
@@ -22,7 +24,7 @@ in {
 
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "us";
+    keyMap = "jp106";
   };
   nixpkgs.config.pulseaudio = true;
   sound.enable = true;
@@ -53,7 +55,7 @@ in {
 
   users.users.tak = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "adbusers" ];
   };
 
   system.stateVersion = "20.03";
