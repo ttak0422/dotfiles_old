@@ -37,7 +37,7 @@ in {
         radius = 0;
         modules-left = "i3";
         modules-center = "title";
-        modules-right = "alsa backlight battery date";
+        modules-right = "temperature cpu memory alsa battery date";
         line-size = 3;
         line-color = "#f00";
 
@@ -53,7 +53,7 @@ in {
         font-0 = "FontAwesome5Free:style=Solid;4";
         font-1 = "FontAwesome5Free:style=Regular;4";
         font-2 = "FontAwesome5Brands:style=Regular;4";
-        font-3 = "FSource Han Code JP H;0";
+        font-3 = "Fira Code:style=Regular;0";
 
       };
       "module/i3" = {
@@ -116,7 +116,32 @@ in {
         ramp-volume-2 = "";
         ramp-volume-3 = "";
       };
+      "module/temperature" = {
+        type = "internal/temperature";
+        thermal-zone = 1;
+        warn-temperature = 75;
+        label = "%temperature-c:3%";
+        format = " <label>";
+        format-padding = padding;
+        format-background = colors.mono4;
+        format-foreground = colors.mono2;
+        label-warn = "%temperature-c:3%";
+        format-warn = " <label-warn>";
+        format-warn-padding = padding;
+        format-warn-background = colors.mono2;
+        format-warn-foreground = colors.mono4;
+      };
+      "module/cpu" = {
+        type = "internal/cpu";
 
+        interval = 1;
+
+        format = " <label>";
+        format-padding = padding;
+        format-background = colors.mono4;
+        format-foreground = colors.mono2;
+        label = "%percentage:3%%";
+      };
       "module/backlight" = {
         type = "internal/xbacklight";
 
@@ -137,6 +162,16 @@ in {
         label = "%title%";
         label-maxlen = 25;
       };
+      "module/memory" = {
+        type = "internal/memory";
+        interval = 5;
+        label = "%gb_free%";
+        format = " <label>";
+        format-padding = padding;
+        format-background = colors.mono4;
+        format-foreground = colors.mono2;
+      };
+
       "module/battery" = {
         type = "internal/battery";
 
@@ -161,8 +196,8 @@ in {
         format-full-foreground = colors.mono4;
         format-full-background = colors.mono2;
         format-full-padding = padding;
-        label-charging = "%percentage%%";
-        label-discharging = "%percentage%%";
+        label-charging = "%percentage:3%%";
+        label-discharging = "%percentage:3%%";
         label-full = "Charged";
 
         ramp-capacity-0 = "";
