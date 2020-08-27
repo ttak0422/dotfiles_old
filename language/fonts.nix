@@ -5,6 +5,7 @@
       ipafont
       powerline-fonts
       font-awesome-ttf
+      fira-code
       fira-code-symbols
       fantasque-sans-mono
       iosevka
