@@ -6,5 +6,6 @@
     termite
     slack
     teams
+    typora
   ];
 }
