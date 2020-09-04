@@ -160,7 +160,7 @@ in {
         format = "<label>";
 
         label = "%title%";
-        label-maxlen = 25;
+        label-maxlen = 60;
       };
       "module/memory" = {
         type = "internal/memory";
