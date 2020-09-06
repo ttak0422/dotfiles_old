@@ -26,7 +26,12 @@ in {
       '';
       fish_user_key_bindings = "bind \\cr peco_select_history";
     };
-    plugins = [ ];
+    plugins = [ 
+      {
+        name = sources.fish-kubectl-completions.repo;
+        src  = sources.fish-kubectl-completions;
+      }
+    ];
     shellAbbrs = {
       "d" = "docker";
       "dc" = "docker-compose";
