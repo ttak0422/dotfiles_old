@@ -12,7 +12,6 @@
     ./development
   ];
   home.packages = with pkgs; [
-    home-manager
     xclip
     jq
     wget
@@ -29,5 +28,6 @@
     niv
     nixfmt
     killall
+    figlet
   ];
 }
