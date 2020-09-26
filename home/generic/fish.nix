@@ -2,12 +2,10 @@
 
 let sources = import ./../../nix/sources.nix;
 in {
-  home.packages = with pkgs; [ powerline-go fasd starship ];
+  home.packages = with pkgs; [ starship ];
   programs.fish = {
     enable = true;
     functions = {
-      # fish_prompt = "eval (which powerline-go) -error $status -shell bare -modules venv,user,ssh,cwd,perms,git,hg,jobs,exit -newline";
-
       # https://github.com/oh-my-fish/plugin-peco/blob/master/functions/peco_select_history.fish
       peco_select_history = ''
         if test (count $argv) = 0
@@ -27,7 +25,7 @@ in {
       fish_user_key_bindings = "bind \\cr peco_select_history";
     };
     plugins = [{
-      name = sources.fish-kubectl-completions.repo;
+      name = "fish-kubectl-completions";
       src = sources.fish-kubectl-completions;
     }];
     shellAbbrs = {
