@@ -29,5 +29,6 @@
     nixfmt
     killall
     figlet
+    asciidoctor
   ];
 }
