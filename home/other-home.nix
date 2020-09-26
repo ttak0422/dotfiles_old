@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }: {
-  home.stateVersion = "20.03";
+  home.stateVersion = "20.09";
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = builtins.getEnv "HOME";
   imports = [ ./generic ];
   home.file.".profile".text = lib.mkAfter ''
     # nix
