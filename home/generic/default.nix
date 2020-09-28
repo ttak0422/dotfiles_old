@@ -5,7 +5,7 @@
     ./fish.nix
     ./git
     ./vim.nix
-    ./lorri.nix
+#     ./lorri.nix
     ./tmux.nix
     ./virtualization
     ./development
@@ -19,9 +19,9 @@
     tree
     bat
     neofetch
-    bmon
+#    bmon
     ranger
-    feh
+#    feh
     htop
     lsof
     niv
