@@ -2,6 +2,7 @@
   imports = [
     ./peco.nix
     ./bash.nix
+    ./zsh.nix
     ./fish.nix
     ./git
     ./vim.nix
