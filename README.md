@@ -28,7 +28,9 @@
 - darwin
 
     ```bash
-    $ # wip
+    # install nix-darwin and home-manager
+    $ darwin-rebuild -I darwin-config=hosts/macmini/darwin-configuration.nix switch
+    $ home-manager -f ./home/other-home.nix switch
     ```
 
 - other (install home-manager)
