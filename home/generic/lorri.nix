@@ -1,7 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  services.lorri = { enable = true; };
+  services = 
+    if pkgs.stdenv.isLinux 
+      then { lorri.enable = true; } 
+      # nix-darwin
+      else {};
   home.packages = with pkgs; [ direnv ];
   programs.fish = {
     shellInit = ''

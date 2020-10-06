@@ -2,14 +2,17 @@
   imports = [
     ./peco.nix
     ./bash.nix
+    ./zsh.nix
     ./fish.nix
     ./git
     ./vim.nix
-    ./lorri.nix
     ./tmux.nix
     ./virtualization
     ./development
+    ./lorri.nix
   ];
+  #++ (if stdenv.isDarwin then [] else [
+  #]);
   home.packages = with pkgs; [
     xclip
     jq
@@ -19,9 +22,7 @@
     tree
     bat
     neofetch
-    bmon
     ranger
-    feh
     htop
     lsof
     niv
@@ -29,5 +30,9 @@
     killall
     figlet
     asciidoctor
-  ];
+  ] ++ (if stdenv.isDarwin then [] else [
+    pkgs.bmon
+    pkgs.feh
+
+  ]);
 }
