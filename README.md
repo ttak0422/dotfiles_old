@@ -4,7 +4,6 @@
 
 ```
 ├── cui              # CUI tools
-├── dotfiles-private # 
 ├── gui              # GUI tools
 ├── home             # home-manager
 ├── hosts            # NixOS host
