@@ -1,0 +1,60 @@
+{
+    "variables": {
+        "disk_size": "10240",
+        "memory": "4096"
+    },
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "vm_name": "nixos",
+            "guest_os_type": "Linux_64",
+            "memory": "{{ user `memory` }}",
+            "disk_size": "{{ user `disk_size` }}",
+            "iso_url": "https://channels.nixos.org/nixos-20.09/latest-nixos-minimal-x86_64-linux.iso",
+            "iso_checksum": "399128eaeecebab35f5873fea3dce4088c4a9de6abd742b5351596e55a917500",
+            "boot_wait": "35s",
+            "boot_command": [
+                "echo http://{{ .HTTPIP }}:{{ .HTTPPort}} > .packer_http<enter>",
+                "mkdir -m 0700 .ssh<enter>",
+                "curl $(cat .packer_http)/vagrant.pub > .ssh/authorized_keys<enter>",
+                "sudo systemctl start sshd<enter>"
+            ],
+            "http_directory": "packer",
+            "ssh_username": "nixos",
+            "ssh_port": 22,
+            "ssh_private_key_file": "./packer/vagrant",
+            "shutdown_command": "sudo shutdown -h now",
+            "guest_additions_mode": "disable",
+            "format": "ova",
+            "vboxmanage": [
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--vram",
+                    "128",
+                    "--clipboard",
+                    "bidirectional"
+                ]
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "execute_command": "sudo su -c '{{ .Vars }} {{.Path}}'",
+            "type": "shell",
+            "script": "./packer/install.sh"
+        }
+    ],
+    "post-processors": [
+        [
+            {
+                "type": "vagrant",
+                "keep_input_artifact": false,
+                "only": [
+                    "virtualbox-iso"
+                ],
+                "output": "nixos-20.09-{{.Provider}}-x86_64.box"
+            }
+        ]
+    ]
+}
