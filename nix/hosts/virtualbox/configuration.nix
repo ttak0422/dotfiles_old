@@ -1,5 +1,13 @@
+# tiny
 { config, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./../../language
+    ./../../services/xserver
+    ./../../services/picom.nix
+    ./../../gui
+    ./../../cui
+  ];
   boot = {
     loader.grub = {
       enable = true;
@@ -32,7 +40,7 @@
       };
     };
   };
-  environment.systemPackages = with pkgs; [ wget ];
+  environment.systemPackages = with pkgs; [ git ];
   # virtual box guest edditions
   virtualisation.virtualbox.guest.enable = true;
   security.sudo.extraConfig = ''

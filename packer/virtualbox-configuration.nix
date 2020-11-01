@@ -33,7 +33,7 @@
       };
     };
   };
-  environment.systemPackages = with pkgs; [ wget ];
+  environment.systemPackages = with pkgs; [ git ];
   # virtual box guest edditions
   virtualisation.virtualbox.guest.enable = true;
   security.sudo.extraConfig = ''
