@@ -20,20 +20,22 @@
 - nixos
 
     ```bash
-    $ sudo nixos-rebuild -I nixos-config=./hosts/ThinkPadX1Extreme/configuration.nix switch
-    $ home-manager -f ./home/nix-home.nix switch
+    # install home-manager
+    $ sudo nixos-rebuild -I nixos-config=./nix/hosts/ThinkPadX1Extreme/configuration.nix switch
+    $ home-manager -f ./nix/home/nix-home.nix switch
     ```
 
 - darwin
 
     ```bash
     # install nix-darwin and home-manager
-    $ darwin-rebuild -I darwin-config=hosts/macmini/darwin-configuration.nix switch
-    $ home-manager -f ./home/other-home.nix switch
+    $ darwin-rebuild -I darwin-config=./nix/hosts/macmini/darwin-configuration.nix switch
+    $ home-manager -f ./nix/home/other-home.nix switch
     ```
 
-- other (install home-manager)
+- other (Ubuntu, ...)
 
     ```bash
-    $ home-manager -f ./home/other-home.nix switch
+    # install home-manager
+    $ home-manager -f ./nix/home/other-home.nix switch
     ```
