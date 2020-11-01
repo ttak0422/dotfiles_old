@@ -1,7 +1,6 @@
 { config, callPackage, pkgs, ... }:
 
-let sources = import ./../../nix/sources.nix;
-in {
+{
   imports = [
     ./hardware-configuration.nix
     ./../../networking
