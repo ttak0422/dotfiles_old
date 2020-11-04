@@ -9,6 +9,7 @@
     ./tmux.nix
     ./virtualization
     ./development
+    ./network
     ./lorri.nix
   ];
   #++ (if stdenv.isDarwin then [] else [
