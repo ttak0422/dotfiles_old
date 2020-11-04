@@ -36,7 +36,7 @@ in {
     shellAliases = {
       "g" = "cd (ghq root)'/'(ghq list | peco)";
       "gh" = ''hub browse (ghq list | peco | cut -d "/" -f 2,3)'';
-      "gg" = "ghq get --shallow";
+      "gg" = "ghq get";
       "c" = "xclip -selection clipboard";
     };
     promptInit = ''
