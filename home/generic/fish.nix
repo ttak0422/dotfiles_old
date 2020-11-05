@@ -32,6 +32,7 @@ in {
       "d" = "docker";
       "dc" = "docker-compose";
       "k" = "kubectl";
+      "h" = "helm";
     };
     shellAliases = {
       "g" = "cd (ghq root)'/'(ghq list | peco)";
