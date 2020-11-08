@@ -1,7 +1,5 @@
 #/bin/sh -e
 
-echo "start install..."
-
 packer_http=$(cat .packer_http)
 
 # Partition disk
@@ -30,4 +28,4 @@ curl -sf "$packer_http/virtualbox-configuration.nix" > /mnt/etc/nixos/configurat
 nixos-install
 
 # Cleanup
-curl "$packer_http/postinstall.sh" | nixos-enter
+curl "$packer_http/postinstall.sh"

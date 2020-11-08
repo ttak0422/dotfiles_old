@@ -1,7 +1,7 @@
 {
     "variables": {
-        "disk_size": "10240",
-        "memory": "4096"
+        "disk_size": "30720",
+        "memory": "80192"
     },
     "builders": [
         {
@@ -10,9 +10,9 @@
             "guest_os_type": "Linux_64",
             "memory": "{{ user `memory` }}",
             "disk_size": "{{ user `disk_size` }}",
-            "iso_url": "https://channels.nixos.org/nixos-20.09/latest-nixos-minimal-x86_64-linux.iso",
-            "iso_checksum": "399128eaeecebab35f5873fea3dce4088c4a9de6abd742b5351596e55a917500",
-            "boot_wait": "35s",
+            "iso_url": "https://releases.nixos.org/nixos/20.09/nixos-20.09.1469.13d0c311e3a/nixos-minimal-20.09.1469.13d0c311e3a-x86_64-linux.iso",
+            "iso_checksum": "1143023daec52943e2854d9abd7dcaf0075b9dfd3b197c963c8e4072875d2fe0",
+            "boot_wait": "45s",
             "boot_command": [
                 "echo http://{{ .HTTPIP }}:{{ .HTTPPort}} > .packer_http<enter>",
                 "mkdir -m 0700 .ssh<enter>",
