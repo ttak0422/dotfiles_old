@@ -31,6 +31,7 @@
     killall
     figlet
     asciidoctor
+    packer
   ] ++ (if stdenv.isDarwin then [] else [
     pkgs.bmon
     pkgs.feh
