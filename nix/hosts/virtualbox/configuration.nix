@@ -1,6 +1,15 @@
 # tiny
 { config, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+    ./hardware-configuration.nix 
+    ./../../networking
+    ./../../language
+    ./../../services/xserver
+    ./../../services/picom.nix
+    ./../../utils
+    ./../../gui
+    ./../../cui
+  ];
   boot = {
     loader.grub = {
       enable = true;
@@ -34,15 +43,6 @@
       };
     };
   };
-  environment.etc = {
-    "resolv.conf".text = ''
-      nameserver 8.8.8.8
-      nameserver 8.8.4.4'';
-  };
-  environment.systemPackages = with pkgs; [ 
-    git
-    vim 
-  ];
   # virtual box guest edditions
   virtualisation.virtualbox.guest.enable = true;
   security.sudo.extraConfig = ''
