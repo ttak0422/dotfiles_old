@@ -22,6 +22,11 @@ nix
 └── utils          # wip
 ```
 
+## :construction:TODO 
+
+vimやgitがhome-managerとコンフリクトする。
+モジュール化が安定版に降りてきたら移行する。
+
 ## Usage
 
 - nixos
