@@ -1,5 +1,10 @@
 { config, pkgs, lib, ... }: {
-  programs.home-manager.enable = true;
   home.stateVersion = "20.09";
-  imports = [ ./generic ./nixos ./nixos/polybar.nix ];
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = builtins.getEnv "HOME";
+  imports = [ 
+    ./generic 
+    ./nixos 
+    ./nixos/polybar.nix 
+  ];
 }
