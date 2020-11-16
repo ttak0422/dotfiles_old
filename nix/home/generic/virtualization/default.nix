@@ -1,1 +1,9 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ kubectl azure-cli kubernetes-helm ]; }
+{ pkgs, ... }: 
+{ 
+  home.packages = with pkgs; [ 
+    kubectl 
+    azure-cli 
+    kubernetes-helm
+    istioctl 
+  ]; 
+}
