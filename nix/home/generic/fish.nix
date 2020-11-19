@@ -33,6 +33,7 @@ in {
       "dc" = "docker-compose";
       "k" = "kubectl";
       "h" = "helm";
+      "i" = "istioctl";
     };
     shellAliases = {
       "g" = "cd (ghq root)'/'(ghq list | peco)";
