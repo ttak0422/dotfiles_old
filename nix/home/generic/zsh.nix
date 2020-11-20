@@ -11,10 +11,9 @@
       [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
     '';
     shellAliases = {
-      "g" = "cd (ghq root)'/'(ghq list | peco)";
-      "gh" = ''hub browse (ghq list | peco | cut -d "/" -f 2,3)'';
+      "g" = "cd $(ghq root)/$(ghq list | peco)";
+      "gh" = ''hub browse $(ghq list | peco | cut -d "/" -f 2,3)'';
       "gg" = "ghq get";
-      "c" = "xclip -selection clipboard";
     };
     profileExtra = ''
     '';
