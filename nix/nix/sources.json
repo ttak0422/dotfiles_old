@@ -58,5 +58,41 @@
         "type": "tarball",
         "url": "https://github.com/NixOS/nixpkgs/archive/0da76dab4c2acce5ebf404c400d38ad95c52b152.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "zsh-abbrev-alias": {
+        "branch": "master",
+        "description": "This zsh plugin provides functionality similar to Vim's abbreviation expansion.",
+        "homepage": "",
+        "owner": "momo-lab",
+        "repo": "zsh-abbrev-alias",
+        "rev": "2f3d218f426aff21ac888217b0284a3a1470e274",
+        "sha256": "12s3sj7vmy5dplbdnbcxnx4az82hm44dlh7q271r8r141bghl3np",
+        "type": "tarball",
+        "url": "https://github.com/momo-lab/zsh-abbrev-alias/archive/2f3d218f426aff21ac888217b0284a3a1470e274.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "zsh-autosuggestions": {
+        "branch": "master",
+        "description": "Fish-like autosuggestions for zsh",
+        "homepage": null,
+        "owner": "zsh-users",
+        "repo": "zsh-autosuggestions",
+        "rev": "ae315ded4dba10685dbbafbfa2ff3c1aefeb490d",
+        "sha256": "0h52p2waggzfshvy1wvhj4hf06fmzd44bv6j18k3l9rcx6aixzn6",
+        "type": "tarball",
+        "url": "https://github.com/zsh-users/zsh-autosuggestions/archive/ae315ded4dba10685dbbafbfa2ff3c1aefeb490d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "zsh-syntax-highlighting": {
+        "branch": "master",
+        "description": "Fish shell like syntax highlighting for Zsh.",
+        "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
+        "rev": "1715f39a4680a27abd57fc30c98a95fdf191be45",
+        "sha256": "1kpxima0fnypl7fak4snxnf6nj36nvp1gqwpx1ailyrgxa8641j0",
+        "type": "tarball",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/1715f39a4680a27abd57fc30c98a95fdf191be45.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
