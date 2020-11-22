@@ -59,6 +59,18 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/0da76dab4c2acce5ebf404c400d38ad95c52b152.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "zsh-256color": {
+        "branch": "master",
+        "description": "ZSH plugin to enhance the terminal environment with 256 colors",
+        "homepage": null,
+        "owner": "chrissicool",
+        "repo": "zsh-256color",
+        "rev": "9d8fa1015dfa895f2258c2efc668bc7012f06da6",
+        "sha256": "14pfg49mzl32ia9i9msw9412301kbdjqrm7gzcryk4wh6j66kps1",
+        "type": "tarball",
+        "url": "https://github.com/chrissicool/zsh-256color/archive/9d8fa1015dfa895f2258c2efc668bc7012f06da6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "zsh-abbrev-alias": {
         "branch": "master",
         "description": "This zsh plugin provides functionality similar to Vim's abbreviation expansion.",

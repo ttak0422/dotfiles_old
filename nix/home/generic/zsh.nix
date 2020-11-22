@@ -49,6 +49,10 @@ in {
         name = "zsh-abbrev-alias";
         src = sources.zsh-abbrev-alias;
       }
+      {
+        name = "zsh-256color";
+        src = sources.zsh-256color;
+      }
     ];
 
   };
