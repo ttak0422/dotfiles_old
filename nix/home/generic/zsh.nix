@@ -28,6 +28,22 @@ in {
       source ${sources.zsh-abbrev-alias}/abbrev-alias.plugin.zsh
       ${lib.strings.concatStringsSep "\n" (builtins.attrValues (lib.attrsets.mapAttrs (k: v: "abbrev-alias -g ${k}=\"${v}\"") abbrevs.static))}
       ${lib.strings.concatStringsSep "\n" (builtins.attrValues (lib.attrsets.mapAttrs (k: v: "abbrev-alias -ge ${k}=\"${v}\"") abbrevs.eval))}
+      
+      # https://qiita.com/reireias/items/fd96d67ccf1fdffb24ed
+      # history
+      HISTFILE=$HOME/.zsh-history
+      HISTSIZE=100000
+      SAVEHIST=1000000
+      # share .zshhistory
+      setopt inc_append_history
+      setopt share_history
+      function peco-history-selection() {
+        BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+        CURSOR=$#BUFFER
+        zle reset-prompt
+      }
+      zle -N peco-history-selection
+      bindkey '^R' peco-history-selection
     '';
     shellAliases = {
       "g" = "cd $(ghq root)/$(ghq list | peco)";
