@@ -44,6 +44,9 @@ in {
       }
       zle -N peco-history-selection
       bindkey '^R' peco-history-selection
+
+      # kubectl
+      source <(kubectl completion zsh)
     '';
     shellAliases = {
       "g" = "cd $(ghq root)/$(ghq list | peco)";
