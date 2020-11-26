@@ -5,5 +5,6 @@
     azure-cli 
     kubernetes-helm
     istioctl 
+    kind
   ]; 
 }
