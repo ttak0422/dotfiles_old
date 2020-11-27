@@ -2,7 +2,8 @@
 { 
   home.packages = with pkgs; [ 
     kubectl 
-    azure-cli 
+    azure-cli
+    google-cloud-sdk 
     kubernetes-helm
     istioctl 
     kind
