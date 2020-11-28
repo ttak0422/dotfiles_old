@@ -3,6 +3,7 @@
   home.packages = with pkgs; [ 
     kubectl 
     kubectx
+    stern
     aws
     eksctl
     azure-cli
