@@ -2,6 +2,7 @@
 { 
   home.packages = with pkgs; [ 
     kubectl 
+    kubectx
     aws
     eksctl
     azure-cli
