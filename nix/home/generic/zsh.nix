@@ -7,7 +7,7 @@ let
       k = "kubectl";
       i = "istioctl";
       h = "helm";
-      g = "gcloud";
+      gc = "gcloud";
       dc = "docker-compose";
     };
     eval = {
