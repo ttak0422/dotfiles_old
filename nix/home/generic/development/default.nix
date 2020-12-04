@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./js.nix
+    ./python.nix
   ];
   home.packages = with pkgs; [ 
     coreutils 
@@ -8,6 +9,5 @@
     rustup 
     adoptopenjdk-jre-openj9-bin-13 
     ruby_2_7 
-    python3
   ];
 }
