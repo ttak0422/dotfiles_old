@@ -32,6 +32,7 @@
     figlet
     asciidoctor
     packer
+    yamllint
   ] ++ (if stdenv.isDarwin then [] else [
     pkgs.bmon
     pkgs.feh
