@@ -3,10 +3,10 @@ let
   sources = import ./../../nix/sources.nix;
   abbrevs = {
     static = {
-      d = "docker";
-      k = "kubectl";
-      i = "istioctl";
-      h = "helm";
+      dk = "docker";
+      ku = "kubectl";
+      is = "istioctl";
+      he = "helm";
       gc = "gcloud";
       dc = "docker-compose";
     };
