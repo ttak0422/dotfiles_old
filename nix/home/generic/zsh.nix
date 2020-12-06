@@ -9,6 +9,7 @@ let
       he = "helm";
       gc = "gcloud";
       dc = "docker-compose";
+      ra = "ranger";
     };
     eval = {
     };
