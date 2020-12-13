@@ -11,5 +11,7 @@
     kubernetes-helm
     istioctl 
     kind
-  ]; 
+  ]++ (if stdenv.isDarwin then [
+    minikube
+  ] else []);
 }
