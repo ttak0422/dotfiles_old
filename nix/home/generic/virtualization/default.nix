@@ -3,6 +3,7 @@
   home.packages = with pkgs; [ 
     kubectl 
     kubectx
+    k9s
     stern
     aws
     eksctl
