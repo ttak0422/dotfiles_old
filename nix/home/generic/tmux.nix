@@ -44,7 +44,7 @@ let
     set-window-option -g window-status-current-format "#[fg=black,bg=white] #I: #W #[default]"
 
     # right
-    set -g status-right "#[fg=red] #[default]#[fg=white,bg=red] #H #[default]"
+    set -g status-right "#[fg=red]#[default]#[fg=white,bg=red] #H #[default]"
   '';
 in {
   programs.tmux = {
