@@ -1,9 +1,7 @@
 { config, pkgs, lib, ... }: {
   imports = [
     ./peco.nix
-    ./bash.nix
-    ./zsh.nix
-    ./fish.nix
+    ./shell
     ./git
     ./vim.nix
     ./tmux.nix

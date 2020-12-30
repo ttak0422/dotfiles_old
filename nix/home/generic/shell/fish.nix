@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 
-let sources = import ./../../nix/sources.nix;
+let 
+  sources = import ./../../../nix/sources.nix;
+  shared = import ./shared.nix { shell-type = "fish"; };
 in {
   home.packages = with pkgs; [ starship ];
   programs.fish = {
@@ -28,19 +30,8 @@ in {
       name = "fish-kubectl-completions";
       src = sources.fish-kubectl-completions;
     }];
-    shellAbbrs = {
-      "d" = "docker";
-      "dc" = "docker-compose";
-      "k" = "kubectl";
-      "h" = "helm";
-      "i" = "istioctl";
-    };
-    shellAliases = {
-      "g" = "cd (ghq root)'/'(ghq list | peco)";
-      "gh" = ''hub browse (ghq list | peco | cut -d "/" -f 2,3)'';
-      "gg" = "ghq get";
-      "c" = "xclip -selection clipboard";
-    };
+    shellAbbrs = shared.abbrevs.static;
+    shellAliases = shared.shellAliases;
     promptInit = ''
       # starship
       starship init fish | source

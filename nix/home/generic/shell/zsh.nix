@@ -1,19 +1,7 @@
 { config, pkgs, lib, ... }: 
 let 
-  sources = import ./../../nix/sources.nix;
-  abbrevs = {
-    static = {
-      dk = "docker";
-      ku = "kubectl";
-      is = "istioctl";
-      he = "helm";
-      gc = "gcloud";
-      dc = "docker-compose";
-      ra = "ranger";
-    };
-    eval = {
-    };
-  };
+  sources = import ./../../../nix/sources.nix;
+  shared = import ./shared.nix { shell-type = "zsh"; };
 in {
   home.packages = with pkgs; [ zsh-powerlevel10k ];
   programs.zsh = {
@@ -28,8 +16,8 @@ in {
 
       # abbrs
       source ${sources.zsh-abbrev-alias}/abbrev-alias.plugin.zsh
-      ${lib.strings.concatStringsSep "\n" (builtins.attrValues (lib.attrsets.mapAttrs (k: v: "abbrev-alias -g ${k}=\"${v}\"") abbrevs.static))}
-      ${lib.strings.concatStringsSep "\n" (builtins.attrValues (lib.attrsets.mapAttrs (k: v: "abbrev-alias -ge ${k}=\"${v}\"") abbrevs.eval))}
+      ${lib.strings.concatStringsSep "\n" (builtins.attrValues (lib.attrsets.mapAttrs (k: v: "abbrev-alias -g ${k}=\"${v}\"") shared.abbrevs.static))}
+      ${lib.strings.concatStringsSep "\n" (builtins.attrValues (lib.attrsets.mapAttrs (k: v: "abbrev-alias -ge ${k}=\"${v}\"") shared.abbrevs.eval))}
       
       # https://qiita.com/reireias/items/fd96d67ccf1fdffb24ed
       # history
@@ -50,11 +38,7 @@ in {
       # kubectl
       source <(kubectl completion zsh)
     '';
-    shellAliases = {
-      "g" = "cd $(ghq root)/$(ghq list | peco)";
-      "gh" = ''hub browse $(ghq list | peco | cut -d "/" -f 2,3)'';
-      "gg" = "ghq get";
-    };
+    shellAliases = shared.shellAliases;
     profileExtra = ''
     '';
     plugins = [
