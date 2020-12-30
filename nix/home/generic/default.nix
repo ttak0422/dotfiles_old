@@ -5,7 +5,6 @@
     ./zsh.nix
     ./fish.nix
     ./git
-    ./subversion
     ./vim.nix
     ./tmux.nix
     ./virtualization
