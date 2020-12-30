@@ -1,5 +1,5 @@
-{ config, pkgs, lib, ... }: 
-let 
+{ config, pkgs, lib, ... }:
+let
   sources = import ./../../../nix/sources.nix;
   shared = import ./shared.nix { shell-type = "zsh"; };
 in {
@@ -16,9 +16,13 @@ in {
 
       # abbrs
       source ${sources.zsh-abbrev-alias}/abbrev-alias.plugin.zsh
-      ${lib.strings.concatStringsSep "\n" (builtins.attrValues (lib.attrsets.mapAttrs (k: v: "abbrev-alias -g ${k}=\"${v}\"") shared.abbrevs.static))}
-      ${lib.strings.concatStringsSep "\n" (builtins.attrValues (lib.attrsets.mapAttrs (k: v: "abbrev-alias -ge ${k}=\"${v}\"") shared.abbrevs.eval))}
-      
+      ${lib.strings.concatStringsSep "\n" (builtins.attrValues
+        (lib.attrsets.mapAttrs (k: v: ''abbrev-alias -g ${k}="${v}"'')
+          shared.abbrevs.static))}
+      ${lib.strings.concatStringsSep "\n" (builtins.attrValues
+        (lib.attrsets.mapAttrs (k: v: ''abbrev-alias -ge ${k}="${v}"'')
+          shared.abbrevs.eval))}
+
       # https://qiita.com/reireias/items/fd96d67ccf1fdffb24ed
       # history
       HISTFILE=$HOME/.zsh-history
@@ -39,10 +43,9 @@ in {
       source <(kubectl completion zsh)
     '';
     shellAliases = shared.shellAliases;
-    profileExtra = ''
-    '';
+    profileExtra = "";
     plugins = [
-      { 
+      {
         name = "zsh-autosuggestions";
         src = sources.zsh-autosuggestions;
       }

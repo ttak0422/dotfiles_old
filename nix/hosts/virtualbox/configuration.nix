@@ -1,7 +1,7 @@
 # tiny
 { config, pkgs, ... }: {
-  imports = [ 
-    ./hardware-configuration.nix 
+  imports = [
+    ./hardware-configuration.nix
     ./../../networking
     ./../../language
     ./../../services/xserver

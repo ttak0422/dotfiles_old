@@ -1,8 +1,7 @@
-{ config, pkgs, lib, ... }: 
-{ 
+{ config, pkgs, lib, ... }: {
   home.packages = with pkgs; [ powerline-go ];
-  programs.bash = { 
-    enable = true; 
+  programs.bash = {
+    enable = true;
     bashrcExtra = ''
       function _update_ps1_a() {
         PS1="$($HOME/.nix-profile/bin/powerline-go -error $?)"
@@ -16,5 +15,5 @@
         PROMPT_COMMAND="_update_ps1_b; $PROMPT_COMMAND"
       fi
     '';
-  }; 
+  };
 }

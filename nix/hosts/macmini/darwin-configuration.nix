@@ -1,12 +1,11 @@
 { config, pkgs, ... }:
 
-let
-  inherit (pkgs) lorri;
+let inherit (pkgs) lorri;
 
 in {
 
   environment.systemPackages = [ lorri ];
-  
+
   # https://github.com/target/lorri/issues/96
   # XXX: Copied verbatim from https://github.com/iknow/nix-channel/blob/7bf3584e0bef531836050b60a9bbd29024a1af81/darwin-modules/lorri.nix
   launchd.user.agents = {

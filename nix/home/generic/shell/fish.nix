@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let 
+let
   sources = import ./../../../nix/sources.nix;
   shared = import ./shared.nix { shell-type = "fish"; };
 in {

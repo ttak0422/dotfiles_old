@@ -10,7 +10,7 @@
     set log-view    = line-number:yes,interval=1 text
     set blob-view   = line-number:yes,interval=1 text
     set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
-    
+
     bind main R !git rebase -i %(commit)
     bind diff R !git rebase -i %(commit)
   '';
