@@ -3,21 +3,20 @@
 
 
     # ==== Emojis ====
-    #:bug: -------------- バグ修正
-    #:+1: --------------- 機能改善
-    #:sparkles: --------- 機能追加・小
-    #:tada: ------------- 機能追加・大
-    #:memo: ------------- ドキュメント・コメント（追加・更新）
-    #:recycle: ---------- リファクタリング
-    #:shower: ----------- 不要な機能・使われなくなった機能の削除
-    #:shirt: ------------ Lintエラーの修正やコードスタイルの修正
-    #:white_check_mark: - テストやCIの修正・改善
-    #:rocket ------------ パフォーマンス改善
-    #:arrow_up_small: --- 依存パッケージなどのアップデート
-    #:arrow_down_small: - 依存パッケージなどのダウングレード
-    #:lock: ------------- 新機能の公開範囲の制限
-    #:cop: -------------- セキュリティ関連の改善
-    #:hankey: ----------- 糞コード
-    #:construction: ----- WIP(Work In Progress)
+    # 🎨 :art: when improving the format/structure of the code
+    # 🐎 :racehorse: when improving performance
+    # 🚱 :non-potable_water: when plugging memory leaks
+    # 📝 :memo: when writing docs
+    # 🐧 :penguin: when fixing something on Linux
+    # 🍎 :apple: when fixing something on macOS
+    # 🏁 :checkered_flag: when fixing something on Windows
+    # 🐛 :bug: when fixing a bug
+    # 🔥 :fire: when removing code or files
+    # 💚 :green_heart: when fixing the CI build
+    # ✅ :white_check_mark: when adding tests
+    # 🔒 :lock: when dealing with security
+    # ⬆️ :arrow_up: when upgrading dependencies
+    # ⬇️ :arrow_down: when downgrading dependencies
+    # 👕 :shirt: when removing linter warnings
   '';
 }
