@@ -33,6 +33,7 @@
       packer
       yamllint
       hey
+      ngrok
     ] ++ (if stdenv.isDarwin then
       [ ]
     else [
