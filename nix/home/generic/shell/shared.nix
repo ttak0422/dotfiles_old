@@ -5,6 +5,7 @@
     else
       "cd $(ghq root)/$(ghq list | peco)";
     "gg" = "ghq get";
+    ".." = "cd ..";
   };
   abbrevs = {
     static = {
