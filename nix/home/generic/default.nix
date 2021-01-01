@@ -23,7 +23,6 @@
       bat
       neofetch
       ranger
-      htop
       lsof
       niv
       nixfmt
@@ -34,6 +33,7 @@
       yamllint
       hey
       ngrok
+      bottom
     ] ++ (if stdenv.isDarwin then
       [ ]
     else [
