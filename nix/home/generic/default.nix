@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }: {
   imports = [
     ./peco.nix
+    ./pet.nix
     ./shell
     ./git
     ./vim.nix
@@ -23,7 +24,6 @@
       bat
       neofetch
       ranger
-      htop
       lsof
       niv
       nixfmt
@@ -33,6 +33,8 @@
       packer
       yamllint
       hey
+      ngrok
+      bottom
     ] ++ (if stdenv.isDarwin then
       [ ]
     else [
