@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }: {
   imports = [
     ./peco.nix
+    ./pet.nix
     ./shell
     ./git
     ./vim.nix
