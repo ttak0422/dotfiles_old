@@ -3,7 +3,7 @@
 with lib;
 
 let
-  defaultShell = "${pkgs.bash_5}/bin/bash";
+  defaultShell = "${pkgs.bashInteractive_5}/bin/bash";
   cfg = config.programs.tmux;
   plugins = with pkgs; [
     tmuxPlugins.sidebar
