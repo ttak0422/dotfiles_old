@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 let
-  sources = import ./../../nix/sources.nix;
   quote = x: ''"${x}"'';
   makeSnippet = { description, command, tag ? [ ], output ? "" }: ''
     [[snippets]]
