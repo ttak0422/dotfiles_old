@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
+  sources = import ./../../nix/sources.nix;
   quote = x: ''"${x}"'';
   makeSnippet = { description, command, tag ? [ ], output ? "" }: ''
     [[snippets]]
@@ -26,4 +27,29 @@ in {
   home.packages = [ pkgs.peco pkgs.pet ];
   home.file.".config/pet/config.toml".text = config;
   home.file.".config/pet/snippets.toml".text = snippets;
+  # bash todo
+  # zsh
+  home.file.".zshrc".text = lib.mkAfter ''
+    function pet-select() {
+        BUFFER=$(pet search --query "$LBUFFER")
+        CURSOR=$#BUFFER
+        zle redisplay
+    }
+    zle -N pet-select
+    stty -ixon
+    bindkey '^e' pet-select
+  '';
+  # fish
+  programs.fish = {
+    functions = {
+      # https://github.com/otms61/fish-pet
+      pet-select = ''
+        set -l query (commandline)
+        pet search --query "$query" $argv | read cmd
+        commandline $cmd
+      '';
+      fish_user_key_bindings = "bind \\ce pet-select";
+    };
+  };
+
 }
