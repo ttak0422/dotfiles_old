@@ -3,6 +3,7 @@
 with lib;
 
 let
+  defaultShell = "${pkgs.bash_5}/bin/bash";
   cfg = config.programs.tmux;
   plugins = with pkgs; [
     tmuxPlugins.sidebar
@@ -45,6 +46,10 @@ let
 
     # right
     set -g status-right "#[fg=red]#[default]#[fg=white,bg=red] #H #[default]"
+
+    # default shell
+    set-option -g default-shell "${defaultShell}"
+    set -g default-command "${defaultShell}"
   '';
 in {
   programs.tmux = {
