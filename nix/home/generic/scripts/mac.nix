@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }:
 let
-  openChrome = pkgs.writeScriptBin "openChrome" ''
+  chrome = pkgs.writeScriptBin "chrome" ''
     #!/usr/bin/osascript
     tell application "Google Chrome"
       make new window
     end tell
   '';
-in { home.packages = if pkgs.stdenv.isDarwin then [ openChrome ] else [ ]; }
+in { home.packages = if pkgs.stdenv.isDarwin then [ chrome ] else [ ]; }
