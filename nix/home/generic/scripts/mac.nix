@@ -6,4 +6,4 @@ let
       make new window
     end tell
   '';
-in { home.packages = (if pkgs.stdenv.isDarwin then [ openChrome ] else [ ]); }
+in { home.packages = if pkgs.stdenv.isDarwin then [ openChrome ] else [ ]; }
