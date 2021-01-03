@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   home.packages = with pkgs; [ bashInteractive_5 bash-completion powerline-go ];
-  programs.bash = { 
-    enable = true; 
+  programs.bash = {
+    enable = true;
     bashrcExtra = ''
       function _update_ps1_a() {
         PS1="$($HOME/.nix-profile/bin/powerline-go -error $? -modules cwd,perms,git,hg,jobs,exit,root -cwd-mode dironly)"

@@ -2,6 +2,7 @@
   imports = [
     ./peco.nix
     ./pet.nix
+    ./scripts
     ./shell
     ./git
     ./vim.nix
