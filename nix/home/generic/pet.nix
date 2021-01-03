@@ -17,12 +17,20 @@ let
         column = 40
         selectcmd = "peco"
   '';
-  snippets = strings.concatMapStringsSep "\n" makeSnippet [{
-    description = "ping";
-    command = "ping 8.8.8.8";
-    tag = [ "network" "google" ];
-    output = "sample snippet";
-  }];
+  snippets = strings.concatMapStringsSep "\n" makeSnippet [
+    {
+      description = "ping";
+      command = "ping 8.8.8.8";
+      tag = [ "network" "google" ];
+      output = "sample snippet";
+    }
+    {
+      description = "docker repositoty:tag";
+      command = "docker images --format '{{.Repository}}:{{.Tag}}'";
+      tag = [ "docker" ];
+      output = "e.g. nix:1.0";
+    }
+  ];
 in {
   home.packages = [ pkgs.peco pkgs.pet ];
   home.file.".config/pet/config.toml".text = config;
