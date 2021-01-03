@@ -1,12 +1,13 @@
 { config, pkgs, lib, ... }:
 
+with lib;
+
 let
-  quote = x: ''"${x}"'';
   makeSnippet = { description, command, tag ? [ ], output ? "" }: ''
     [[snippets]]
         description = "${description}"
         command = "${command}"
-        tag = [${lib.strings.concatStringsSep ", " (map quote tag)}]
+        tag = [${strings.concatStringsSep ", " (map (x: ''"${x}"'') tag)}]
         output = "${output}"
   '';
   config = ''
@@ -16,7 +17,7 @@ let
         column = 40
         selectcmd = "peco"
   '';
-  snippets = lib.strings.concatMapStringsSep "\n" makeSnippet [{
+  snippets = strings.concatMapStringsSep "\n" makeSnippet [{
     description = "ping";
     command = "ping 8.8.8.8";
     tag = [ "network" "google" ];
@@ -28,7 +29,7 @@ in {
   home.file.".config/pet/snippets.toml".text = snippets;
   # bash todo
   # zsh
-  home.file.".zshrc".text = lib.mkAfter ''
+  home.file.".zshrc".text = mkAfter ''
     function pet-select() {
         BUFFER=$(pet search --query "$LBUFFER")
         CURSOR=$#BUFFER
