@@ -1,12 +1,9 @@
 { config, pkgs, lib, ... }: {
-  home.stateVersion = "20.09";
-  home.username = builtins.getEnv "USER";
-  home.homeDirectory = builtins.getEnv "HOME";
-  imports = [ ./generic ];
+  imports = [ ./prelude.nix ./generic ];
   home.file.".profile".text = lib.mkAfter ''
     # nix
+    export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
     source ~/.nix-profile/etc/profile.d/nix.sh
   '';
-  home.sessionVariables = { TMUX_TMPDIR = "/tmp"; };
-  nixpkgs.config.allowUnfree = true;
+
 }
