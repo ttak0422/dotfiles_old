@@ -16,6 +16,7 @@
   #]);
   home.packages = with pkgs;
     [
+      coreutils-full
       xclip
       jq
       wget
