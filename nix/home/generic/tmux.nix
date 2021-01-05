@@ -22,6 +22,9 @@ let
     }
   ];
   extraConfig = ''
+    # unbind last-window
+    unbind C-a
+
     # reorder window numbers.
     bind r                                      \
         set -g renumber-windows on\;            \
