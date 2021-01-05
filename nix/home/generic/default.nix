@@ -11,6 +11,7 @@
     ./development
     ./network
     ./lorri.nix
+    ./procs.nix
   ];
   #++ (if stdenv.isDarwin then [] else [
   #]);

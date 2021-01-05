@@ -7,6 +7,7 @@
     "gg" = "ghq get";
     ".." = "cd ..";
     "top" = "btm";
+    "ps" = "procs";
   };
   abbrevs = {
     static = {
