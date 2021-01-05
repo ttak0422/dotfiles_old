@@ -37,6 +37,7 @@
       hey
       ngrok
       bottom
+      glow # Nixのバージョンが上がったらymlの設定
     ] ++ (if stdenv.isDarwin then
       [ ]
     else [
