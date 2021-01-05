@@ -22,6 +22,13 @@ let
     }
   ];
   extraConfig = ''
+    # reorder window numbers.
+    bind r                                      \
+        set -g renumber-windows on\;            \
+        new-window\; kill-window\;              \
+        set -g renumber-windows off\;           \
+        display-message "reordered..."
+
     # close window = prefix + shift + x
     bind X confirm-before -p 'kill-window #I? (y/n)' kill-window
 
