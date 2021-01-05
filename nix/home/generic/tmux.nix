@@ -14,7 +14,8 @@ let
     {
       plugin = tmuxPlugins.continuum;
       extraConfig = ''
-        set -g @continuum-boot 'on'
+        # https://github.com/tmux-plugins/tmux-continuum/blob/master/docs/automatic_start.md
+        # set -g @continuum-boot 'on'
         set -g @continuum-save-interval '5' # minutes
         set -g @continuum-restore 'on'
       '';
