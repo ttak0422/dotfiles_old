@@ -52,15 +52,23 @@ let
     bind -r b previous-window
 
     # pane
-    bind h select-pane -L
-    bind j select-pane -D
-    bind k select-pane -U
-    bind l select-pane -R
+    bind -r h select-pane -L
+    bind -r j select-pane -D
+    bind -r k select-pane -U
+    bind -r l select-pane -R
+    bind -r left select-pane -L
+    bind -r down select-pane -D
+    bind -r up select-pane -U
+    bind -r right select-pane -R
 
     bind -r H resize-pane -L 5
     bind -r J resize-pane -D 5
     bind -r K resize-pane -U 5
     bind -r L resize-pane -R 5
+    bind -r S-left resize-pane -L 5
+    bind -r S-down resize-pane -D 5
+    bind -r S-up resize-pane -U 5
+    bind -r S-right resize-pane -R 5
 
     # rename
     bind , command-prompt -I "#W" "rename-window '%%'"
