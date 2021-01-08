@@ -34,7 +34,7 @@ let
     bind ] paste-buffer
     bind t clock-mode
     bind w choose-window
-    bind s choose-tree
+    bind s choose-session
     bind z resize-pane -Z
 
     # select-window
@@ -100,15 +100,15 @@ let
     set -g message-style fg=green,reverse,bg=default
 
     # left
-    set -g status-left "#[fg=white,bg=blue]#{?client_prefix,#[bg=yellow],} Session: #S #[default]#[fg=blue]#{?client_prefix,#[fg=yellow],}"
+    set -g status-left "#[fg=white,bg=blue]#{?client_prefix,#[bg=yellow],} Session: #S #[default]#[fg=blue]#{?client_prefix,#[fg=yellow],} "
 
     # center
     set-option -g status-justify "centre"
-    set-window-option -g window-status-format "#I:#W"
-    set-window-option -g window-status-current-format "#[fg=black,bg=white] #I: #W #[default]"
+    set-window-option -g window-status-format " #I:#W "
+    set-window-option -g window-status-current-format "#[fg=black,bg=white]  #I: #W  #[default]"
 
     # right
-    set -g status-right "#[fg=red]#[default]#[fg=white,bg=red] %H:%M #[default]"
+    set -g status-right "#[fg=red] #[default]#[fg=white,bg=red] %H:%M #[default]"
 
     # default shell
     set-option -g default-shell "${defaultShell}"
