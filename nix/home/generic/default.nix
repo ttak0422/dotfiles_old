@@ -39,6 +39,7 @@
       ngrok
       bottom
       glow # Nixのバージョンが上がったらymlの設定
+      redis
     ] ++ (if stdenv.isDarwin then
       [ ]
     else [
