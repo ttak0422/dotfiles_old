@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 # TODO: refactor
-let 
+let
   config = ''
     [[columns]]
     kind = "Pid"
