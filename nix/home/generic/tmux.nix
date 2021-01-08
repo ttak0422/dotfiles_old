@@ -3,8 +3,7 @@
 with lib;
 
 let
-  packages = with pkgs; [ bashInteractive_5 ];
-  defaultShell = "${pkgs.bashInteractive_5}/bin/bash";
+  defaultShell = "${pkgs.zsh}/bin/zsh";
   cfg = config.programs.tmux;
   plugins = with pkgs; [
     tmuxPlugins.sidebar
@@ -115,7 +114,7 @@ let
     set -g default-command "${defaultShell}"
   '';
 in {
-  home.packages = with pkgs; [ bashInteractive_5 ];
+  programs.zsh.enable = true;
   programs.tmux = {
     enable = true;
     keyMode = "vi";
