@@ -9,7 +9,7 @@ let
     [core]
       autocrlf = false
       pager = less -r
-      editor = vim
+      editor = vi
     [color]
       ui = auto
       autocrlf = false

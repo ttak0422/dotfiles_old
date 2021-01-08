@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   sources = import ./../../../nix/sources.nix;
-  shared = import ./shared.nix { shell-type = "zsh"; };
+  shared = import ./shared.nix { pkgs = pkgs; shell-type = "zsh"; };
 in {
   home.packages = with pkgs; [ zsh-powerlevel10k ];
   programs.zsh = {

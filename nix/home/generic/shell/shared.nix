@@ -1,4 +1,4 @@
-{ shell-type ? "bash" }: {
+{ pkgs, shell-type ? "bash" }: {
   shellAliases = {
     "g" = if shell-type == "fish" then
       "cd (ghq root)'/'(ghq list | peco)"
@@ -8,6 +8,8 @@
     ".." = "cd ..";
     "top" = "btm";
     "ps" = "procs";
+    "vi" = "${pkgs.vim}/bin/vim";
+    "vim" = "nvim";
   };
   abbrevs = {
     static = {

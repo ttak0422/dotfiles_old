@@ -2,7 +2,7 @@
 
 let
   sources = import ./../../../nix/sources.nix;
-  shared = import ./shared.nix { shell-type = "fish"; };
+  shared = import ./shared.nix { pkgs = pkgs; shell-type = "fish"; };
 in {
   home.packages = with pkgs; [ starship ];
   programs.fish = {
