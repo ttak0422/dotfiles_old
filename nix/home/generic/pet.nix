@@ -30,6 +30,12 @@ let
       tag = [ "docker" ];
       output = "e.g. nix:1.0";
     }
+    {
+      description = "create local server";
+      command = "python -m http.server 8080";
+      tag = [ "python" "server" ];
+      output = "simple server";
+    }
   ];
 in {
   home.packages = [ pkgs.peco pkgs.pet ];
