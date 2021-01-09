@@ -36,6 +36,9 @@ let
     bind s choose-session
     bind z resize-pane -Z
 
+    # create session
+    bind C-n command-prompt -I "" "new -s '%%'"
+
     # select-window
     bind 1 select-window -t :1
     bind 2 select-window -t :2
