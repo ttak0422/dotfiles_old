@@ -40,6 +40,7 @@
       bottom
       glow # Nixのバージョンが上がったらymlの設定
       redis
+      openssl
     ] ++ (if stdenv.isDarwin then
       [ ]
     else [
