@@ -25,8 +25,8 @@ let
       output = "sample snippet";
     }
     {
-      description = "docker repositoty:tag";
-      command = "docker images --format '{{.Repository}}:{{.Tag}}'";
+      description = "docker id - repositoty:tag";
+      command = "docker images --format '{{.ID}} | {{.Repository}}:{{.Tag}}'";
       tag = [ "docker" ];
       output = "e.g. nix:1.0";
     }
