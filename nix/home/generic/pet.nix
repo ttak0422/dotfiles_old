@@ -36,6 +36,10 @@ let
       tag = [ "python" "server" ];
       output = "simple server";
     }
+    {
+      description = "filter & map";
+      command = "find . -name '*.foo' | xargs foo";
+    }
   ];
 in {
   home.packages = [ pkgs.peco pkgs.pet ];
