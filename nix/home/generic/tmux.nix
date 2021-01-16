@@ -4,9 +4,7 @@ with lib;
 
 let
   defaultShell = "${pkgs.zsh}/bin/zsh";
-  sessionVariables = {
-    TMUX_TMMDIR = "/tmp";
-  };
+  sessionVariables = { TMUX_TMMDIR = "/tmp"; };
   cfg = config.programs.tmux;
   plugins = with pkgs; [
     tmuxPlugins.sidebar
