@@ -1,5 +1,9 @@
 { pkgs, ... }: {
-  imports = [ ./js.nix ./python.nix ./go.nix ];
+  imports = [
+    ./js.nix
+    #    ./python.nix 
+    ./go.nix
+  ];
   home.packages = with pkgs; [
     dotnet-sdk_3
     rustup
