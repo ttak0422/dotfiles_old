@@ -4,7 +4,7 @@ let
   ghq-path = "${builtins.getEnv "HOME"}/ghq";
 in {
   home = {
-    packages = with pkgs; [ go ];
+    packages = with pkgs; [ go gore ];
     sessionVariables = {
       PATH = "$PATH:${go-path}/bin";
       GOPATH = "${go-path}:${ghq-path}";
