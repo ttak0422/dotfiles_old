@@ -29,5 +29,7 @@ let
       ignore = !"f() { local s=$1; shift; \
         while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
         curl -L \"https://www.gitignore.io/api/$s\"; }; f"
+    [credential]
+        helper = store
   '';
 in { home.file."${configDir}/config".text = config; }
