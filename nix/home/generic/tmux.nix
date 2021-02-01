@@ -4,7 +4,6 @@ with lib;
 
 let
   defaultShell = "${pkgs.zsh}/bin/zsh";
-  sessionVariables = { TMUX_TMMDIR = "/tmp"; };
   cfg = config.programs.tmux;
   plugins = with pkgs; [
     tmuxPlugins.sidebar
@@ -128,9 +127,17 @@ in {
     resizeAmount = 5;
     plugins = plugins;
     extraConfig = extraConfig;
+    secureSocket = false;
   };
-  home.file.".tmux.conf".text = lib.mkBefore ''
-    # unbind all
-    unbind-key -a
-  '';
+  home = lib.mkMerge ([
+    {
+      file.".tmux.conf".text = lib.mkBefore ''
+        # unbind all
+        unbind-key -a
+      '';
+    }
+    (lib.mkIf pkgs.stdenv.isLinux {
+      sessionVariables = { TMUX_TMPDIR = "/tmp"; };
+    })
+  ]);
 }
