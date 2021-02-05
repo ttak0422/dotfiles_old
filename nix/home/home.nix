@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./dev ./scripts ./shell ./tools ./virtualization ];
+  imports = [ ./dev ./git ./scripts ./shell ./tools ./virtualization ];
   nixpkgs.config.allowUnfree = true;
   home = {
     stateVersion = "20.09";
