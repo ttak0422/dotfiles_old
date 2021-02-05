@@ -1,16 +1,16 @@
-{ pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   home.packages = with pkgs;
     [
+      aws
+      azure-cli
+      eksctl
+      google-cloud-sdk
+      istioctl
+      k9s
+      kind
       kubectl
       kubectx
-      k9s
-      stern
-      aws
-      eksctl
-      azure-cli
-      google-cloud-sdk
       kubernetes-helm
-      istioctl
-      kind
+      stern
     ] ++ (if stdenv.isDarwin then [ minikube ] else [ ]);
 }

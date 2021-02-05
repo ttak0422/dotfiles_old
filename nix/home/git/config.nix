@@ -3,8 +3,6 @@ let
   name = "ttak0422";
   email = "bgdaewalkman@gmail.com";
   configDir = ".config/git";
-  templateFile = "${configDir}/template";
-  ignoreFile = "${configDir}/ignore";
   config = ''
     [core]
       autocrlf = false
@@ -24,7 +22,7 @@ let
       process = git-lfs filter-process
       required = true
     [commit]
-      template = ~/${templateFile}
+      template = ~/${configDir}/template
     [alias]
       ignore = !"f() { local s=$1; shift; \
         while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
@@ -68,28 +66,13 @@ let
     # 👕 :shirt: when removing linter warnings
   '';
 
-  tigrc = ''
-    set main-view = id date author:email-user commit-title:graph=yes,refs=yes
-    set main-view-date = custom
-    set main-view-date-format = "%y/%m/%d %H:%M"
-    set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
-    set pager-view  = line-number:yes,interval=1 text
-    set stage-view  = line-number:yes,interval=1 text
-    set log-view    = line-number:yes,interval=1 text
-    set blob-view   = line-number:yes,interval=1 text
-    set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
-
-    bind main R !git rebase -i %(commit)
-    bind diff R !git rebase -i %(commit)
-  '';
 in {
   home = {
-    packages = with pkgs; [ git tig ghq gitAndTools.gh ];
+    packages = with pkgs; [ git ghq gitAndTools.gh ];
     file = {
       "${configDir}/config".text = config;
       "${configDir}/ignore".text = ignore;
       "${configDir}/template".text = template;
-      ".tigrc".text = tigrc;
     };
   };
 }
