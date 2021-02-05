@@ -37,7 +37,7 @@
       yamllint
       hey
       ngrok
-      bottom
+      # bottom
       glow # Nixのバージョンが上がったらymlの設定
       redis
       openssl

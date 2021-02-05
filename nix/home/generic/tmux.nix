@@ -127,9 +127,17 @@ in {
     resizeAmount = 5;
     plugins = plugins;
     extraConfig = extraConfig;
+    secureSocket = false;
   };
-  home.file.".tmux.conf".text = lib.mkBefore ''
-    # unbind all
-    unbind-key -a
-  '';
+  home = lib.mkMerge ([
+    {
+      file.".tmux.conf".text = lib.mkBefore ''
+        # unbind all
+        unbind-key -a
+      '';
+    }
+    (lib.mkIf pkgs.stdenv.isLinux {
+      sessionVariables = { TMUX_TMPDIR = "/tmp"; };
+    })
+  ]);
 }
