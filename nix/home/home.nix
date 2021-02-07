@@ -7,8 +7,8 @@
     username = builtins.getEnv "USER";
     homeDirectory = builtins.getEnv "HOME";
     sessionVariables = {
-        # sort by name
-        # Foo, Bar, Baz -> Bar,Baz, Foo
+      # sort by name
+      # Foo, Bar, Baz -> Bar,Baz, Foo
     };
     file.".profile".text = lib.mkAfter ''
       source ~/.nix-profile/etc/profile.d/nix.sh
