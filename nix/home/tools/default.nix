@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./peco.nix ./pet.nix ./procs.nix ./tmux.nix ./vim.nix ];
+  imports = [ ./lorri.nix ./peco.nix ./pet.nix ./procs.nix ./tmux.nix ./vim.nix ];
   home.packages = with pkgs;
     [
       asciidoctor
