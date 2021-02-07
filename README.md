@@ -17,5 +17,5 @@ home-manager -f nix/home/home.nix switch
 ### Darwin
 
 ```
-darwin-rebuild -I nixos-config=./nix/darwin/desktop/configuration.nix switch
+darwin-rebuild -I nixos-config=./nix/darwin/desktop.nix switch
 ```
