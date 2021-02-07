@@ -1,12 +1,19 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./lorri.nix ./peco.nix ./pet.nix ./procs.nix ./tmux.nix ./vim.nix ];
+  imports = [
+    ./glow.nix
+    ./lorri.nix
+    ./peco.nix
+    ./pet.nix
+    ./procs.nix
+    ./tmux.nix
+    ./vim.nix
+  ];
   home.packages = with pkgs;
     [
       asciidoctor
       bat
       coreutils-full
       figlet
-      glow
       hey
       jq
       killall
