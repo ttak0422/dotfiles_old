@@ -1,8 +1,9 @@
 { config, pkgs, lib, ... }: {
   imports = [ ./dev ./git ./scripts ./shell ./tools ./virtualization ];
   nixpkgs.config.allowUnfree = true;
+  programs.home-manager.enable = true;
   home = {
-    stateVersion = "20.09";
+    stateVersion = "21.05";
     username = builtins.getEnv "USER";
     homeDirectory = builtins.getEnv "HOME";
     sessionVariables = {
