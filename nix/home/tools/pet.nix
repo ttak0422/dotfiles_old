@@ -10,9 +10,9 @@ let
         tag = [${strings.concatStringsSep ", " (map (x: ''"${x}"'') tag)}]
         output = "${output}"
   '';
-  config = ''
+  config' = ''
     [General]
-        snippetfile = "${builtins.getEnv "HOME"}/.config/pet/snippets.toml"
+        snippetfile = "${config.home.homeDirectory}/.config/pet/snippets.toml"
         editor = "vim"
         column = 40
         selectcmd = "peco"
@@ -43,7 +43,7 @@ let
   ];
 in {
   home.packages = [ pkgs.peco pkgs.pet ];
-  home.file.".config/pet/config.toml".text = config;
+  home.file.".config/pet/config.toml".text = config';
   home.file.".config/pet/snippets.toml".text = snippets;
   # bash todo
   # zsh

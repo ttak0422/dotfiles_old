@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
-  go-path = "${builtins.getEnv "HOME"}/go";
-  ghq-path = "${builtins.getEnv "HOME"}/ghq";
+  go-path = "${config.home.homeDirectory}/go";
+  ghq-path = "${config.home.homeDirectory}/ghq";
 in {
   home = {
     packages = with pkgs; [ go gore ];
