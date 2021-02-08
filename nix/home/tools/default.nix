@@ -13,6 +13,7 @@
       asciidoctor
       bat
       coreutils-full
+      direnv
       figlet
       hey
       jq
