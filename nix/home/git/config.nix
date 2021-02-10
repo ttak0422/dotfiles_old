@@ -16,6 +16,8 @@ let
     [user]
       name = ${name}
       email = ${email}
+    [init]
+      defaultBranch = "main"
     [filter "lfs"]
       clean = git-lfs clean -- %f
       smudge = git-lfs smudge -- %f
