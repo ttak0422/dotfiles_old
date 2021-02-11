@@ -8,14 +8,24 @@
 
 ## Usage
 
-### HomeManager
+### Linux
 
-```
+```bash
+# home-manager
 home-manager -f nix/home/home.nix switch  
 ```
 
 ### Darwin
 
-```
+```bash
+# nix-darwin
 darwin-rebuild -I darwin-config=./nix/darwin/desktop.nix switch 
+
+# home-manager
+home-manager -f nix/home/home.nix switch  
+
+# homebrew
+cd brew
+brew bundle
 ```
+
