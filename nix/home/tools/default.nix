@@ -27,6 +27,7 @@
       packer
       ranger
       redis
+      screenfetch
       tree
       unzip
       wget
