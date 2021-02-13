@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let shared = import ./shared.nix { pkgs = pkgs; };
 in {
-  home.packages = with pkgs; [ bashInteractive_5 bash-completion powerline-go ];
+  home.packages = with pkgs; [ bashInteractive bash-completion powerline-go ];
   programs.bash = {
     enable = true;
     shellAliases = shared.shellAliases;
