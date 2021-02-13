@@ -18,7 +18,7 @@ let
 in {
   services.polybar = {
     enable = true;
-    script = "polybar top &";
+    script = "";
     package = pkgs.polybar.override {
       i3GapsSupport = true;
       # i3Support = true;
@@ -77,7 +77,7 @@ in {
         label-visible = "%index%";
         label-visible-background = colors.mono4;
         label-visible-foreground = colors.mono2;
-        label-visible-padding = padding;
+        label-visible-padpolyding = padding;
 
         # urgent = Workspace with urgency hint set
         label-urgent = "%index%";

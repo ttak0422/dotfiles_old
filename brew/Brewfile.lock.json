@@ -1,0 +1,66 @@
+{
+  "entries": {
+    "cask": {
+      "alacritty": {
+        "version": "0.7.1",
+        "options": {
+          "full_name": "alacritty"
+        }
+      },
+      "vulkan-sdk": {
+        "version": "1.2.162.1",
+        "options": {
+          "full_name": "apenngrace/vulkan/vulkan-sdk"
+        }
+      },
+      "font-source-code-pro": {
+        "version": "2.038R-ro-1.058R-it-1.018R-VAR",
+        "options": {
+          "full_name": "font-source-code-pro"
+        }
+      },
+      "hyper": {
+        "version": "3.0.2",
+        "options": {
+          "full_name": "hyper"
+        }
+      },
+      "karabiner-elements": {
+        "version": "13.3.0",
+        "options": {
+          "full_name": "karabiner-elements"
+        }
+      },
+      "vagrant": {
+        "version": "2.2.14",
+        "options": {
+          "full_name": "vagrant"
+        }
+      },
+      "virtualbox": {
+        "version": "6.1.18,142142",
+        "options": {
+          "full_name": "virtualbox"
+        }
+      },
+      "virtualbox-extension-pack": {
+        "version": "6.1.18",
+        "options": {
+          "full_name": "virtualbox-extension-pack"
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "big_sur": {
+        "HOMEBREW_VERSION": "3.0.0",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "4106fc869b5376f0ea2c7c011c3c64d6e7bd46ce",
+        "CLT": "12.0.32.21",
+        "Xcode": "12.3",
+        "macOS": "11.2"
+      }
+    }
+  }
+}
