@@ -1,8 +1,6 @@
 <div align="center">
 <h1>dotfiles</h1>
 <a href="https://nixos.org">
-<img src="https://img.shields.io/badge/NixOS-21.05-blue?style=for-the-badge&logo=NixOS&logoColor=white">
-</a>
 <img  src="https://img.shields.io/github/license/ttak0422/dotfiles?style=for-the-badge&color=black">
 </div>
 
@@ -29,3 +27,12 @@ cd brew
 brew bundle
 ```
 
+### NixOS
+
+```bash
+# nixos
+sudo nixos-rebuild -I nixos-config=./nix/nixos/thinkpad-extreme-configuration.nix switch
+
+# home-manager
+home-manager -f nix/home/nixos.nix switch  
+```
