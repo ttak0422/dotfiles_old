@@ -2,7 +2,7 @@
 # TODO: refactor
 let
 
-  i3Config = ''
+  config' = ''
     # set
     set $mod Mod4
     set $alt Mod1
@@ -200,8 +200,9 @@ let
     client.background           #2f343f
   '';
 in {
-
   services.xserver = {
+    enable = true;
+    layout = "us";
     desktopManager = {
       xterm.enable = false;
       xfce = {
@@ -218,8 +219,5 @@ in {
       extraPackages = with pkgs; [ rofi i3lock acpi scrot brightnessctl ];
     };
   };
-  environment.etc."i3.conf".text = i3Config;
-  # TODO: hm?
-  # ln -s /etc/i3status.conf ~/.config/i3status/config
-  # environment.etc."i3status.conf".text = i3StatusConfig;
+  environment.etc."i3.conf".text = config';
 }
