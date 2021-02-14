@@ -37,12 +37,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    firefox
-    vscode
-  ];
+  environment.systemPackages = with pkgs; [ git vim firefox vscode ];
 
   system.stateVersion = "20.09";
 }

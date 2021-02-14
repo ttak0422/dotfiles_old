@@ -1,5 +1,13 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./dev ./git ./scripts ./shell ./tools ./virtualization ./nixos/polybar.nix ];
+  imports = [
+    ./dev
+    ./git
+    ./scripts
+    ./shell
+    ./tools
+    ./virtualization
+    ./nixos/polybar.nix
+  ];
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
   home = {

@@ -5,17 +5,17 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ ./applications
-      ./language
-      ./networking
-      ./services
-      ./virtualization
-      ./utils/tlp.nix
-      ./thinkpad-extreme-hardware.nix
-    ];
+  imports = [
+    ./applications
+    ./language
+    ./networking
+    ./services
+    ./virtualization
+    ./utils/tlp.nix
+    ./thinkpad-extreme-hardware.nix
+  ];
 
-  boot.loader = { 
+  boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
@@ -35,7 +35,7 @@
 
   # 4K
   hardware.video.hidpi.enable = true;
-    environment.variables = {
+  environment.variables = {
     GDK_SCALE = "2";
     GDK_DPI_SCALE = "0.5";
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
@@ -63,10 +63,8 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    linuxPackages.tp_smapi
-  ]; 
+  environment.systemPackages = with pkgs; [ linuxPackages.tp_smapi ];
 
-  system.stateVersion = "20.09"; 
+  system.stateVersion = "20.09";
 }
 

@@ -1,5 +1,3 @@
 { config, lib, ... }: {
-  services.xserver = {
-    videoDrivers = [ "displaylink" ];
-  };
+  services.xserver = { videoDrivers = [ "displaylink" ]; };
 }
