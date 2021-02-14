@@ -1,4 +1,9 @@
 { config, pkgs, lib, ... }: {
-  environment.systemPackages =
-    with pkgs; [ google-chrome vscode termite slack typora ];
+  imports = [ ./vscode ];
+  environment.systemPackages = with pkgs; [
+    google-chrome
+    termite
+    slack
+    typora
+  ];
 }

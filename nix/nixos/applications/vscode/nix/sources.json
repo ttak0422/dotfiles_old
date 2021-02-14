@@ -1,0 +1,26 @@
+{
+    "Nix": {
+        "owner": "bbenoist",
+        "sha256": "0zd0n9f5z1f0ckzfjr38xw2zzmcxg1gjrava7yahg5cvdcw6l35b",
+        "type": "file",
+        "url": "https://bbenoist.gallery.vsassets.io/_apis/public/gallery/publisher/bbenoist/extension/Nix/1.0.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://bbenoist.gallery.vsassets.io/_apis/public/gallery/publisher/bbenoist/extension/Nix/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "1.0.1"
+    },
+    "path-intellisense": {
+        "owner": "christian-kohler",
+        "sha256": "1wyp3k4gci1i64nrry12il6yflhki18gq2498z3nlsx4yi36jb3l",
+        "type": "file",
+        "url": "https://christian-kohler.gallery.vsassets.io/_apis/public/gallery/publisher/christian-kohler/extension/path-intellisense/2.3.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://christian-kohler.gallery.vsassets.io/_apis/public/gallery/publisher/christian-kohler/extension/path-intellisense/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "2.3.0"
+    },
+    "vim": {
+        "owner": "vscodevim",
+        "sha256": "18gv9mncanaixvg103qssp7ddy12kcfinjhx2c9icdh49zm5v2nb",
+        "type": "file",
+        "url": "https://vscodevim.gallery.vsassets.io/_apis/public/gallery/publisher/vscodevim/extension/vim/1.18.9/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://vscodevim.gallery.vsassets.io/_apis/public/gallery/publisher/vscodevim/extension/vim/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "1.18.9"
+    }
+}
