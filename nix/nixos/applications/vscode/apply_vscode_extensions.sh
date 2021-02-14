@@ -39,7 +39,7 @@ done
 for ext in $($CODE --list-extensions); do 
     OWNER=$(echo $ext | cut -d. -f1)
     EXT=$(echo $ext | cut -d. -f2)
-    if [ -z "${exts["$OWNER-$EXT"]}" ]; then
+    if [ -z "${exts["$EXT"]}" ]; then
         echo "not exist"
         add_ext "$OWNER" "$EXT" 
     fi
