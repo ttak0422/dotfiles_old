@@ -24,6 +24,12 @@ let
         version = sources.vim.version;
         sha256 = sources.vim.sha256;
       }
+      {
+        name = "bracket-lens";
+        publisher = sources.bracket-lens.owner;
+        version = sources.bracket-lens.version;
+        sha256 = sources.bracket-lens.sha256;
+      }
     ];
   vscode-with-extensions =
     pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };

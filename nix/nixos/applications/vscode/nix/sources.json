@@ -7,6 +7,14 @@
         "url_template": "https://bbenoist.gallery.vsassets.io/_apis/public/gallery/publisher/bbenoist/extension/Nix/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "1.0.1"
     },
+    "bracket-lens": {
+        "owner": "wraith13",
+        "sha256": "0w15k2z44k6qwv0kwmikgs917l23s9s1qf6j6xdbx6ackh2975da",
+        "type": "file",
+        "url": "https://wraith13.gallery.vsassets.io/_apis/public/gallery/publisher/wraith13/extension/bracket-lens/1.5.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://wraith13.gallery.vsassets.io/_apis/public/gallery/publisher/wraith13/extension/bracket-lens/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "1.5.0"
+    },
     "path-intellisense": {
         "owner": "christian-kohler",
         "sha256": "1wyp3k4gci1i64nrry12il6yflhki18gq2498z3nlsx4yi36jb3l",
