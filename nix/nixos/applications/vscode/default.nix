@@ -1,35 +1,19 @@
 { config, pkgs, lib, ... }:
 let
   sources = import ./nix/sources.nix;
-
+  mkExt = name: src: 
+    { name = name;
+      publisher = src.owner;
+      version = src.version;
+      sha256 = src.sha256; };
   extensions = (with pkgs.vscode-extensions;
     [
       # bbenoist.Nix
     ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "Nix";
-        publisher = sources.Nix.owner;
-        version = sources.Nix.version;
-        sha256 = sources.Nix.sha256;
-      }
-      {
-        name = "path-intellisense";
-        publisher = sources.path-intellisense.owner;
-        version = sources.path-intellisense.version;
-        sha256 = sources.path-intellisense.sha256;
-      }
-      {
-        name = "vim";
-        publisher = sources.vim.owner;
-        version = sources.vim.version;
-        sha256 = sources.vim.sha256;
-      }
-      {
-        name = "bracket-lens";
-        publisher = sources.bracket-lens.owner;
-        version = sources.bracket-lens.version;
-        sha256 = sources.bracket-lens.sha256;
-      }
+      (mkExt "Nix" sources.Nix)
+      (mkExt "path-intellisense" sources.path-intellisense)
+      (mkExt "vim" sources.vim)
+      (mkExt "bracket-lens" sources.bracket-lens)
     ];
   vscode-with-extensions =
     pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
