@@ -21,15 +21,23 @@ function clean_up() {
 
 function print_help() {
     cat << EOF
+
+
+##############################################
+# VSCode must be restarted to apply changes! #
+##############################################
+
+
 Usage: $SCRIPT_NAME [OPTION]
 
     -s, --sync                            synchronize with VSCode (add only).
     -a, --add=<Publisher>.<ExtensionName> add package. 
     -u, --update                          update extensions.
-    
     -h, --help                            display this help and exit.
 
+
 Example:
+
     $SCRIPT_NAME -s
     $SCRIPT_NAME -a bbenoist.nix
     $SCRIPT_NAME -u
