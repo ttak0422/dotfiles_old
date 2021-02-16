@@ -1,11 +1,13 @@
 { config, pkgs, lib, ... }:
 let
-  sources = import ./nix/sources.nix;
-  mkExt = name: src: 
-    { name = name;
-      publisher = src.owner;
-      version = src.version;
-      sha256 = src.sha256; };
+  sources =
+    import ./../../../sources.nix { sourcesFile = ./../../../vscode.json; };
+  mkExt = name: src: {
+    name = name;
+    publisher = src.owner;
+    version = src.version;
+    sha256 = src.sha256;
+  };
   extensions = (with pkgs.vscode-extensions;
     [
       # bbenoist.Nix

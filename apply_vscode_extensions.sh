@@ -1,6 +1,7 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p curl jq unzip getopt
 
+cd `dirname $0`
 SCRIPT_NAME=${0##*/}
 
 CODE=$(command -v code)
@@ -54,14 +55,14 @@ function add_ext() {
     rm -Rf "$EXT_TEMP"
     URL_TPL="https://$1.gallery.vsassets.io/_apis/public/gallery/publisher/$1/extension/$2/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
     echo "name: $2, version: $VER, tpl: $URL_TPL"
-    niv add "$2" -o "$1" -v "$VER" -t "$URL_TPL"
+    niv -s ./nix/vscode.json add "$2" -o "$1" -v "$VER" -t "$URL_TPL"
 }
 
 function sync() {
     declare -A exts 
     trap clean_up SIGINT
 
-    for ext in $(niv show | grep "^\S.*$" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"); do
+    for ext in $(niv -s ./nix/vscode.json show | grep "^\S.*$" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"); do
         exts[$ext]="contains"
     done
 
