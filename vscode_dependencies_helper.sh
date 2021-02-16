@@ -4,16 +4,20 @@
 cd `dirname $0`
 SCRIPT_NAME=${0##*/}
 
+function fail() {
+    echo "$1" >&2
+    exit 1
+}
+
 CODE=$(command -v code)
 if [ -z "$CODE" ]; then 
     fail "vscode not found!"
 fi
 
-
-function fail() {
-    echo "$1" >&2
-    exit 1
-}
+NIV=$(command -v niv)
+if [ -z "$NIV" ]; then
+    fail "niv not found!"
+fi
 
 function clean_up() {
     echo "cleaning up..."
