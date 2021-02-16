@@ -11,12 +11,8 @@ let
   extensions = (with pkgs.vscode-extensions;
     [
       # bbenoist.Nix
-    ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      (mkExt "Nix" sources.Nix)
-      (mkExt "path-intellisense" sources.path-intellisense)
-      (mkExt "vim" sources.vim)
-      (mkExt "bracket-lens" sources.bracket-lens)
-    ];
+    ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace
+    (lib.attrsets.mapAttrsToList mkExt sources);
   vscode-with-extensions =
     pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
 in { environment.systemPackages = [ vscode-with-extensions ]; }
