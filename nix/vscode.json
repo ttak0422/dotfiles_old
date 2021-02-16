@@ -15,6 +15,46 @@
         "url_template": "https://wraith13.gallery.vsassets.io/_apis/public/gallery/publisher/wraith13/extension/bracket-lens/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "1.5.0"
     },
+    "csharp": {
+        "owner": "ms-dotnettools",
+        "sha256": "1609yxa6h5db8hknqz12f3l8wh71lfv8ngw1yzxs6smkxbfywvg4",
+        "type": "file",
+        "url": "https://ms-dotnettools.gallery.vsassets.io/_apis/public/gallery/publisher/ms-dotnettools/extension/csharp/1.23.9/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://ms-dotnettools.gallery.vsassets.io/_apis/public/gallery/publisher/ms-dotnettools/extension/csharp/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "1.23.9"
+    },
+    "gitlens": {
+        "owner": "eamodio",
+        "sha256": "1ba72sr7mv9c0xzlqlxbv1x8p6jjvdjkkf7dn174v8b8345164v6",
+        "type": "file",
+        "url": "https://eamodio.gallery.vsassets.io/_apis/public/gallery/publisher/eamodio/extension/gitlens/11.2.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://eamodio.gallery.vsassets.io/_apis/public/gallery/publisher/eamodio/extension/gitlens/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "11.2.1"
+    },
+    "go": {
+        "owner": "golang",
+        "sha256": "1gbb13gmif2zzia49153czk3ib6lgwg37gx8gzs4773m9x5hmb2l",
+        "type": "file",
+        "url": "https://golang.gallery.vsassets.io/_apis/public/gallery/publisher/golang/extension/go/0.22.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://golang.gallery.vsassets.io/_apis/public/gallery/publisher/golang/extension/go/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "0.22.1"
+    },
+    "haskell": {
+        "owner": "haskell",
+        "sha256": "0vxsn4s27n1aqp5pp4cipv804c9cwd7d9677chxl0v18j8bf7zly",
+        "type": "file",
+        "url": "https://haskell.gallery.vsassets.io/_apis/public/gallery/publisher/haskell/extension/haskell/1.2.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://haskell.gallery.vsassets.io/_apis/public/gallery/publisher/haskell/extension/haskell/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "1.2.0"
+    },
+    "ionide-fsharp": {
+        "owner": "ionide",
+        "sha256": "1cp7ysi1zmbbd37vv1273phzd8lrqj3br0fcdh8d608y4isgbbag",
+        "type": "file",
+        "url": "https://ionide.gallery.vsassets.io/_apis/public/gallery/publisher/ionide/extension/ionide-fsharp/5.3.2/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://ionide.gallery.vsassets.io/_apis/public/gallery/publisher/ionide/extension/ionide-fsharp/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "5.3.2"
+    },
     "path-intellisense": {
         "owner": "christian-kohler",
         "sha256": "1wyp3k4gci1i64nrry12il6yflhki18gq2498z3nlsx4yi36jb3l",
@@ -23,6 +63,14 @@
         "url_template": "https://christian-kohler.gallery.vsassets.io/_apis/public/gallery/publisher/christian-kohler/extension/path-intellisense/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "2.3.0"
     },
+    "python": {
+        "owner": "ms-python",
+        "sha256": "0drvpr98gryldbfmwjnyig8pmalrd22biqmhkhvih3sxzcwsyqjk",
+        "type": "file",
+        "url": "https://ms-python.gallery.vsassets.io/_apis/public/gallery/publisher/ms-python/extension/python/2021.1.502429796/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://ms-python.gallery.vsassets.io/_apis/public/gallery/publisher/ms-python/extension/python/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "2021.1.502429796"
+    },
     "vim": {
         "owner": "vscodevim",
         "sha256": "18gv9mncanaixvg103qssp7ddy12kcfinjhx2c9icdh49zm5v2nb",
@@ -30,5 +78,13 @@
         "url": "https://vscodevim.gallery.vsassets.io/_apis/public/gallery/publisher/vscodevim/extension/vim/1.18.9/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "url_template": "https://vscodevim.gallery.vsassets.io/_apis/public/gallery/publisher/vscodevim/extension/vim/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "1.18.9"
+    },
+    "vscode-markdownlint": {
+        "owner": "davidanson",
+        "sha256": "1k5rmp8y5mlknx585qk0hnvn0jlcdhgpvqwvjw1jqj4b14dqcq63",
+        "type": "file",
+        "url": "https://davidanson.gallery.vsassets.io/_apis/public/gallery/publisher/davidanson/extension/vscode-markdownlint/0.39.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://davidanson.gallery.vsassets.io/_apis/public/gallery/publisher/davidanson/extension/vscode-markdownlint/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "0.39.0"
     }
 }
