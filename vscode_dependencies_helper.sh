@@ -1,8 +1,11 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p curl jq unzip getopt
 
+set -e
+
 cd `dirname $0`
 SCRIPT_NAME=${0##*/}
+SOURCE_FILE="./nix/vscode.json"
 
 function fail() {
     echo "$1" >&2
@@ -22,6 +25,50 @@ fi
 function clean_up() {
     echo "cleaning up..."
     rm -rf "/tmp/vscode_exts_*"
+}
+
+function sync() {
+    declare -A exts 
+    trap clean_up SIGINT
+
+    for ext in $($NIV -s $SOURCE_FILE show --no-colors); do
+        exts[$ext]="contains"
+    done
+
+    for ext in $($CODE --list-extensions); do 
+        echo "$ext"
+        OWNER=$(echo $ext | cut -d. -f1)
+        EXT=$(echo $ext | cut -d. -f2)
+        if [ -z "${exts["$EXT"]}" ]; then
+            echo "not exist"
+            add_ext "$OWNER" "$EXT" 
+        fi
+    done
+}
+
+function add() {
+    OWNER=$(echo $1 | cut -d. -f1)
+    EXT=$(echo $1 | cut -d. -f2)
+    echo "Owner: $OWNER, Ext: $EXT"
+    add_ext "$OWNER" "$EXT"
+}
+
+function add_ext() {
+    N="$1.$2"
+    EXT_TEMP=$(mktemp -d -t vscode_exts_XXXXXXXX)
+    URL="https://$1.gallery.vsassets.io/_apis/public/gallery/publisher/$1/extension/$2/latest/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
+    # TODO: check status code.
+    curl --silent --show-error --fail -X GET -o "$EXT_TEMP/$N.zip" "$URL"
+    VER=$(jq -r '.version' <(unzip -qc "$EXT_TEMP/$N.zip" "extension/package.json"))
+    rm -Rf "$EXT_TEMP"
+    URL_TPL="https://$1.gallery.vsassets.io/_apis/public/gallery/publisher/$1/extension/$2/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
+    echo "name: $2, version: $VER, tpl: $URL_TPL"
+    $NIV -s $SOURCE_FILE add "$2" -o "$1" -v "$VER" -t "$URL_TPL"
+}
+
+function drop() {
+    echo "drop"
+    $NIV -s $SOURCE_FILE drop "$1"
 }
 
 function print_help() {
@@ -50,49 +97,6 @@ Example:
     $SCRIPT_NAME -d python
     $SCRIPT_NAME -u
 EOF
-}
-
-function add_ext() {
-    N="$1.$2"
-    EXT_TEMP=$(mktemp -d -t vscode_exts_XXXXXXXX)
-    URL="https://$1.gallery.vsassets.io/_apis/public/gallery/publisher/$1/extension/$2/latest/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
-    # TODO: check status code.
-    curl --silent --show-error --fail -X GET -o "$EXT_TEMP/$N.zip" "$URL"
-    VER=$(jq -r '.version' <(unzip -qc "$EXT_TEMP/$N.zip" "extension/package.json"))
-    rm -Rf "$EXT_TEMP"
-    URL_TPL="https://$1.gallery.vsassets.io/_apis/public/gallery/publisher/$1/extension/$2/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
-    echo "name: $2, version: $VER, tpl: $URL_TPL"
-    $NIV -s ./nix/vscode.json add "$2" -o "$1" -v "$VER" -t "$URL_TPL"
-}
-
-function drop() {
-    echo "drop"
-    $NIV -s ./nix/vscode.json drop "$1"
-}
-
-function sync() {
-    declare -A exts 
-    trap clean_up SIGINT
-
-    for ext in $($NIV -s ./nix/vscode.json show --no-colors); do
-        exts[$ext]="contains"
-    done
-
-    for ext in $($CODE --list-extensions); do 
-        OWNER=$(echo $ext | cut -d. -f1)
-        EXT=$(echo $ext | cut -d. -f2)
-        if [ -z "${exts["$EXT"]}" ]; then
-            echo "not exist"
-            add_ext "$OWNER" "$EXT" 
-        fi
-    done
-}
-
-function add() {
-    OWNER=$(echo $1 | cut -d. -f1)
-    EXT=$(echo $1 | cut -d. -f2)
-    echo "Owner: $OWNER, Ext: $EXT"
-    add_ext "$OWNER" "$EXT"
 }
 
 params=$(getopt -n "$SCRIPT_NAME" \
