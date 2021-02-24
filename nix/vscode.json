@@ -255,14 +255,6 @@
         "url_template": "https://ms-azuretools.gallery.vsassets.io/_apis/public/gallery/publisher/ms-azuretools/extension/vscode-docker/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "1.10.0"
     },
-    "vscode-kubernetes-tools": {
-        "owner": "ms-kubernetes-tools",
-        "sha256": "0zdhyy8xpv12dgs3s14cidz0vxcjd75q3k9gh68gl9x81sc3swwr",
-        "type": "file",
-        "url": "https://ms-kubernetes-tools.gallery.vsassets.io/_apis/public/gallery/publisher/ms-kubernetes-tools/extension/vscode-kubernetes-tools/1.3.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "url_template": "https://ms-kubernetes-tools.gallery.vsassets.io/_apis/public/gallery/publisher/ms-kubernetes-tools/extension/vscode-kubernetes-tools/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "version": "1.3.0"
-    },
     "vscode-markdownlint": {
         "owner": "davidanson",
         "sha256": "1k5rmp8y5mlknx585qk0hnvn0jlcdhgpvqwvjw1jqj4b14dqcq63",
