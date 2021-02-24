@@ -38,6 +38,7 @@ Usage: $SCRIPT_NAME [OPTION]
     -s, --sync                            synchronize with VSCode (add only).
                                           just for migration.
     -a, --add=<Publisher>.<ExtensionName> add package. 
+    -d, --drop=<ExtensionName>            drop package.
     -u, --update                          update extensions.
     -h, --help                            display this help and exit.
 
@@ -46,6 +47,7 @@ Example:
 
     $SCRIPT_NAME -s
     $SCRIPT_NAME -a bbenoist.nix
+    $SCRIPT_NAME -d python
     $SCRIPT_NAME -u
 EOF
 }
@@ -61,6 +63,11 @@ function add_ext() {
     URL_TPL="https://$1.gallery.vsassets.io/_apis/public/gallery/publisher/$1/extension/$2/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
     echo "name: $2, version: $VER, tpl: $URL_TPL"
     $NIV -s ./nix/vscode.json add "$2" -o "$1" -v "$VER" -t "$URL_TPL"
+}
+
+function drop() {
+    echo "drop"
+    $NIV -s ./nix/vscode.json drop "$1"
 }
 
 function sync() {
@@ -89,8 +96,8 @@ function add() {
 }
 
 params=$(getopt -n "$SCRIPT_NAME" \
-    -o sa:uh \
-    -l sync,add:,update,help \
+    -o sa:d:uh \
+    -l sync,add:,drop:,update,help \
     -- "$@")
 
 if [[ $? -ne 0 ]]; then 
@@ -100,6 +107,7 @@ eval set -- $params
 
 sync=
 add=
+drop=
 update=
 
 while true
@@ -111,6 +119,10 @@ do
             ;;
         -a | --add)
             add=$2
+            shift 2
+            ;;
+        -d | --drop)
+            drop=$2
             shift 2
             ;;
         -u | --update)
@@ -135,6 +147,8 @@ if [[ -n $sync ]]; then
     sync
 elif [[ -n $add ]]; then
     add "$add"
+elif [[ -n $drop ]]; then
+    drop "$drop"
 elif [[ -n $update ]]; then
     echo "wip..."
 else 
