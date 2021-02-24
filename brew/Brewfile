@@ -1,3 +1,4 @@
+brew "lunchy"
 cask "alacritty"
 cask "apenngrace/vulkan/vulkan-sdk"
 cask "font-source-code-pro"
