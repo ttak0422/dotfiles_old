@@ -36,6 +36,7 @@ function print_help() {
 Usage: $SCRIPT_NAME [OPTION]
 
     -s, --sync                            synchronize with VSCode (add only).
+                                          just for migration.
     -a, --add=<Publisher>.<ExtensionName> add package. 
     -u, --update                          update extensions.
     -h, --help                            display this help and exit.
