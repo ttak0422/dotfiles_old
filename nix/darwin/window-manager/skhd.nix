@@ -19,7 +19,9 @@ let
     ${mod} - s : yabai -m window --resize bottom:0:${toString resize}
     ${mod} - d : yabai -m window --resize right:${toString resize}:0
     # toggle window fullscreen zoom
-    ${mod} - f : yabai -m window --toggle zoom-fullscreen
+    ${mod} - z : yabai -m window --toggle zoom-fullscreen
+    # float window
+    ${mod} - f : yabai -m window --toggle float && yabai -m window --grid 10:10:2:1:7:8
       '';
 in {
   services.skhd = {
