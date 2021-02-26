@@ -13,7 +13,7 @@ in {
     enableScriptingAddition = true;
     config = {
       mouse_follows_focus = "on";
-      focus_follows_mouse = "autoraise";
+      focus_follows_mouse = "off";
       window_shadow = "off";
       layout = "bsp";
       top_padding = 12;
