@@ -23,6 +23,9 @@ in {
       auto_balance = "on";
       mouse_action1 = "move";
       mouse_action2 = "resize";
+      window_opacity = "on";
+      active_window_opacity = "1.0";
+      normal_window_opacity = "0.85";
     };
     extraConfig = spaces + "\n" + rules;
   };
