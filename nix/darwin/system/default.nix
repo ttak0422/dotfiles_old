@@ -1,3 +1,3 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./dock.nix ./finder.nix ./keyboard.nix ];
+  imports = [ ./dock.nix ./finder.nix ./keyboard.nix ./menubar.nix ];
 }

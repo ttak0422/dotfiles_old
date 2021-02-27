@@ -1,1 +1,3 @@
-{ config, pkgs, lib, ... }: { imports = [ ./skhd.nix ./yabai.nix ]; }
+{ config, pkgs, lib, ... }: {
+  imports = [ ./skhd.nix ./spacebar.nix ./yabai.nix ];
+}

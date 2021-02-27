@@ -27,6 +27,9 @@ in {
       active_window_opacity = "1.0";
       normal_window_opacity = "0.85";
     };
-    extraConfig = spaces + "\n" + rules;
+    extraConfig = spaces + "\n" + rules + ''
+      yabai -m space --gap abs:12
+      yabai -m config external_bar all:0:26         
+    '';
   };
 }
