@@ -4,6 +4,34 @@
 <img  src="https://img.shields.io/github/license/ttak0422/dotfiles?style=for-the-badge&color=black">
 </div>
 
+## About
+
+```
+├── brew                    ### brew ###
+└── nix                     ### nix ###
+    ├── darwin              ## nix-darwin ##
+    │   ├── system          # system configuration
+    │   ├── tools           # some services that can only be defined in nix-darwin
+    │   └── window-manager  # yabai
+    ├── home                ## home-manager ##
+    │   ├── dev             # python, go, ...
+    │   ├── git             # git
+    │   ├── nixos           # some package that can only be defined for nixos
+    │   ├── scripts         # some scripts
+    │   ├── shell           # bash, zsh, fish
+    │   ├── tools           # cui
+    │   └── virtualization  # docker, k8s, ...
+    └── nixos               ## nixos ##
+        ├── applications    # gui application
+        │   └── vscode      # vscode
+        ├── language        # ime, fonts, ...
+        ├── networking      # network
+        ├── services        # service
+        │   └── xserver     # x window system
+        ├── utils           # e.g. tlp
+        └── virtualization  # docker, vm, ...
+```
+
 ## Usage
 
 ### Linux
