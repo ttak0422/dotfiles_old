@@ -12,6 +12,7 @@
     [
       asciidoctor
       bat
+      bottom
       coreutils-full
       direnv
       figlet
