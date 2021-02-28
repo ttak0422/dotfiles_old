@@ -6,10 +6,8 @@
       "cd $(ghq root)/$(ghq list | peco)";
     "gg" = "ghq get";
     ".." = "cd ..";
-    # "top" = "btm";
+    "top" = "htop";
     "ps" = "procs";
-    "vi" = "${pkgs.vim}/bin/vim";
-    "vim" = "nvim";
   };
   abbrevs = {
     static = {

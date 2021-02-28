@@ -17,6 +17,7 @@
       direnv
       figlet
       hey
+      htop
       jq
       killall
       lsof
