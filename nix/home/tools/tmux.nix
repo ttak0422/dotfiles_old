@@ -128,6 +128,7 @@ in {
     plugins = plugins;
     extraConfig = extraConfig;
     secureSocket = false;
+    terminal = "screen-256color";
   };
   home = lib.mkMerge ([
     {
