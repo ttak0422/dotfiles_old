@@ -12,7 +12,7 @@ in {
     package = pkgs.yabai;
     enableScriptingAddition = true;
     config = {
-      mouse_follows_focus = "on";
+      mouse_follows_focus = "off";
       focus_follows_mouse = "off";
       window_shadow = "off";
       layout = "bsp";
