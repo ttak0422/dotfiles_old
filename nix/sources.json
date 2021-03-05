@@ -11,18 +11,6 @@
         "url": "https://github.com/evanlucas/fish-kubectl-completions/archive/bbe3b831bcf8c0511fceb0607e4e7511c73e8c71.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "neovim-nightly-overlay": {
-        "branch": "master",
-        "description": "[maintainer=@mjlbach] ",
-        "homepage": "",
-        "owner": "nix-community",
-        "repo": "neovim-nightly-overlay",
-        "rev": "4ffc7033f9639e3204c55fc68b53888350925b06",
-        "sha256": "12ld8y5f0zvzkjmrizb38wijl64rik7f21i0nncp203awc64b5f0",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/4ffc7033f9639e3204c55fc68b53888350925b06.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "zsh-256color": {
         "branch": "master",
         "description": "ZSH plugin to enhance the terminal environment with 256 colors",
