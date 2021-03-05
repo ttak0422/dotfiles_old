@@ -231,14 +231,6 @@
         "url_template": "https://scala-lang.gallery.vsassets.io/_apis/public/gallery/publisher/scala-lang/extension/scala/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "0.5.2"
     },
-    "vim": {
-        "owner": "vscodevim",
-        "sha256": "18gv9mncanaixvg103qssp7ddy12kcfinjhx2c9icdh49zm5v2nb",
-        "type": "file",
-        "url": "https://vscodevim.gallery.vsassets.io/_apis/public/gallery/publisher/vscodevim/extension/vim/1.18.9/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "url_template": "https://vscodevim.gallery.vsassets.io/_apis/public/gallery/publisher/vscodevim/extension/vim/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "version": "1.18.9"
-    },
     "vscode-docker": {
         "owner": "ms-azuretools",
         "sha256": "0kryrvs1gm2d3kj378gsszhn4dkkgv34vir4gky7347jw2rmg7rb",
