@@ -263,6 +263,14 @@
         "url_template": "https://davidanson.gallery.vsassets.io/_apis/public/gallery/publisher/davidanson/extension/vscode-markdownlint/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "0.39.0"
     },
+    "vscode-neovim": {
+        "owner": "asvetliakov",
+        "sha256": "0a3zwp1w8ak985327cmjw28i7zlxcj1a6jwb750vd867hhqfw9bp",
+        "type": "file",
+        "url": "https://asvetliakov.gallery.vsassets.io/_apis/public/gallery/publisher/asvetliakov/extension/vscode-neovim/0.0.78/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "url_template": "https://asvetliakov.gallery.vsassets.io/_apis/public/gallery/publisher/asvetliakov/extension/vscode-neovim/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
+        "version": "0.0.78"
+    },
     "vscode-pitch-black-theme": {
         "owner": "viktorqvarfordt",
         "sha256": "1g00jph9z3kj0xscclc2746m54v9dr17ra08p5in2nglkfhx6d8x",
