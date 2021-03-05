@@ -63,14 +63,6 @@
         "url_template": "https://naumovs.gallery.vsassets.io/_apis/public/gallery/publisher/naumovs/extension/color-highlight/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "2.3.0"
     },
-    "cpptools": {
-        "owner": "ms-vscode",
-        "sha256": "0xyjnrxc4iahckkap2gy000w6krymnax9n2fs7ipgqbcnd4pmjxi",
-        "type": "file",
-        "url": "https://ms-vscode.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscode/extension/cpptools/1.2.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "url_template": "https://ms-vscode.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscode/extension/cpptools/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "version": "1.2.1"
-    },
     "csharp": {
         "owner": "ms-dotnettools",
         "sha256": "1609yxa6h5db8hknqz12f3l8wh71lfv8ngw1yzxs6smkxbfywvg4",
