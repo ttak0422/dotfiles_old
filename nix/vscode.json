@@ -47,14 +47,6 @@
         "url_template": "https://wraith13.gallery.vsassets.io/_apis/public/gallery/publisher/wraith13/extension/bracket-lens/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "1.5.0"
     },
-    "bracket-pair-colorizer-2": {
-        "owner": "CoenraadS",
-        "sha256": "0nppgfbmw0d089rka9cqs3sbd5260dhhiipmjfga3nar9vp87slh",
-        "type": "file",
-        "url": "https://CoenraadS.gallery.vsassets.io/_apis/public/gallery/publisher/CoenraadS/extension/bracket-pair-colorizer-2/0.2.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "url_template": "https://CoenraadS.gallery.vsassets.io/_apis/public/gallery/publisher/CoenraadS/extension/bracket-pair-colorizer-2/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "version": "0.2.0"
-    },
     "color-highlight": {
         "owner": "naumovs",
         "sha256": "1syzf43ws343z911fnhrlbzbx70gdn930q67yqkf6g0mj8lf2za2",
