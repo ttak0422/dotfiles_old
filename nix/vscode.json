@@ -55,14 +55,6 @@
         "url_template": "https://naumovs.gallery.vsassets.io/_apis/public/gallery/publisher/naumovs/extension/color-highlight/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
         "version": "2.3.0"
     },
-    "csharp": {
-        "owner": "ms-dotnettools",
-        "sha256": "1609yxa6h5db8hknqz12f3l8wh71lfv8ngw1yzxs6smkxbfywvg4",
-        "type": "file",
-        "url": "https://ms-dotnettools.gallery.vsassets.io/_apis/public/gallery/publisher/ms-dotnettools/extension/csharp/1.23.9/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "url_template": "https://ms-dotnettools.gallery.vsassets.io/_apis/public/gallery/publisher/ms-dotnettools/extension/csharp/<version>/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage",
-        "version": "1.23.9"
-    },
     "elm-ls-vscode": {
         "owner": "elmTooling",
         "sha256": "19g5bchi3ivnxpifxfanvxavj6m4x7xvgx9hqh86yw1fssdrdy4d",

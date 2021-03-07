@@ -11,6 +11,7 @@ let
   extensions = (with pkgs.vscode-extensions; [
     ms-kubernetes-tools.vscode-kubernetes-tools
     ms-vscode.cpptools
+    ms-dotnettools.csharp
   ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace
     (lib.attrsets.mapAttrsToList mkExt sources);
   vscode-with-extensions =
