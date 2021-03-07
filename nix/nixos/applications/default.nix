@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./vscode ];
+  imports = [ ./jetbrains ./vscode ];
   environment.systemPackages = with pkgs; [
     google-chrome
     termite
