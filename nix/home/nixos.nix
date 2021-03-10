@@ -17,6 +17,7 @@
     sessionVariables = {
       # sort by name
       # Foo, Bar, Baz -> Bar,Baz, Foo
+      EDITOR = "vim";
     };
   };
 }
