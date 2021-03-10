@@ -32,6 +32,7 @@ in {
         set incsearch
         " indent
         set tabstop=${toString indentSpace}
+        set shiftwidth=${toString indentSpace}
         set smartindent
         set clipboard+=${if pkgs.stdenv.isDarwin then "unnamed" else "unnamedplus"}
         " tab 
