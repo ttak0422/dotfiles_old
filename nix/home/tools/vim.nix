@@ -4,7 +4,7 @@ let
   sources = import ./../../sources.nix;
   configPath = ".config/nvim";
   indentSpace = 2;
-  # WIP
+  # WIP https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt
   makePlugin = { repo }: ''
     [[plugins]]
     repo = '${repo}'
@@ -84,6 +84,10 @@ in {
         set showtabline=2
         " statusline
         set laststatus=2
+        let g:lightline = {
+        \ 'separator': { 'left': "\ue0bc ", 'right': "\ue0be" },
+        \ 'subseparator': { 'left': "\ue0bd ", 'right': "\ue0bf" },
+        \ }
       '';
     };
   };
