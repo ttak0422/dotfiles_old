@@ -9,12 +9,14 @@ in {
       (builtins.fetchTarball { url = sources.neovim-nightly-overlay.url; }))
   ];
   programs = {
-    vim.enable = true;
     neovim = {
       enable = true;
       package = pkgs.neovim-nightly;
       vimAlias = true;
       vimdiffAlias = true;
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
       extraConfig = ''
         set encoding=utf-8
         scriptencoding utf-8
