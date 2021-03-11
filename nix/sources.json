@@ -1,4 +1,16 @@
 {
+    "dein.vim": {
+        "branch": "master",
+        "description": ":zap: Dark powered Vim/Neovim plugin manager",
+        "homepage": "",
+        "owner": "Shougo",
+        "repo": "dein.vim",
+        "rev": "adac91b05ad9ef123d859edfe549ffde236f930c",
+        "sha256": "1mh9y2sj492933w8665qb2v3k9w4zkl7hyic17m4hffsjwhkzgb2",
+        "type": "tarball",
+        "url": "https://github.com/Shougo/dein.vim/archive/adac91b05ad9ef123d859edfe549ffde236f930c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "fish-kubectl-completions": {
         "branch": "master",
         "description": "kubectl completions for fish shell",

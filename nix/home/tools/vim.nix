@@ -2,12 +2,53 @@
 
 let
   sources = import ./../../sources.nix;
+  configPath = ".config/nvim";
   indentSpace = 2;
+  # WIP
+  makePlugin = { repo }: ''
+    [[plugins]]
+    repo = '${repo}'
+  '';
+  deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin [{
+    repo = "itchyny/lightline.vim";
+  }];
+  deinLazyPlugins = lib.strings.concatMapStringsSep "\n" makePlugin [ ];
+  deinDir = ".cache/dein";
+  deinRepoDir = builtins.fetchTarball {
+    name = "dein";
+    url = sources."dein.vim".url;
+  };
+  deinPluginsPath = "${configPath}/.dein.toml";
+  deinLazyPluginsPath = "${configPath}/.dein_lazy.toml";
+  deinConfig = ''
+    let s:dein_dir = '${config.home.homeDirectory}/${deinDir}'
+    let s:dein_repo_dir = '${deinRepoDir}'
+    set runtimepath+=${deinRepoDir}
+
+    if dein#load_state(s:dein_dir)
+      call dein#begin(s:dein_dir)
+      let s:toml = '${config.home.homeDirectory}/${deinPluginsPath}'
+      let s:lazy_toml = '${config.home.homeDirectory}/${deinLazyPluginsPath}'
+      call dein#load_toml(s:toml, {'lazy': 0})
+      call dein#load_toml(s:lazy_toml, {'lazy': 1})
+      call dein#end()
+      call dein#save_state()
+    endif
+
+    " If you want to install not installed plugins on startup.
+    if dein#check_install()
+      call dein#install()
+    endif
+  '';
 in {
   nixpkgs.overlays = [
     (import
       (builtins.fetchTarball { url = sources.neovim-nightly-overlay.url; }))
   ];
+  home.file = {
+    "${deinPluginsPath}".text = deinPlugins;
+    "${deinLazyPluginsPath}".text = deinLazyPlugins;
+  };
   programs = {
     neovim = {
       enable = true;
@@ -17,7 +58,7 @@ in {
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;
-      extraConfig = ''
+      extraConfig = deinConfig + ''
         set encoding=utf-8
         scriptencoding utf-8
         syntax enable
@@ -36,7 +77,9 @@ in {
         set tabstop=${toString indentSpace}
         set shiftwidth=${toString indentSpace}
         set smartindent
-        set clipboard+=${if pkgs.stdenv.isDarwin then "unnamed" else "unnamedplus"}
+        set clipboard+=${
+          if pkgs.stdenv.isDarwin then "unnamed" else "unnamedplus"
+        }
         " tab 
         set showtabline=2
         " statusline

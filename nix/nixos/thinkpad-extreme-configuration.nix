@@ -66,7 +66,7 @@
   environment.systemPackages = with pkgs; [ linuxPackages.tp_smapi ];
 
   system.stateVersion = "20.09";
-  
+
   time.timeZone = "Asia/Tokyo";
 }
 
