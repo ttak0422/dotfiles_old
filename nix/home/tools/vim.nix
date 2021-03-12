@@ -6,8 +6,8 @@ let
   indentSpace = 2;
   wrap = txt: "'${txt}'";
   # WIP https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt
-  makePlugin =
-    { repo, on_ft ? [ ], build ? null, marged ? null, depends ? [ ] }: ''
+  makePlugin = { repo, on_ft ? [ ], build ? null, marged ? null, depends ? [ ]
+    , config' ? null }: ''
       [[plugins]]
       repo = ${wrap repo}
       ${lib.optionalString (on_ft != [ ])
@@ -16,7 +16,15 @@ let
       ${lib.optionalString (marged != null) "marged = ${toString marged}"}
     '';
   deinPluginsList = [
-    { repo = "itchyny/lightline.vim"; }
+    {
+      repo = "itchyny/lightline.vim";
+      config' = ''
+        let g:lightline = {
+        \ 'separator': { 'left': "\ue0bc ", 'right': "\ue0be" },
+        \ 'subseparator': { 'left': "\ue0bd ", 'right': "\ue0bf" },
+        \ }
+      '';
+    }
     {
       repo = "iamcco/markdown-preview.nvim";
       on_ft = [ "markdown" "pandoc.markdown" "rmd" ];
@@ -38,9 +46,20 @@ let
       repo = "LnL7/vim-nix";
       on_ft = [ "nix" ];
     }
-    { repo = "vim-jp/vimdoc-ja"; }
+    {
+      repo = "vim-jp/vimdoc-ja";
+      config' = ''
+        set helplang=ja
+      '';
+
+    }
     { repo = "markonm/traces.vim"; }
-    { repo = "preservim/nerdtree"; }
+    {
+      repo = "preservim/nerdtree";
+      config' = ''
+        autocmd VimEnter * execute 'NERDTree'
+      '';
+    }
   ];
   deinLazyPluginsList = [ ];
   deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
@@ -109,14 +128,12 @@ in {
       extraConfig = deinConfig + ''
         set encoding=utf-8
         scriptencoding utf-8
-        set helplang=ja
         syntax enable
         filetype plugin indent on
         set cursorline
         set number
         set relativenumber
         autocmd TermOpen * setlocal nonumber norelativenumber
-        autocmd VimEnter * execute 'NERDTree'
         set virtualedit=block
         set wildmenu
         " search
@@ -135,11 +152,9 @@ in {
         set showtabline=2
         " statusline
         set laststatus=2
-        let g:lightline = {
-        \ 'separator': { 'left': "\ue0bc ", 'right': "\ue0be" },
-        \ 'subseparator': { 'left': "\ue0bd ", 'right': "\ue0bf" },
-        \ }
-      '';
+      '' + (lib.concatStringsSep "\n" (builtins.map (x: x.config')
+        (builtins.filter (x: x ? config')
+          (deinPluginsList ++ deinLazyPluginsList))));
     };
   };
 }
