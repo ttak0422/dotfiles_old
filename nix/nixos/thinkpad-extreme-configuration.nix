@@ -60,6 +60,7 @@
   users.users.tak = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
+    shell = pkgs.zsh;
   };
   nixpkgs.config.allowUnfree = true;
 
