@@ -4,14 +4,23 @@ let
   sources = import ./../../sources.nix;
   configPath = ".config/nvim";
   indentSpace = 2;
+  wrap = txt: "'${txt}'";
   # WIP https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt
-  makePlugin = { repo }: ''
+  makePlugin = { repo, on_ft ? [ ], build ? null }: ''
     [[plugins]]
-    repo = '${repo}'
+    repo = ${wrap repo}
+    ${lib.optionalString (on_ft != [ ])
+    "on_ft = [${lib.strings.concatMapStringsSep ", " wrap on_ft}]"}
+    ${lib.optionalString (build != null) "build = ${wrap build}"}
   '';
-  deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin [{
-    repo = "itchyny/lightline.vim";
-  }];
+  deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin [
+    { repo = "itchyny/lightline.vim"; }
+    {
+      repo = "iamcco/markdown-preview.nvim";
+      on_ft = [ "markdown" "pandoc.markdown" "rmd" ];
+      build = ''sh -c "cd app && yarn install"'';
+    }
+  ];
   deinLazyPlugins = lib.strings.concatMapStringsSep "\n" makePlugin [ ];
   deinDir = ".cache/dein";
   deinRepoDir = builtins.fetchTarball {
@@ -28,7 +37,7 @@ let
     if !isdirectory(s:dein_dir)
       call mkdir(s:dein_dir, 'p')
     endif
-    
+
     if dein#load_state(s:dein_dir)
       call dein#begin(s:dein_dir)
       let s:toml = '${config.home.homeDirectory}/${deinPluginsPath}'
