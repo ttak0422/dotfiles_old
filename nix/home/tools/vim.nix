@@ -38,6 +38,8 @@ let
       repo = "LnL7/vim-nix";
       on_ft = [ "nix" ];
     }
+    { repo = "vim-jp/vimdoc-ja"; }
+    { repo = "markonm/traces.vim"; }
   ];
   deinLazyPluginsList = [ ];
   deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
@@ -106,6 +108,7 @@ in {
       extraConfig = deinConfig + ''
         set encoding=utf-8
         scriptencoding utf-8
+        set helplang=ja
         syntax enable
         filetype plugin indent on
         set cursorline
