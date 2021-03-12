@@ -40,6 +40,7 @@ let
     }
     { repo = "vim-jp/vimdoc-ja"; }
     { repo = "markonm/traces.vim"; }
+    { repo = "preservim/nerdtree"; }
   ];
   deinLazyPluginsList = [ ];
   deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
@@ -97,10 +98,10 @@ in {
     };
   };
   programs = {
+    vim = { enable = true; };
     neovim = {
       enable = true;
       package = pkgs.neovim-nightly;
-      vimAlias = true;
       vimdiffAlias = true;
       withNodeJs = true;
       withPython3 = true;
@@ -115,6 +116,7 @@ in {
         set number
         set relativenumber
         autocmd TermOpen * setlocal nonumber norelativenumber
+        autocmd VimEnter * execute 'NERDTree'
         set virtualedit=block
         set wildmenu
         " search
