@@ -30,6 +30,14 @@ let
       repo = "junegunn/fzf.vim";
       marged = 0;
     }
+    { repo = "prabirshrestha/vim-lsp"; }
+    { repo = "mattn/vim-lsp-settings"; }
+    { repo = "simeji/winresizer"; }
+    { repo = "mattn/emmet-vim"; }
+    {
+      repo = "LnL7/vim-nix";
+      on_ft = [ "nix" ];
+    }
   ];
   deinLazyPluginsList = [ ];
   deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
