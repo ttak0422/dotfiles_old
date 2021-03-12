@@ -6,22 +6,35 @@ let
   indentSpace = 2;
   wrap = txt: "'${txt}'";
   # WIP https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt
-  makePlugin = { repo, on_ft ? [ ], build ? null }: ''
-    [[plugins]]
-    repo = ${wrap repo}
-    ${lib.optionalString (on_ft != [ ])
-    "on_ft = [${lib.strings.concatMapStringsSep ", " wrap on_ft}]"}
-    ${lib.optionalString (build != null) "build = ${wrap build}"}
-  '';
-  deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin [
+  makePlugin =
+    { repo, on_ft ? [ ], build ? null, marged ? null, depends ? [ ] }: ''
+      [[plugins]]
+      repo = ${wrap repo}
+      ${lib.optionalString (on_ft != [ ])
+      "on_ft = [${lib.strings.concatMapStringsSep ", " wrap on_ft}]"}
+      ${lib.optionalString (build != null) "build = ${wrap build}"}
+      ${lib.optionalString (marged != null) "marged = ${toString marged}"}
+    '';
+  deinPluginsList = [
     { repo = "itchyny/lightline.vim"; }
     {
       repo = "iamcco/markdown-preview.nvim";
       on_ft = [ "markdown" "pandoc.markdown" "rmd" ];
       build = ''sh -c "cd app && yarn install"'';
     }
+    {
+      repo = "junegunn/fzf";
+      build = "./install --all";
+    }
+    {
+      repo = "junegunn/fzf.vim";
+      marged = 0;
+    }
   ];
-  deinLazyPlugins = lib.strings.concatMapStringsSep "\n" makePlugin [ ];
+  deinLazyPluginsList = [ ];
+  deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
+  deinLazyPlugins =
+    lib.strings.concatMapStringsSep "\n" makePlugin deinLazyPluginsList;
   deinDir = ".cache/dein";
   deinRepoDir = builtins.fetchTarball {
     name = "dein";
@@ -64,9 +77,14 @@ in {
     (import
       (builtins.fetchTarball { url = sources.neovim-nightly-overlay.url; }))
   ];
-  home.file = {
-    "${deinPluginsPath}".text = deinPlugins;
-    "${deinLazyPluginsPath}".text = deinLazyPlugins;
+  home = {
+    packages = lib.lists.unique (lib.lists.flatten (builtins.map (x: x.depends)
+      (builtins.filter (x: x ? depends)
+        (deinPluginsList ++ deinLazyPluginsList))));
+    file = {
+      "${deinPluginsPath}".text = deinPlugins;
+      "${deinLazyPluginsPath}".text = deinLazyPlugins;
+    };
   };
   programs = {
     neovim = {
