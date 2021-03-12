@@ -114,6 +114,7 @@ in {
         set cursorline
         set number
         set relativenumber
+        autocmd TermOpen * setlocal nonumber norelativenumber
         set virtualedit=block
         set wildmenu
         " search
