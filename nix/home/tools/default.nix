@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }: {
   imports = [
+    ./fzf.nix
     ./glow.nix
     ./lorri.nix
     ./peco.nix
