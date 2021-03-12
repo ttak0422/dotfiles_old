@@ -3,6 +3,7 @@
     [
       aws
       azure-cli
+      docui
       eksctl
       google-cloud-sdk
       istioctl
