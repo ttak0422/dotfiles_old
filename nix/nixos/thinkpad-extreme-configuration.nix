@@ -7,6 +7,7 @@
 {
   imports = [
     ./applications
+    ./dbs
     ./language
     ./networking
     ./services
