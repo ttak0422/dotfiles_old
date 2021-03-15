@@ -8,6 +8,7 @@
     ".." = "cd ..";
     "top" = "htop";
     "ps" = "procs";
+    "ls" = "exa";
   };
   abbrevs = {
     static = {

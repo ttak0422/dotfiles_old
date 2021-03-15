@@ -16,6 +16,7 @@
       bottom
       coreutils-full
       direnv
+      exa
       figlet
       hey
       htop
