@@ -136,6 +136,9 @@ in {
         autocmd TermOpen * setlocal nonumber norelativenumber
         set virtualedit=block
         set wildmenu
+        " temporary change cwd 
+        autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+        autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)       
         " search
         set hlsearch
         set ignorecase
