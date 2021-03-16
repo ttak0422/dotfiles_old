@@ -73,6 +73,8 @@ let
     { repo = "ryanoasis/vim-devicons"; }
     { repo = "mhinz/vim-startify"; }
     { repo = "cohama/lexima.vim"; }
+    { repo = "prabirshrestha/asyncomplete.vim"; }
+    { repo = "prabirshrestha/asyncomplete-lsp.vim"; }
   ];
   deinLazyPluginsList = [ ];
   deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
