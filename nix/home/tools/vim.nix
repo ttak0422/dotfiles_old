@@ -136,6 +136,7 @@ in {
         autocmd TermOpen * setlocal nonumber norelativenumber
         set virtualedit=block
         set wildmenu
+        set autochdir
         " search
         set hlsearch
         set ignorecase
