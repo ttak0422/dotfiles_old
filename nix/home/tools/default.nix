@@ -31,6 +31,7 @@
       packer
       ranger
       redis
+      ripgrep
       screenfetch
       tree
       unzip
