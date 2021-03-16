@@ -11,6 +11,7 @@
       iosevka
       noto-fonts-cjk
       comfortaa
+      nerdfonts # todo
     ];
     fontconfig = {
       defaultFonts = {
