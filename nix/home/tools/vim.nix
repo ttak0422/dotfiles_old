@@ -82,6 +82,7 @@ let
     endif
 
     if dein#load_state(s:dein_dir)
+    " if dein#load_state(s:dein_dir)
       call dein#begin(s:dein_dir)
       let s:toml = '${config.home.homeDirectory}/${deinPluginsPath}'
       let s:lazy_toml = '${config.home.homeDirectory}/${deinLazyPluginsPath}'
@@ -90,6 +91,8 @@ let
       call dein#end()
       call dein#save_state()
     endif
+      " call dein#save_state()
+    " endif
 
     " If you want to install not installed plugins on startup.
     if dein#check_install()
