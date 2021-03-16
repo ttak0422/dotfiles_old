@@ -60,6 +60,19 @@ let
         autocmd VimEnter * execute 'NERDTree'
       '';
     }
+    { repo = "Xuyuanp/nerdtree-git-plugin"; }
+    {
+      repo = "tomasr/molokai";
+      config' = ''
+        let g:molokai_original = 1
+        let g:rehash256 = 1
+        set background=dark
+        colorscheme molokai
+      '';
+    }
+    { repo = "ryanoasis/vim-devicons"; }
+    { repo = "mhinz/vim-startify"; }
+    { repo = "cohama/lexima.vim"; }
   ];
   deinLazyPluginsList = [ ];
   deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
