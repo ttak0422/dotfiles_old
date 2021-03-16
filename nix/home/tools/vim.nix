@@ -4,6 +4,7 @@ let
   sources = import ./../../sources.nix;
   configPath = ".config/nvim";
   indentSpace = 2;
+  fontSize = 14;
   wrap = txt: "'${txt}'";
   # WIP https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt
   makePlugin = { repo, on_ft ? [ ], build ? null, marged ? null, depends ? [ ]
@@ -51,7 +52,6 @@ let
       config' = ''
         set helplang=ja
       '';
-
     }
     { repo = "markonm/traces.vim"; }
     {
@@ -94,7 +94,6 @@ let
       call mkdir(s:dein_dir, 'p')
     endif
 
-    if dein#load_state(s:dein_dir)
     " if dein#load_state(s:dein_dir)
       call dein#begin(s:dein_dir)
       let s:toml = '${config.home.homeDirectory}/${deinPluginsPath}'
@@ -102,8 +101,6 @@ let
       call dein#load_toml(s:toml, {'lazy': 0})
       call dein#load_toml(s:lazy_toml, {'lazy': 1})
       call dein#end()
-      call dein#save_state()
-    endif
       " call dein#save_state()
     " endif
 
@@ -144,6 +141,9 @@ in {
       extraConfig = deinConfig + ''
         set encoding=utf-8
         scriptencoding utf-8
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ ${
+          toString fontSize
+        }
         syntax enable
         filetype plugin indent on
         set cursorline
@@ -152,6 +152,10 @@ in {
         autocmd TermOpen * setlocal nonumber norelativenumber
         set virtualedit=block
         set wildmenu
+        nnoremap <ESC><ESC> :nohl<CR>
+        " replace grep
+        let &grepprg = 'rg --vimgrep --hidden'
+        set grepformat=%f:%l:%c:%m
         " temporary change cwd 
         autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
         autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)       
