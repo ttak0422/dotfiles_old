@@ -18,6 +18,7 @@
       direnv
       exa
       figlet
+      file
       hey
       htop
       jq
