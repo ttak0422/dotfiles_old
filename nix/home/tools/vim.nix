@@ -1,3 +1,4 @@
+# TODO vim/default.nix
 { config, pkgs, lib, ... }:
 
 let
@@ -6,26 +7,57 @@ let
   indentSpace = 2;
   fontSize = 14;
   wrap = txt: "'${txt}'";
+  wrap3 = txt: "'''${txt}'''";
   # WIP https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt
-  makePlugin = { repo, on_ft ? [ ], build ? null, marged ? null, depends ? [ ]
-    , config' ? null }: ''
+  makePlugin = { repo, on_ft ? [ ], build ? null, marged ? null, depends' ? [ ]
+    , config' ? null, hookAdd ? null, hookSource ? null, hookPostSource ? null
+    , hookPostUpdate ? null, hookDoneUpdate ? null }: ''
       [[plugins]]
       repo = ${wrap repo}
       ${lib.optionalString (on_ft != [ ])
       "on_ft = [${lib.strings.concatMapStringsSep ", " wrap on_ft}]"}
-      ${lib.optionalString (build != null) "build = ${wrap build}"}
+      ${lib.optionalString (build != null) "build = ${wrap3 build}"}
       ${lib.optionalString (marged != null) "marged = ${toString marged}"}
+      ${lib.optionalString (hookAdd != null) "hookAdd = ${wrap hookAdd}"}
+      ${lib.optionalString (hookSource != null)
+      "hookSource = ${wrap3 hookSource}"}
+      ${lib.optionalString (hookPostSource != null)
+      "hookPostSource = ${wrap3 hookPostSource}"}
+      ${lib.optionalString (hookPostUpdate != null)
+      "hookPostUpdate = ${wrap3 hookPostUpdate}"}
+      ${lib.optionalString (hookDoneUpdate != null)
+      "hookDoneUpdate = ${wrap3 hookDoneUpdate}"}
     '';
   deinPluginsList = [
+    {
+      repo = "ryanoasis/vim-devicons";
+      config' = ''
+        let g:airline_powerline_fonts = 1
+      '';
+    }
     {
       repo = "itchyny/lightline.vim";
       config' = ''
         let g:lightline = {
-        \ 'separator': { 'left': "\ue0bc ", 'right': "\ue0be" },
-        \ 'subseparator': { 'left': "\ue0bd ", 'right': "\ue0bf" },
-        \ }
+          \ 'colorscheme': 'one',
+          \ 'active': {
+          \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
+          \ },
+          \ 'tabline': { \   'left': [ ['buffers'] ],
+          \   'right': [ ['close'] ]
+          \ },
+          \ 'component_expand': {
+          \   'buffers': 'lightline#bufferline#buffers'
+          \ },
+          \ 'component_type': {
+          \   'buffers': 'tabsel'
+          \ }
+          \ }
+        let g:lightline.separator = { 'left': "\uE0B4", 'right': "\uE0B6" }
+        let g:lightline.subseparator = { 'left': "\uE0B5", 'right': "\uE0B7" }
       '';
     }
+    { repo = "mengelbrecht/lightline-bufferline"; }
     {
       repo = "iamcco/markdown-preview.nvim";
       on_ft = [ "markdown" "pandoc.markdown" "rmd" ];
@@ -38,6 +70,13 @@ let
     {
       repo = "junegunn/fzf.vim";
       marged = 0;
+      config' = ''
+        nnoremap <C-p> :Files<CR>
+        nnoremap <C-h> :History<CR>
+        nnoremap <C-f> :Rg<CR>
+        " https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
+        command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+      '';
     }
     { repo = "prabirshrestha/vim-lsp"; }
     { repo = "mattn/vim-lsp-settings"; }
@@ -60,21 +99,41 @@ let
         autocmd VimEnter * execute 'NERDTree'
       '';
     }
-    { repo = "Xuyuanp/nerdtree-git-plugin"; }
     {
-      repo = "tomasr/molokai";
+      repo = "Xuyuanp/nerdtree-git-plugin";
+    }
+    # {
+    #   repo = "tomasr/molokai";
+    #   config' = ''
+    #     let g:molokai_original = 1
+    #     let g:rehash256 = 1
+    #     set background=dark
+    #     colorscheme molokai
+    #   '';
+    # }
+    {
+      repo = "rakr/vim-one";
       config' = ''
-        let g:molokai_original = 1
-        let g:rehash256 = 1
         set background=dark
-        colorscheme molokai
+        colorscheme one
       '';
     }
-    { repo = "ryanoasis/vim-devicons"; }
     { repo = "mhinz/vim-startify"; }
     { repo = "cohama/lexima.vim"; }
     { repo = "prabirshrestha/asyncomplete.vim"; }
     { repo = "prabirshrestha/asyncomplete-lsp.vim"; }
+    { repo = "airblade/vim-gitgutter"; }
+    {
+      repo = "luochen1990/rainbow";
+      config' = ''
+        let g:rainbow_active = 1
+        let g:rainbow_conf = {
+          \	'separately': {
+          \		'nerdtree': 0,
+          \	}
+          \ }
+      '';
+    }
   ];
   deinLazyPluginsList = [ ];
   deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
@@ -93,29 +152,29 @@ let
     set runtimepath+=${deinRepoDir}
 
     if !isdirectory(s:dein_dir)
-      call mkdir(s:dein_dir, 'p')
+    call mkdir(s:dein_dir, 'p')
     endif
 
     " if dein#load_state(s:dein_dir)
-      call dein#begin(s:dein_dir)
-      let s:toml = '${config.home.homeDirectory}/${deinPluginsPath}'
-      let s:lazy_toml = '${config.home.homeDirectory}/${deinLazyPluginsPath}'
-      call dein#load_toml(s:toml, {'lazy': 0})
-      call dein#load_toml(s:lazy_toml, {'lazy': 1})
-      call dein#end()
-      " call dein#save_state()
+    call dein#begin(s:dein_dir)
+    let s:toml = '${config.home.homeDirectory}/${deinPluginsPath}'
+    let s:lazy_toml = '${config.home.homeDirectory}/${deinLazyPluginsPath}'
+    call dein#load_toml(s:toml, {'lazy': 0})
+    call dein#load_toml(s:lazy_toml, {'lazy': 1})
+    call dein#end()
+    " call dein#save_state()
     " endif
 
     " If you want to install not installed plugins on startup.
     if dein#check_install()
-      call dein#install()
+    call dein#install()
     endif
-      
-    let s:removed_plugins = dein#check_clean()
-    if len(s:removed_plugins) > 0
+
+      let s:removed_plugins = dein#check_clean()
+      if len(s:removed_plugins) > 0
       call map(s:removed_plugins, "delete(v:val, 'rf')")
       call dein#recache_runtimepath()
-    endif
+      endif
   '';
 in {
   nixpkgs.overlays = [
@@ -123,8 +182,8 @@ in {
       (builtins.fetchTarball { url = sources.neovim-nightly-overlay.url; }))
   ];
   home = {
-    packages = lib.lists.unique (lib.lists.flatten (builtins.map (x: x.depends)
-      (builtins.filter (x: x ? depends)
+    packages = lib.lists.unique (lib.lists.flatten (builtins.map (x: x.depends')
+      (builtins.filter (x: x ? depends')
         (deinPluginsList ++ deinLazyPluginsList))));
     file = {
       "${deinPluginsPath}".text = deinPlugins;
@@ -154,7 +213,17 @@ in {
         autocmd TermOpen * setlocal nonumber norelativenumber
         set virtualedit=block
         set wildmenu
+        set hidden
+        \" https://qiita.com/lighttiger2505/items/166a4705f852e8d7cd0d
+        augroup GrepCmd
+        autocmd!
+        autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
+        augroup END  
         nnoremap <ESC><ESC> :nohl<CR>
+        " , キーで次タブのバッファを表示
+        nnoremap <silent> , :bprev<CR>
+        " . キーで前タブのバッファを表示
+        nnoremap <silent> . :bnext<CR>
         " replace grep
         let &grepprg = 'rg --vimgrep --hidden'
         set grepformat=%f:%l:%c:%m
