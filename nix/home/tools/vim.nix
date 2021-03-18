@@ -119,8 +119,11 @@ let
         colorscheme iceberg
       '';
     }
-    { repo = "mhinz/vim-startify"; }
-    { repo = "cohama/lexima.vim"; }
+    {
+      repo = "mhinz/vim-startify";
+    }
+    # { repo = "cohama/lexima.vim"; }
+    { repo = "alvan/vim-closetag"; }
     { repo = "prabirshrestha/asyncomplete.vim"; }
     { repo = "prabirshrestha/asyncomplete-lsp.vim"; }
     { repo = "airblade/vim-gitgutter"; }
