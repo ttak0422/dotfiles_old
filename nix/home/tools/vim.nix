@@ -40,7 +40,7 @@ let
       repo = "itchyny/lightline.vim";
       hookAdd = ''
         let g:lightline = {
-          \ 'colorscheme': 'one',
+          \ 'colorscheme': 'iceberg',
           \ 'active': {
           \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
           \ },
@@ -105,11 +105,18 @@ let
     #     colorscheme molokai
     #   '';
     # }
+    # {
+    #   repo = "rakr/vim-one";
+    #   hookAdd = ''
+    #     set background=dark
+    #     colorscheme one
+    #   '';
+    # }
     {
-      repo = "rakr/vim-one";
+      repo = "cocopon/iceberg.vim";
       hookAdd = ''
         set background=dark
-        colorscheme one
+        colorscheme iceberg
       '';
     }
     { repo = "mhinz/vim-startify"; }
