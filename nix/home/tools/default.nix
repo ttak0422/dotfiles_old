@@ -15,8 +15,10 @@
       bat
       bottom
       coreutils-full
+      cmake
       direnv
       exa
+      fontconfig
       figlet
       file
       hey
@@ -30,6 +32,7 @@
       nixfmt
       openssl
       packer
+      pkg-config
       ranger
       redis
       ripgrep
