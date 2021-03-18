@@ -4,10 +4,15 @@
 let
   sources = import ./../../sources.nix;
   configPath = ".config/nvim";
+  font = "Droid Sans Mono Nerd Font Complete Mono";
   indentSpace = 2;
   fontSize = 14;
   wrap = txt: "'${txt}'";
-  wrap3 = txt: "'''${txt}'''";
+  wrap3 = txt:
+    wrap (wrap (wrap (''
+
+      ${txt}
+    '')));
   # WIP https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt
   makePlugin = { repo, on_ft ? [ ], build ? null, marged ? null, depends' ? [ ]
     , config' ? null, hookAdd ? null, hookSource ? null, hookPostSource ? null
@@ -18,32 +23,28 @@ let
       "on_ft = [${lib.strings.concatMapStringsSep ", " wrap on_ft}]"}
       ${lib.optionalString (build != null) "build = ${wrap3 build}"}
       ${lib.optionalString (marged != null) "marged = ${toString marged}"}
-      ${lib.optionalString (hookAdd != null) "hookAdd = ${wrap hookAdd}"}
+      ${lib.optionalString (hookAdd != null) "hook_add = ${wrap3 hookAdd}"}
       ${lib.optionalString (hookSource != null)
-      "hookSource = ${wrap3 hookSource}"}
+      "hook_source = ${wrap3 hookSource}"}
       ${lib.optionalString (hookPostSource != null)
-      "hookPostSource = ${wrap3 hookPostSource}"}
+      "hook_post_source = ${wrap3 hookPostSource}"}
       ${lib.optionalString (hookPostUpdate != null)
-      "hookPostUpdate = ${wrap3 hookPostUpdate}"}
+      "hook_post_update = ${wrap3 hookPostUpdate}"}
       ${lib.optionalString (hookDoneUpdate != null)
-      "hookDoneUpdate = ${wrap3 hookDoneUpdate}"}
+      "hook_done_update = ${wrap3 hookDoneUpdate}"}
     '';
   deinPluginsList = [
-    {
-      repo = "ryanoasis/vim-devicons";
-      config' = ''
-        let g:airline_powerline_fonts = 1
-      '';
-    }
+    { repo = "ryanoasis/vim-devicons"; }
+    { repo = "mengelbrecht/lightline-bufferline"; }
     {
       repo = "itchyny/lightline.vim";
-      config' = ''
+      hookAdd = ''
         let g:lightline = {
           \ 'colorscheme': 'one',
           \ 'active': {
           \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
           \ },
-          \ 'tabline': { \   'left': [ ['buffers'] ],
+          \ 'tabline': { 'left': [ ['buffers'] ],
           \   'right': [ ['close'] ]
           \ },
           \ 'component_expand': {
@@ -57,7 +58,6 @@ let
         let g:lightline.subseparator = { 'left': "\uE0B5", 'right': "\uE0B7" }
       '';
     }
-    { repo = "mengelbrecht/lightline-bufferline"; }
     {
       repo = "iamcco/markdown-preview.nvim";
       on_ft = [ "markdown" "pandoc.markdown" "rmd" ];
@@ -70,7 +70,7 @@ let
     {
       repo = "junegunn/fzf.vim";
       marged = 0;
-      config' = ''
+      hookAdd = ''
         nnoremap <C-p> :Files<CR>
         nnoremap <C-h> :History<CR>
         nnoremap <C-f> :Rg<CR>
@@ -88,17 +88,11 @@ let
     }
     {
       repo = "vim-jp/vimdoc-ja";
-      config' = ''
+      hookAdd = ''
         set helplang=ja
       '';
     }
     { repo = "markonm/traces.vim"; }
-    {
-      repo = "preservim/nerdtree";
-      config' = ''
-        autocmd VimEnter * execute 'NERDTree'
-      '';
-    }
     {
       repo = "Xuyuanp/nerdtree-git-plugin";
     }
@@ -113,7 +107,7 @@ let
     # }
     {
       repo = "rakr/vim-one";
-      config' = ''
+      hookAdd = ''
         set background=dark
         colorscheme one
       '';
@@ -134,8 +128,11 @@ let
           \ }
       '';
     }
+    { repo = "preservim/nerdtree"; }
   ];
-  deinLazyPluginsList = [ ];
+  deinLazyPluginsList = [
+
+  ];
   deinPlugins = lib.strings.concatMapStringsSep "\n" makePlugin deinPluginsList;
   deinLazyPlugins =
     lib.strings.concatMapStringsSep "\n" makePlugin deinLazyPluginsList;
@@ -190,6 +187,9 @@ in {
       "${deinLazyPluginsPath}".text = deinLazyPlugins;
     };
   };
+  #        set guifont= ${font} ${
+  #          toString fontSize
+  #        }
   programs = {
     vim = { enable = true; };
     neovim = {
@@ -202,9 +202,6 @@ in {
       extraConfig = deinConfig + ''
         set encoding=utf-8
         scriptencoding utf-8
-        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ ${
-          toString fontSize
-        }
         syntax enable
         filetype plugin indent on
         set cursorline
