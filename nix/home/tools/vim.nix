@@ -15,7 +15,7 @@ let
     '')));
   # WIP https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt
   makePlugin = { repo, on_ft ? [ ], build ? null, marged ? null, depends' ? [ ]
-    , config' ? null, hookAdd ? null, hookSource ? null, hookPostSource ? null
+    , hookAdd ? null, hookSource ? null, hookPostSource ? null
     , hookPostUpdate ? null, hookDoneUpdate ? null }: ''
       [[plugins]]
       repo = ${wrap repo}
@@ -98,7 +98,7 @@ let
     }
     # {
     #   repo = "tomasr/molokai";
-    #   config' = ''
+    #   hookAdd = ''
     #     let g:molokai_original = 1
     #     let g:rehash256 = 1
     #     set background=dark
@@ -119,7 +119,7 @@ let
     { repo = "airblade/vim-gitgutter"; }
     {
       repo = "luochen1990/rainbow";
-      config' = ''
+      hookAdd = ''
         let g:rainbow_active = 1
         let g:rainbow_conf = {
           \	'separately': {
@@ -243,9 +243,7 @@ in {
         set showtabline=2
         " statusline
         set laststatus=2
-      '' + (lib.concatStringsSep "\n" (builtins.map (x: x.config')
-        (builtins.filter (x: x ? config')
-          (deinPluginsList ++ deinLazyPluginsList))));
+      '';
     };
   };
 }
