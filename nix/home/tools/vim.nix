@@ -52,10 +52,16 @@ let
           \ },
           \ 'component_type': {
           \   'buffers': 'tabsel'
+          \ },
+          \ 'component_function': {
+          \   'filename': 'LightlineFilename'
           \ }
           \ }
         let g:lightline.separator = { 'left': "\uE0B4", 'right': "\uE0B6" }
         let g:lightline.subseparator = { 'left': "\uE0B5", 'right': "\uE0B7" }
+        function! LightlineFilename()
+          return expand('%')
+        endfunction
       '';
     }
     {
