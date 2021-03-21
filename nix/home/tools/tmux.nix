@@ -50,8 +50,8 @@ let
     bind 8 select-window -t :8
     bind 9 select-window -t :9
     bind 0 select-window -t :10
-    bind -r n next-window
-    bind -r b previous-window
+    bind -r . next-window
+    bind -r , previous-window
 
     # pane
     bind -r h select-pane -L
@@ -73,8 +73,8 @@ let
     bind -r S-right resize-pane -R 5
 
     # rename
-    bind , command-prompt -I "#W" "rename-window '%%'"
-    bind $ command-prompt -I "#S" "rename-session '%%'"
+    bind W command-prompt -I "#W" "rename-window '%%'"
+    bind S command-prompt -I "#S" "rename-session '%%'"
 
     # close 
     bind x confirm-before -p "kill-pane #W? (y/n)" kill-pane
