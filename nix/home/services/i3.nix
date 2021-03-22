@@ -1,5 +1,5 @@
-{ pkgs, ... }: 
-let 
+{ pkgs, ... }:
+let
   configPath = ".config/i3/config";
   mod = "Mod4";
   alt = "Mod1";
@@ -111,5 +111,5 @@ in {
       bindsym Escape mode "default"
       bindsym $alt+r mode "default"
     }
-    '';
+  '';
 }

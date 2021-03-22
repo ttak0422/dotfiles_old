@@ -1,3 +1,1 @@
-{ pkgs, ... }: {
-  imports = [ ./i3.nix ];
-}
+{ pkgs, ... }: { imports = [ ./i3.nix ]; }

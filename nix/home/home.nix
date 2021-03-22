@@ -1,6 +1,14 @@
 { config, pkgs, lib, ... }: {
-  imports =
-    [ ./applications ./dev ./git ./scripts ./services ./shell ./tools ./virtualization ];
+  imports = [
+    ./applications
+    ./dev
+    ./git
+    ./scripts
+    ./services
+    ./shell
+    ./tools
+    ./virtualization
+  ];
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
   home = {
