@@ -13,5 +13,6 @@
       kubectx
       kubernetes-helm
       stern
+      terraform
     ] ++ (if stdenv.isDarwin then [ minikube ] else [ ]);
 }
