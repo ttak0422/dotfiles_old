@@ -76,20 +76,6 @@ let
     # ⬇️ :arrow_down: when downgrading dependencies
     # 👕 :shirt: when removing linter warnings
   '';
-  secrets = {
-    commit-msg = ''
-      #!/usr/bin/env bash
-      git secrets --commot_msg_hook -- "$@"
-    '';
-    pre-commit = ''
-      #!/usr/bin/env bash
-      git secrets --pre_commit_hook -- "$@"
-    '';
-    prepare_commit_msg = ''
-      #!/usr/bin/env bash
-      git secrets --prepare_commit_msg_hook -- "$@"
-    '';
-  };
 in {
   home = {
     packages = with pkgs; [ git ghq gitAndTools.gh git-secrets ];
