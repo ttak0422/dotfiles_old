@@ -3,7 +3,7 @@ let
   name = "ttak0422";
   email = "bgdaewalkman@gmail.com";
   configDir = ".config/git";
-  secretsPath = ".config/git-secrets";
+  secretsPath = ".git-templates/git-secrets";
   config' = ''
     [core]
       autocrlf = false
@@ -83,9 +83,6 @@ in {
       "${configDir}/config".text = config';
       "${configDir}/ignore".text = ignore;
       "${configDir}/template".text = template;
-      "${secretsPath}/hooks/commit-msg".text = secrets.commit-msg;
-      "${secretsPath}/hooks/pre-commit".text = secrets.pre-commit;
-      "${secretsPath}/hooks/prepare-commit-msg".text = secrets.prepare_commit_msg;
     };
   };
 }
