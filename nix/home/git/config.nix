@@ -3,7 +3,8 @@ let
   name = "ttak0422";
   email = "bgdaewalkman@gmail.com";
   configDir = ".config/git";
-  config = ''
+  secretsPath = ".config/git-secrets";
+  config' = ''
     [core]
       autocrlf = false
       pager = less -r
@@ -18,6 +19,7 @@ let
       email = ${email}
     [init]
       defaultBranch = "main"
+      templatedir = "~/${secretsPath}"
     [filter "lfs"]
       clean = git-lfs clean -- %f
       smudge = git-lfs smudge -- %f
@@ -31,7 +33,14 @@ let
         curl -L \"https://www.gitignore.io/api/$s\"; }; f"
     [credential]
         helper = store
-  '';
+    [secrets]
+        providers = git secrets --aws-provider
+        patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+        patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+        patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+        allowed = AKIAIOSFODNN7EXAMPLE
+        allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    '';
   ignore = ''
     *~
     .DS_Store
@@ -67,14 +76,30 @@ let
     # ⬇️ :arrow_down: when downgrading dependencies
     # 👕 :shirt: when removing linter warnings
   '';
-
+  secrets = {
+    commit-msg = ''
+      #!/usr/bin/env bash
+      git secrets --commot_msg_hook -- "$@"
+    '';
+    pre-commit = ''
+      #!/usr/bin/env bash
+      git secrets --pre_commit_hook -- "$@"
+    '';
+    prepare_commit_msg = ''
+      #!/usr/bin/env bash
+      git secrets --prepare_commit_msg_hook -- "$@"
+    '';
+  };
 in {
   home = {
-    packages = with pkgs; [ git ghq gitAndTools.gh ];
+    packages = with pkgs; [ git ghq gitAndTools.gh git-secrets ];
     file = {
-      "${configDir}/config".text = config;
+      "${configDir}/config".text = config';
       "${configDir}/ignore".text = ignore;
       "${configDir}/template".text = template;
+      "${secretsPath}/hooks/commit-msg".text = secrets.commit-msg;
+      "${secretsPath}/hooks/pre-commit".text = secrets.pre-commit;
+      "${secretsPath}/hooks/prepare-commit-msg".text = secrets.prepare_commit_msg;
     };
   };
 }
