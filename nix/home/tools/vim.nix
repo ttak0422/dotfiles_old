@@ -145,6 +145,10 @@ let
       '';
     }
     { repo = "preservim/nerdtree"; }
+    {
+      repo = "hashivim/vim-terraform";
+      on_ft = "tf";
+    }
   ];
   deinLazyPluginsList = [
 
