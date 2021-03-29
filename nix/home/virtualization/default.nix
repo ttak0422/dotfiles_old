@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   home.packages = with pkgs;
     [
-      aws
+      awscli
       azure-cli
       docui
       eksctl
@@ -13,5 +13,6 @@
       kubectx
       kubernetes-helm
       stern
+      terraform
     ] ++ (if stdenv.isDarwin then [ minikube ] else [ ]);
 }

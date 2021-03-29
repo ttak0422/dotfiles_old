@@ -40,6 +40,11 @@ let
       description = "filter & map";
       command = "find . -name '*.foo' | xargs foo";
     }
+    {
+      description = "Dockernized Terraform";
+      command =
+        "docker run --rm -i -v $PWD:/work -w /work -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION hashicorp/terraform:0.14.8";
+    }
   ];
 in {
   home.packages = [ pkgs.peco pkgs.pet ];
