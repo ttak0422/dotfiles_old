@@ -55,7 +55,7 @@ cd brew
 brew bundle
 ```
 
-### NixOS
+### 🚧NixOS🚧
 
 ```bash
 # nixos
