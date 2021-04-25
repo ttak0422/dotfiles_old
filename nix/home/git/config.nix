@@ -40,7 +40,7 @@ let
         patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
         allowed = AKIAIOSFODNN7EXAMPLE
         allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-    '';
+  '';
   ignore = ''
     *~
     .DS_Store
