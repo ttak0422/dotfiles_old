@@ -25,7 +25,7 @@ in {
       mouse_action2 = "resize";
       window_opacity = "on";
       active_window_opacity = "1.0";
-      normal_window_opacity = "0.85";
+      normal_window_opacity = "1.0";
     };
     extraConfig = spaces + "\n" + rules + ''
       yabai -m space --gap abs:12
