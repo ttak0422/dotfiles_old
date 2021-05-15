@@ -241,7 +241,7 @@ in {
         nnoremap <silent> , :bprev<CR>
         " . キーで前タブのバッファを表示
         nnoremap <silent> . :bnext<CR>
-        " . キーでバッファを閉じる
+        " C-q キーでバッファを閉じる
         nnoremap <silent> <C-q> :bd<CR>
         " replace grep
         let &grepprg = 'rg --vimgrep --hidden'
