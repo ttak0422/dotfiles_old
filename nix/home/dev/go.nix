@@ -10,10 +10,10 @@ in {
       GOPATH = "${go-path}:${ghq-path}";
       GO111MODULE = "on";
     };
-    file.".config/git/config".text = lib.mkAfter ''
-      [ghq]
-        root = ${go-path}/src
-        root = ${ghq-path}/src
-    '';
+    # file.".config/git/config".text = lib.mkAfter ''
+    #   [ghq]
+    #     root = ${go-path}/src
+    #     root = ${ghq-path}/src
+    # '';
   };
 }

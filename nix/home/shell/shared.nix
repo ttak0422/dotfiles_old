@@ -7,19 +7,19 @@
     "gg" = "ghq get";
     ".." = "cd ..";
     "top" = "htop";
-    "ps" = "procs";
+    # "ps" = "procs";
     "ls" = "exa";
   };
   abbrevs = {
     static = {
-      dk = "docker";
-      ku = "kubectl";
-      is = "istioctl";
-      he = "helm";
-      gc = "gcloud";
-      dc = "docker-compose";
+      # dk = "docker";
+      # ku = "kubectl";
+      # is = "istioctl";
+      # he = "helm";
+      # gc = "gcloud";
+      # dc = "docker-compose";
       ra = "ranger";
-      te = "terraform";
+      # te = "terraform";
     };
     eval = { };
   };

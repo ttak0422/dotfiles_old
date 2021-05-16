@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
 let
-  name = "ttak0422";
-  email = "bgdaewalkman@gmail.com";
+  cfgFile = builtins.readFile (./. + "./../../../locals/git.json");
+  cfgJSON = builtins.fromJSON cfgFile;
+  name = cfgJSON.name;
+  email = cfgJSON.email;
   configDir = ".config/git";
-  secretsPath = ".git-templates/git-secrets";
   config' = ''
     [core]
       autocrlf = false
@@ -19,7 +20,6 @@ let
       email = ${email}
     [init]
       defaultBranch = "main"
-      templatedir = "~/${secretsPath}"
     [filter "lfs"]
       clean = git-lfs clean -- %f
       smudge = git-lfs smudge -- %f
@@ -31,15 +31,8 @@ let
       ignore = !"f() { local s=$1; shift; \
         while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
         curl -L \"https://www.gitignore.io/api/$s\"; }; f"
-    [credential]
-        helper = store
-    [secrets]
-        providers = git secrets --aws-provider
-        patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
-        patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
-        patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
-        allowed = AKIAIOSFODNN7EXAMPLE
-        allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    [ghq]
+      root = ~/src
   '';
   ignore = ''
     *~
@@ -78,7 +71,12 @@ let
   '';
 in {
   home = {
-    packages = with pkgs; [ git ghq gitAndTools.gh git-secrets ];
+    packages = with pkgs; [
+      git
+      ghq
+      # gitAndTools.gh 
+      # git-secrets 
+    ];
     file = {
       "${configDir}/config".text = config';
       "${configDir}/ignore".text = ignore;

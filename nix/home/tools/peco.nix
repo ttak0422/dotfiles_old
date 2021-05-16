@@ -1,3 +1,4 @@
+# interactive filtering tool
 { config, pkgs, lib, ... }:
 
 let

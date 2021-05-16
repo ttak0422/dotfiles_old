@@ -43,7 +43,7 @@ in {
       bindkey '^R' peco-history-selection
 
       # kubectl
-      source <(kubectl completion zsh)
+      # source <(kubectl completion zsh)
     '';
     shellAliases = shared.shellAliases;
     profileExtra = "";

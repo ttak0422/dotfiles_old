@@ -1,1 +1,4 @@
-{ config, pkgs, lib, ... }: { home.packages = [ pkgs.glow ]; }
+# markdown render
+{ config, pkgs, lib, ... }: {
+  home.packages = [ pkgs.glow ];
+}
