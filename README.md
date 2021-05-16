@@ -9,7 +9,7 @@
 ## About
 
 ```
-├── brew                    ### brew ###
+├── locals                  # local configs
 └── nix                     ### nix ###
     ├── darwin              ## nix-darwin ##
     │   ├── system          # system configuration
