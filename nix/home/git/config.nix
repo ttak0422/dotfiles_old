@@ -33,6 +33,8 @@ let
         curl -L \"https://www.gitignore.io/api/$s\"; }; f"
     [ghq]
       root = ~/src
+    [credential]
+      helper = ${if pkgs.stdenv.isLinux then "store" else "osxkeychain"}
   '';
   ignore = ''
     *~
@@ -72,7 +74,7 @@ let
 in {
   home = {
     packages = with pkgs; [
-      git
+      # git # 標準の物を使う
       ghq
       # gitAndTools.gh 
       # git-secrets 
