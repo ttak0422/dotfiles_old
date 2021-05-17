@@ -57,8 +57,8 @@ let
           \   'filename': 'LightlineFilename'
           \ }
           \ }
-        let g:lightline.separator = { 'left': "\uE0B4", 'right': "\uE0B6" }
-        let g:lightline.subseparator = { 'left': "\uE0B5", 'right': "\uE0B7" }
+        let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+        let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
         function! LightlineFilename()
           return expand('%')
         endfunction
