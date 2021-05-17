@@ -12,6 +12,7 @@ let
         y: ${toString padding}
     key_bindings:
       - { key: Minus, mods: Command|Shift, action: IncreaseFontSize } # JISキーボードで文字サイズを変更するため
+      - { key: Backslash, mods: Alt, chars: "\x5c" } # JISキーボードのMacでバックスラッシュを入力するため
     font:
       size: ${toString fontSize}
       normal:
