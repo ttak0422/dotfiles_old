@@ -3,10 +3,14 @@
 with lib;
 
 let
-  defaultShell = "${pkgs.zsh}/bin/zsh";
   cfg = config.programs.tmux;
+  defaultShell = "${pkgs.zsh}/bin/zsh";
+  statusInterval = 60;
+  lSimbol = ''\ue0b0'';
+  lSimbol' = ''\ue0b1'';
+  rSimbol = ''\ue0b2'';
+  rSimbol' = ''\ue0b3'';
   plugins = with pkgs; [
-    tmuxPlugins.sidebar
     {
       plugin = tmuxPlugins.resurrect;
       extraConfig = "set -g @resurrect-strategy-nvim 'session'";
@@ -22,9 +26,9 @@ let
     }
   ];
   extraConfig = ''
-    set-option -g bell-action none
+    set-option -g bell-action none 
     set-option -g renumber-windows on
-    set-option -g status-interval 60
+    set-option -g status-interval ${toString statusInterval}
 
     bind c new-window
     bind d detach-client
@@ -34,9 +38,8 @@ let
     bind t clock-mode
     bind w choose-window
     bind s choose-session
-    bind z resize-pane -Z
+    bind z resize-pane -Z   
 
-    # create session
     bind C-n command-prompt -I "" "new -s '%%'"
 
     # select-window
@@ -53,32 +56,12 @@ let
     bind -r . next-window
     bind -r , previous-window
 
-    # pane
-    bind -r h select-pane -L
-    bind -r j select-pane -D
-    bind -r k select-pane -U
-    bind -r l select-pane -R
-    bind -r left select-pane -L
-    bind -r down select-pane -D
-    bind -r up select-pane -U
-    bind -r right select-pane -R
-
-    bind -r H resize-pane -L 5
-    bind -r J resize-pane -D 5
-    bind -r K resize-pane -U 5
-    bind -r L resize-pane -R 5
-    bind -r S-left resize-pane -L 5
-    bind -r S-down resize-pane -D 5
-    bind -r S-up resize-pane -U 5
-    bind -r S-right resize-pane -R 5
-
     # rename
     bind W command-prompt -I "#W" "rename-window '%%'"
     bind S command-prompt -I "#S" "rename-session '%%'"
 
     # close 
     bind x confirm-before -p "kill-pane #W? (y/n)" kill-pane
-
     bind X confirm-before -p "kill-window #W? (y/n)" kill-window
 
     # window swap
@@ -102,7 +85,7 @@ let
     set -g message-style fg=green,reverse,bg=default
 
     # left
-    set -g status-left "#[fg=white,bg=blue]#{?client_prefix,#[bg=yellow],} Session: #S #[default]#[fg=blue]#{?client_prefix,#[fg=yellow],}\ue0b0"
+    set -g status-left "#[fg=white,bg=blue]#{?client_prefix,#[fg=black]#[bg=yellow],} Session: #S #[default]#[fg=blue]#{?client_prefix,#[fg=yellow],}${lSimbol}"
 
     # center
     set-option -g status-justify "centre"
@@ -110,7 +93,7 @@ let
     set-window-option -g window-status-current-format "#[fg=white]#[default]#[fg=black,bg=white] #I:#W #[default]#[fg=white]#[default]"
 
     # right
-    set -g status-right "#[fg=red]\ue0b2#[default]#[fg=white,bg=red] %H:%M #[default]"
+    set -g status-right "#[fg=red]${rSimbol}#[default]#[fg=white,bg=red] %H:%M #[default]"
 
     # default shell
     set-option -g default-shell "${defaultShell}"
@@ -120,25 +103,17 @@ in {
   programs.zsh.enable = true;
   programs.tmux = {
     enable = true;
+    sensibleOnTop = true;
+    shortcut = "a";
     keyMode = "vi";
+    customPaneNavigationAndResize = true;
+    newSession = true;
     escapeTime = 1;
     baseIndex = 1;
-    shortcut = "a";
-    resizeAmount = 5;
+    resizeAmount = 10;
+    historyLimit = 5000;
     plugins = plugins;
     extraConfig = extraConfig;
-    secureSocket = false;
     terminal = "screen-256color";
   };
-  home = lib.mkMerge ([
-    {
-      file.".tmux.conf".text = lib.mkBefore ''
-        # unbind all
-        unbind-key -a
-      '';
-    }
-    (lib.mkIf pkgs.stdenv.isLinux {
-      sessionVariables = { TMUX_TMPDIR = "/tmp"; };
-    })
-  ]);
 }
