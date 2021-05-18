@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "Shougo",
         "repo": "dein.vim",
-        "rev": "adac91b05ad9ef123d859edfe549ffde236f930c",
-        "sha256": "1mh9y2sj492933w8665qb2v3k9w4zkl7hyic17m4hffsjwhkzgb2",
+        "rev": "d045ebcca1714d48e6e4cf56c9924d371dac3325",
+        "sha256": "0dycirc85jhlv7zvnlvg5xcr0jflwkckxigcbaiqqz9igyclxvqy",
         "type": "tarball",
-        "url": "https://github.com/Shougo/dein.vim/archive/adac91b05ad9ef123d859edfe549ffde236f930c.tar.gz",
+        "url": "https://github.com/Shougo/dein.vim/archive/d045ebcca1714d48e6e4cf56c9924d371dac3325.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-kubectl-completions": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "90c3e0b006db24c15085017a140c8dede701d7fb",
-        "sha256": "1a25aibdkcsrsqp3awmf7sy91xs2zvhyrhy3b6sgw5nmwxgv121y",
+        "rev": "6d7aa865f958bd86ae57de153d349055d8bdfee2",
+        "sha256": "0544g9bjmsgzggn54081qls9vh32ahq5ja2rydw2bc54nvz32zcx",
         "type": "tarball",
-        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/90c3e0b006db24c15085017a140c8dede701d7fb.tar.gz",
+        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/6d7aa865f958bd86ae57de153d349055d8bdfee2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zsh-256color": {
@@ -53,10 +53,10 @@
         "homepage": "",
         "owner": "momo-lab",
         "repo": "zsh-abbrev-alias",
-        "rev": "2f3d218f426aff21ac888217b0284a3a1470e274",
-        "sha256": "12s3sj7vmy5dplbdnbcxnx4az82hm44dlh7q271r8r141bghl3np",
+        "rev": "b9fecabca3798785f262976d5ffb315a134e1344",
+        "sha256": "0gcc9017yyz0kf7lwqaqgaxw23pl5icwsx44w4fkhx8whqn5yxw1",
         "type": "tarball",
-        "url": "https://github.com/momo-lab/zsh-abbrev-alias/archive/2f3d218f426aff21ac888217b0284a3a1470e274.tar.gz",
+        "url": "https://github.com/momo-lab/zsh-abbrev-alias/archive/b9fecabca3798785f262976d5ffb315a134e1344.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zsh-autosuggestions": {
@@ -77,10 +77,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0",
-        "sha256": "03vszkmm09smbzpbnk6c5f5sx1y9vh0j91xvgqfv6m4gldxrj37j",
+        "rev": "ebef4e55691f62e630318d56468e5798367aa81c",
+        "sha256": "0qimb90655hkm64mjqcn48kqq38cbfxlfhs324cbdi9gqpdi6q4b",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/ebef4e55691f62e630318d56468e5798367aa81c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
