@@ -6,10 +6,10 @@ let
   cfg = config.programs.tmux;
   defaultShell = "${pkgs.zsh}/bin/zsh";
   statusInterval = 60;
-  lSimbol = ''\ue0b0'';
-  lSimbol' = ''\ue0b1'';
-  rSimbol = ''\ue0b2'';
-  rSimbol' = ''\ue0b3'';
+  lSimbol = "\\ue0b0";
+  lSimbol' = "\\ue0b1";
+  rSimbol = "\\ue0b2";
+  rSimbol' = "\\ue0b3";
   plugins = with pkgs; [
     {
       plugin = tmuxPlugins.resurrect;
