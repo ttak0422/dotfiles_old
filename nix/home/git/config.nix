@@ -73,12 +73,13 @@ let
   '';
 in {
   home = {
-    packages = with pkgs; [
-      # git # 標準の物を使う
-      ghq
-      # gitAndTools.gh 
-      # git-secrets 
-    ];
+    packages = with pkgs;
+      [
+        # git # 標準の物を使う
+        ghq
+        # gitAndTools.gh 
+        # git-secrets 
+      ];
     file = {
       "${configDir}/config".text = config';
       "${configDir}/ignore".text = ignore;
