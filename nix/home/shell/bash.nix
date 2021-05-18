@@ -20,6 +20,9 @@ in {
     '';
   };
   home.file.".bashrc".text = lib.mkAfter ''
-    . ${pkgs.bash-completion}/share/bash-completion/bash_completion
-  '';
+      . ${pkgs.bash-completion}/share/bash-completion/bash_completion
+      if test -f /etc/static/bashrc; then
+        source /etc/static/bashrc 
+      fi
+    '';
 }
