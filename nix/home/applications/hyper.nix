@@ -4,7 +4,8 @@ let
   boolToString = b: if b then "true" else "false";
   updateChannel = "stable";
   fontSize = 20;
-  fontFamily = ''Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace'';
+  fontFamily =
+    ''Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace'';
   fontWeight = "normal";
   fontWeightBold = "bold";
   lineHeight = 1;
@@ -49,7 +50,7 @@ let
   quickEdit = false;
   macOptionSelectionMode = "vertical";
   webGLRenderer = true;
-  plugins = [];
+  plugins = [ ];
   config = ''
     config: {
       updateChannel: ${wrap updateChannel},
@@ -100,11 +101,12 @@ let
       macOptionSelectionMode: ${wrap macOptionSelectionMode},
       webGLRenderer: ${boolToString webGLRenderer},
     }'';
-in { home.file.".hyper.js".text = ''
+in {
+  home.file.".hyper.js".text = ''
     module.exports = {
       ${config},
       plugins: [${lib.strings.concatMapStringsSep ", " wrap plugins}],
       localPlugins: [],
       keymaps: {},
     };'';
-  }
+}
