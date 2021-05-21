@@ -2,6 +2,6 @@
 { config, pkgs, lib, ... }: {
   imports = [
     ./alacritty.nix
-    # ./hyper.nix 
+    ./hyper.nix 
   ];
 }

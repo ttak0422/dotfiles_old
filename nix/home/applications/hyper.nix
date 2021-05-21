@@ -5,7 +5,7 @@ let
   updateChannel = "stable";
   fontSize = 20;
   fontFamily =
-    ''Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace'';
+    ''"Fira Code", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace'';
   fontWeight = "normal";
   fontWeightBold = "bold";
   lineHeight = 1;
@@ -50,7 +50,12 @@ let
   quickEdit = false;
   macOptionSelectionMode = "vertical";
   webGLRenderer = true;
-  plugins = [ ];
+  plugins = [ 
+    "hyper-iceberg"     # theme
+    "hyperborder"
+    "hyperlinks"        # url
+    # "hyperterm-overlay" # overlay
+  ];
   config = ''
     config: {
       updateChannel: ${wrap updateChannel},
@@ -100,9 +105,21 @@ let
       quickEdit: ${boolToString quickEdit},
       macOptionSelectionMode: ${wrap macOptionSelectionMode},
       webGLRenderer: ${boolToString webGLRenderer},
+      // hyperterm-overlay
+      // overlay: {
+      //   alwaysOnTop: false,
+      //   animate: false,
+      //   hasShadow: false,
+      //   hotkeys: ["Control+Space"],
+      //   resizable: true,
+      //   startAlone: true,
+      //   unique: true,
+      //   hideDock: true
+      // }
     }'';
 in {
-  home.file.".hyper.js".text = ''
+  # WIP 
+  home.file.".hyper_nix.js".text = ''
     module.exports = {
       ${config},
       plugins: [${lib.strings.concatMapStringsSep ", " wrap plugins}],
