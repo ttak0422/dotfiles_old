@@ -13,6 +13,8 @@ let
 
     bind main R !git rebase -i %(commit)
     bind diff R !git rebase -i %(commit)
+
+    color cursor black green bold
   '';
 in {
   home = {
