@@ -33,8 +33,8 @@ let
     }
     {
       description = "create local server";
-      command = "python -m http.server 8080";
-      tag = [ "python" "server" ];
+      command = "ruby -run -e httpd . -p 8000";
+      tag = [ "ruby" "server" ];
       output = "simple server";
     }
     {

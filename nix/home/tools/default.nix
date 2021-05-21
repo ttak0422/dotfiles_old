@@ -4,7 +4,7 @@
     # ./glow.nix
     ./lorri.nix
     ./peco.nix
-    # ./pet.nix
+    ./pet.nix
     # ./procs.nix
     ./tmux.nix
     ./vim.nix
