@@ -53,8 +53,6 @@ let
     bind 8 select-window -t :8
     bind 9 select-window -t :9
     bind 0 select-window -t :10
-    bind -r h next-window
-    bind -r l previous-window
 
     # rename
     bind W command-prompt -I "#W" "rename-window '%%'"
