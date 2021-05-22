@@ -4,9 +4,7 @@
 let
   sources = import ./../../sources.nix;
   configPath = ".config/nvim";
-  font = "Droid Sans Mono Nerd Font Complete Mono";
   indentSpace = 2;
-  fontSize = 14;
   wrap = txt: "'${txt}'";
   wrap3 = txt:
     wrap (wrap (wrap (''
@@ -207,9 +205,6 @@ in {
       "${deinLazyPluginsPath}".text = deinLazyPlugins;
     };
   };
-  #        set guifont= ${font} ${
-  #          toString fontSize
-  #        }
   programs = {
     vim = { enable = true; };
     neovim = {
