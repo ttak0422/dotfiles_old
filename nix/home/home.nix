@@ -12,7 +12,7 @@
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
   home = {
-    stateVersion = "21.05";
+    stateVersion = "20.09";
     username = builtins.getEnv "USER";
     homeDirectory = builtins.getEnv "HOME";
     sessionVariables = {
