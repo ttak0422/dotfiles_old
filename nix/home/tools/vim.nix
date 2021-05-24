@@ -38,7 +38,7 @@ let
       repo = "itchyny/lightline.vim";
       hookAdd = ''
         let g:lightline = {
-          \ 'colorscheme': 'iceberg',
+          \ 'colorscheme': 'nord',
           \ 'active': {
           \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
           \ },
@@ -116,11 +116,17 @@ let
     #     colorscheme one
     #   '';
     # }
+    # {
+    #   repo = "cocopon/iceberg.vim";
+    #   hookAdd = ''
+    #     set background=dark
+    #     colorscheme iceberg
+    #   '';
+    # }
     {
-      repo = "cocopon/iceberg.vim";
+      repo= "arcticicestudio/nord-vim";
       hookAdd = ''
-        set background=dark
-        colorscheme iceberg
+        colorscheme nord
       '';
     }
     {
