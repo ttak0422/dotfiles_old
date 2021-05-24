@@ -38,7 +38,7 @@ let
       repo = "itchyny/lightline.vim";
       hookAdd = ''
         let g:lightline = {
-          \ 'colorscheme': 'nord',
+          \ 'colorscheme': 'iceberg',
           \ 'active': {
           \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
           \ },
@@ -116,17 +116,11 @@ let
     #     colorscheme one
     #   '';
     # }
-    # {
-    #   repo = "cocopon/iceberg.vim";
-    #   hookAdd = ''
-    #     set background=dark
-    #     colorscheme iceberg
-    #   '';
-    # }
     {
-      repo= "arcticicestudio/nord-vim";
+      repo = "cocopon/iceberg.vim";
       hookAdd = ''
-        colorscheme nord
+        set background=dark
+        colorscheme iceberg
       '';
     }
     {
@@ -258,6 +252,7 @@ in {
         " indent
         set tabstop=${toString indentSpace}
         set shiftwidth=${toString indentSpace}
+        set expandtab
         set smartindent
         set clipboard+=${
           if pkgs.stdenv.isDarwin then "unnamed" else "unnamedplus"
