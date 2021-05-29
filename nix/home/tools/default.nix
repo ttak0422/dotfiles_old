@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }: {
   imports = [
+    ./bat.nix
     ./fzf.nix
     # ./glow.nix
     ./lorri.nix
@@ -12,7 +13,6 @@
   home.packages = with pkgs;
     [
       asciidoctor # adoc
-      bat # cat clone
       coreutils-full # cat, ls, mv, wget, ...
       cmake
       direnv # env switcher
