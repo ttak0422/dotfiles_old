@@ -10,6 +10,12 @@ let
   lSimbol' = "\\ue0b1";
   rSimbol = "\\ue0b2";
   rSimbol' = "\\ue0b3";
+  colors = {
+    accent = "yellow";
+    character = "white";
+    statusLeft = "cyan";
+    statusRight = "red";
+  };
   plugins = with pkgs; [
     {
       plugin = tmuxPlugins.resurrect;
@@ -27,18 +33,52 @@ let
     { 
       # TODO:
       # plugin = tmuxPlugins.mkTmuxPlugin {
-      plugin = tmuxPlugins.mkDerivation {
-        name = "tmux-better-mouse-mode";
-        pluginName = "tmux-better-mouse-mode";
-        src = sources."tmux-better-mouse-mode";
-      };
-      extraConfig = ''
-        set-option -g mouse on
-      '';
-    }
-
+        plugin = tmuxPlugins.mkDerivation {
+          name = "tmux-better-mouse-mode";
+          pluginName = "tmux-better-mouse-mode";
+          src = sources."tmux-better-mouse-mode";
+        };
+        extraConfig = ''
+          set-option -g mouse on
+        '';
+      }
+#     { 
+#       # TODO:
+#       # plugin = tmuxPlugins.mkTmuxPlugin {
+#       plugin = tmuxPlugins.mkDerivation {
+#         name = "tmux-power";
+#         pluginName = "tmux-power";
+#         rtpFilePath = "tmux-power.tmux";
+#         src = sources."tmux-power";
+#       };
+#       extraConfig = ''
+#         set -g @tmux_power_theme 'snow'
+#         set -g @tmux_power_date_icon ' ' # set it to a blank will disable the icon
+#         set -g @tmux_power_time_icon ' ' # emoji can be used if your terminal supports
+#         set -g @tmux_power_user_icon 'U'
+#         set -g @tmux_power_session_icon 'S'
+#         set -g @tmux_power_upload_speed_icon 
+#       '';
+#     }
+#     { 
+#       plugin = tmuxPlugins.prefix-highlight;
+#       extraConfig = ''
+#       '';
+#     }
+#     {
+#       plugin = tmuxPlugins.mkDerivation {
+#         name = "web-reachable";
+#         pluginName = "web-reachable";
+#         rtpFilePath = "web-reachable.tmux";
+#         src = sources."tmux-web-reachable";
+#       };
+#       extraConfig = ''
+#         set -g @tmux_power_show_web_reachable true
+#       '';
+#     }
   ];
   extraConfig = ''
+    set-option -ga terminal-overrides ",screen-256color:Tc"
     set-option -g bell-action none 
     set-option -g renumber-windows on
     set-option -g status-interval ${toString statusInterval}
@@ -97,18 +137,18 @@ let
 
     # color
     set -g status-style fg=default,bg=default
-    set -g message-style fg=green,reverse,bg=default
+    set -g message-style fg=${colors.accent},reverse,bg=default
 
     # left
-    set -g status-left "#[fg=white,bg=blue]#{?client_prefix,#[fg=black]#[bg=yellow],} Session: #S #[default]#[fg=blue]#{?client_prefix,#[fg=yellow],}${lSimbol}"
+    set -g status-left "#[fg=${colors.character},bg=${colors.statusLeft}]#{?client_prefix,#[fg=${colors.character}]#[bg=${colors.accent}],} Session: #S #[default]#[fg=${colors.statusLeft}]#{?client_prefix,#[fg=${colors.accent}],}${lSimbol}"
 
     # center
     set-option -g status-justify "centre"
     set-window-option -g window-status-format " #I:#W "
-    set-window-option -g window-status-current-format "#[fg=white]#[default]#[fg=black,bg=white] #I:#W #[default]#[fg=white]#[default]"
+    set-window-option -g window-status-current-format "#[default, reverse] #I:#W #[default]"
 
     # right
-    set -g status-right "#[fg=red]${rSimbol}#[default]#[fg=white,bg=red] %H:%M #[default]"
+    set -g status-right "#[fg=${colors.statusRight}]${rSimbol}#[fg=${colors.character},bg=${colors.statusRight}] %H:%M #[default]"
 
     # default shell
     set-option -g default-shell "${defaultShell}"
