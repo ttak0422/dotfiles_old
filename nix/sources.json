@@ -47,6 +47,30 @@
         "url": "https://github.com/NHDaly/tmux-better-mouse-mode/archive/aa59077c635ab21b251bd8cb4dc24c415e64a58e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "tmux-power": {
+        "branch": "master",
+        "description": "🎨 Tmux powerline theme",
+        "homepage": "",
+        "owner": "wfxr",
+        "repo": "tmux-power",
+        "rev": "3116603e33ed123d61053f3b64299831fc4d534e",
+        "sha256": "17p3qf9cmcfx6lldqvn61a6m0kfzfb1aiwg6bvxiyh14nl50z1zn",
+        "type": "tarball",
+        "url": "https://github.com/wfxr/tmux-power/archive/3116603e33ed123d61053f3b64299831fc4d534e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "tmux-web-reachable": {
+        "branch": "main",
+        "description": null,
+        "homepage": null,
+        "owner": "wfxr",
+        "repo": "tmux-web-reachable",
+        "rev": "0b590a63102000efa0bf53063556f050b8dfdc59",
+        "sha256": "13nlkm857n6l0bh4vl0264nv3kksv70lpi2lrap11kpyailf1h62",
+        "type": "tarball",
+        "url": "https://github.com/wfxr/tmux-web-reachable/archive/0b590a63102000efa0bf53063556f050b8dfdc59.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "zsh-256color": {
         "branch": "master",
         "description": "ZSH plugin to enhance the terminal environment with 256 colors",
