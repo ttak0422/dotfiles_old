@@ -62,11 +62,15 @@ let
     bind x confirm-before -p "kill-pane #W? (y/n)" kill-pane
     bind X confirm-before -p "kill-window #W? (y/n)" kill-window
 
-    # window swap
-    bind -r C-h \
+    # move-window
+    bind -r , previous-window
+    bind -r . next-window 
+
+    # swap-windw
+    bind -r < \
       swap-window -t -1\; \
       previous-window
-    bind -r C-l \
+    bind -r > \
       swap-window -t +1\; \
       next-window
 
