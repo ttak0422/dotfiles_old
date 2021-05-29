@@ -35,6 +35,18 @@
         "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/6d7aa865f958bd86ae57de153d349055d8bdfee2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "tmux-better-mouse-mode": {
+        "branch": "master",
+        "description": "A tmux plugin to better manage and configure the mouse.",
+        "homepage": "",
+        "owner": "NHDaly",
+        "repo": "tmux-better-mouse-mode",
+        "rev": "aa59077c635ab21b251bd8cb4dc24c415e64a58e",
+        "sha256": "06346ih3hzwszhkj25g4xv5av7292s6sdbrdpx39p0n3kgf5mwww",
+        "type": "tarball",
+        "url": "https://github.com/NHDaly/tmux-better-mouse-mode/archive/aa59077c635ab21b251bd8cb4dc24c415e64a58e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "zsh-256color": {
         "branch": "master",
         "description": "ZSH plugin to enhance the terminal environment with 256 colors",

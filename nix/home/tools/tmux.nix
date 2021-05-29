@@ -3,7 +3,7 @@
 with lib;
 
 let
-  cfg = config.programs.tmux;
+  sources = import ./../../sources.nix;
   defaultShell = "${pkgs.zsh}/bin/zsh";
   statusInterval = 60;
   lSimbol = "\\ue0b0";
@@ -23,7 +23,20 @@ let
         set -g @continuum-save-interval '5' # minutes
         set -g @continuum-restore 'on'
       '';
+    } 
+    { 
+      # TODO:
+      # plugin = tmuxPlugins.mkTmuxPlugin {
+      plugin = tmuxPlugins.mkDerivation {
+        name = "tmux-better-mouse-mode";
+        pluginName = "tmux-better-mouse-mode";
+        src = sources."tmux-better-mouse-mode";
+      };
+      extraConfig = ''
+        set-option -g mouse on
+      '';
     }
+
   ];
   extraConfig = ''
     set-option -g bell-action none 
