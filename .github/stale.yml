@@ -1,5 +1,7 @@
 daysUntilStale: 14
 daysUntilClose: 7
+exemptLabels:
+  - yaruzo
 staleLabel: wontfix
 markComment: >
   This issue has been automatically marked as stale because it has not had
