@@ -6,6 +6,7 @@ let
   sources = import ./../../sources.nix;
   defaultShell = "${pkgs.zsh}/bin/zsh";
   statusInterval = 60;
+  resizeAmount = 5;
   lSimbol = "\\ue0b0";
   lSimbol' = "\\ue0b1";
   rSimbol = "\\ue0b2";
@@ -119,6 +120,18 @@ let
     bind -r , previous-window
     bind -r . next-window 
 
+    # move-pane
+    bind -r h select-pane -L
+    bind -r j select-pane -D
+    bind -r k select-pane -U
+    bind -r l select-pane -R
+
+    # resize-pane
+    bind -r H resize-pane -L ${toString resizeAmount}
+    bind -r J resize-pane -D ${toString resizeAmount}
+    bind -r K resize-pane -U ${toString resizeAmount}
+    bind -r L resize-pane -R ${toString resizeAmount}
+
     # swap-windw
     bind -r < \
       swap-window -t -1\; \
@@ -161,7 +174,7 @@ in {
     sensibleOnTop = true;
     shortcut = "a";
     keyMode = "vi";
-    customPaneNavigationAndResize = true;
+    customPaneNavigationAndResize = false; # select-paneにrオプションが無いため
     newSession = true;
     escapeTime = 1;
     baseIndex = 1;
