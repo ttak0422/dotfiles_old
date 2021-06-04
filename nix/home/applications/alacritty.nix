@@ -56,7 +56,7 @@ let
           white: '${light.bright.white}'
     colors: *light
     env:
-      TERM: alacritty
+      TERM: screen-256color
     window:
       decorations: ${if pkgs.stdenv.isLinux then "none" else "buttonless"}
       padding:
