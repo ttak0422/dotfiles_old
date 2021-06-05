@@ -17,7 +17,7 @@ let
       blue = "#36A3D9"; # 4
       magenta = "#A37ACC"; #5
       cyan = "#4CBF99"; # 6
-      white = "#FFFFFF"; # 7
+      white = "#575F66"; # 7
     };
     bright = {
       black = "#828C99"; # 8

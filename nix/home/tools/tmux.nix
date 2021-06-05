@@ -13,10 +13,11 @@ let
   rSimbol' = "\\ue0b3";
   colors = {
     accent = "yellow";
-    character = "white";
     statusLeft = "cyan";
     statusRight = "red";
-  };
+    termBg = "black";
+    termFg = "white";
+  }; 
   plugins = with pkgs; [
     {
       plugin = tmuxPlugins.resurrect;
@@ -43,6 +44,13 @@ let
           set-option -g mouse on
         '';
       }
+#     {
+#       plugin = tmuxPlugins.mkDerivation { 
+#         name = "tmux-current-pane-hostname";
+#         pluginName = "tmux-current-pane-hostname";
+#         src = sources."tmux-current-pane-hostname";
+#       };
+#     }
 #     { 
 #       # TODO:
 #       # plugin = tmuxPlugins.mkTmuxPlugin {
@@ -78,6 +86,10 @@ let
 #       '';
 #     }
   ];
+#  shebang = "#!${pkgs.bash}/bin/bash\n";
+#  scripts = builtins.mapAttrs (k: v: pkgs.writeScriptBin (shebang + v)) {
+#
+#  };
   extraConfig = ''
     set-option -ga terminal-overrides ",screen-256color:Tc"
     set-option -g bell-action none 
@@ -92,7 +104,10 @@ let
     bind t clock-mode
     bind w choose-window
     bind s choose-session
-    bind z resize-pane -Z   
+    # pane・pane-borderの切り替え
+    bind z resize-pane -Z\; \
+      if-shell -F "#{window_zoomed_flag}" "set pane-border-status off" "set pane-border-status top"
+      
 
     bind C-n command-prompt -I "" "new -s '%%'"
 
@@ -111,6 +126,7 @@ let
     # rename
     bind W command-prompt -I "#W" "rename-window '%%'"
     bind S command-prompt -I "#S" "rename-session '%%'"
+    bind P command-prompt -I "#T" "select-pane -T '%%'"
 
     # close 
     bind x confirm-before -p "kill-pane #W? (y/n)" kill-pane
@@ -149,19 +165,26 @@ let
     set -g status-right-length 80
 
     # color
-    set -g status-style fg=default,bg=default
+    set -g status-style fg=${colors.termFg},bg=${colors.termBg}
     set -g message-style fg=${colors.accent},reverse,bg=default
 
-    # left
-    set -g status-left "#[fg=${colors.character},bg=${colors.statusLeft}]#{?client_prefix,#[fg=${colors.character}]#[bg=${colors.accent}],} Session: #S #[default]#[fg=${colors.statusLeft}]#{?client_prefix,#[fg=${colors.accent}],}${lSimbol}"
+    # status-left
+    set -g status-left "#[fg=${colors.termBg},bg=${colors.statusLeft}]#{?client_prefix,#[fg=${colors.termBg}]#[bg=${colors.accent}],} Session: #S #[default]#[fg=${colors.statusLeft}]#{?client_prefix,#[fg=${colors.accent}],}${lSimbol}#[fg=${colors.statusLeft},bg=${colors.termBg}]#{?window_zoomed_flag, ZOOM ${lSimbol'},}"
 
-    # center
+    # status-center
     set-option -g status-justify "centre"
     set-window-option -g window-status-format " #I:#W "
-    set-window-option -g window-status-current-format "#[default, reverse] #I:#W #[default]"
+    set-window-option -g window-status-current-format "#[reverse] #I:#W #[default]"
 
-    # right
-    set -g status-right "#[fg=${colors.statusRight}]${rSimbol}#[fg=${colors.character},bg=${colors.statusRight}] %H:%M #[default]"
+    # status-right
+    set -g status-right "#[fg=${colors.statusRight}]${rSimbol}#[fg=${colors.termBg},bg=${colors.statusRight}] %H:%M #[default]"
+
+    # border
+    set -g pane-border-lines simple
+    set -g pane-active-border-style ""
+    set -g pane-border-style ""
+    set -g pane-border-format "#{?pane_active,${rSimbol}#[reverse]   #P:#T   #[default]${lSimbol},}"
+    set -g pane-border-status top
 
     # default shell
     set-option -g default-shell "${defaultShell}"

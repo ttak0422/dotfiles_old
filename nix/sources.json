@@ -47,6 +47,18 @@
         "url": "https://github.com/NHDaly/tmux-better-mouse-mode/archive/aa59077c635ab21b251bd8cb4dc24c415e64a58e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "tmux-current-pane-hostname": {
+        "branch": "master",
+        "description": "Tmux plugin that enables displaying hostname and user of the current pane in your status bar.",
+        "homepage": null,
+        "owner": "soyuka",
+        "repo": "tmux-current-pane-hostname",
+        "rev": "6bb3c95250f8120d8b072f46a807d2678ecbc97c",
+        "sha256": "1w1x8w351v9yppw37kcs985mm5ikpmdnckfjwqyhlqx90lf9sqdy",
+        "type": "tarball",
+        "url": "https://github.com/soyuka/tmux-current-pane-hostname/archive/6bb3c95250f8120d8b072f46a807d2678ecbc97c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "tmux-power": {
         "branch": "master",
         "description": "🎨 Tmux powerline theme",
