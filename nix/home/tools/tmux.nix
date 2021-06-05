@@ -86,10 +86,23 @@ let
 #       '';
 #     }
   ];
-#  shebang = "#!${pkgs.bash}/bin/bash\n";
-#  scripts = builtins.mapAttrs (k: v: pkgs.writeScriptBin (shebang + v)) {
-#
-#  };
+  shebang = "#!${pkgs.bash}/bin/bash\n";
+  #scripts = lib.mapAttrsToList (k: v: v) (builtins.mapAttrs (k: v: pkgs.writeScriptBin k (shebang + v)) {
+  scriptDefinitions = {
+    TMUX_LOA = ''
+      uptime | awk -F "[:,]"  '{printf "LOA:%s %s %s\n",$(NF - 2),$(NF - 1), $NF}'
+    '';
+    TMUX_SINGLE_PANE = ''
+      num=`tmux list-panes | wc -l`;
+      if [[ 1 = $num ]]; then
+        echo 0;
+      else
+        echo 1;
+      fi
+    '';
+  };
+  scripts = builtins.mapAttrs (k: v: pkgs.writeScriptBin k (shebang + v)) scriptDefinitions;
+  scriptPackages = lib.mapAttrsToList (k: v: v) scripts;
   extraConfig = ''
     set-option -ga terminal-overrides ",screen-256color:Tc"
     set-option -g bell-action none 
@@ -177,10 +190,10 @@ let
     set-window-option -g window-status-current-format "#[reverse] #I:#W #[default]"
 
     # status-right
-    set -g status-right "#[fg=${colors.statusRight}]${rSimbol}#[fg=${colors.termBg},bg=${colors.statusRight}] %H:%M #[default]"
+    set -g status-right "#[fg=${colors.statusRight}]${rSimbol'} #(${scripts.TMUX_LOA}/bin/TMUX_LOA) ${rSimbol}#[fg=${colors.termBg},bg=${colors.statusRight}] %H:%M #[default]"
 
     # border
-    set -g pane-border-lines simple
+#    set -g pane-border-lines simple
     set -g pane-active-border-style ""
     set -g pane-border-style ""
     set -g pane-border-format "#{?pane_active,${rSimbol}#[reverse]   #P:#T   #[default]${lSimbol},}"
@@ -207,4 +220,5 @@ in {
     extraConfig = extraConfig;
     terminal = "screen-256color";
   };
+  home.packages = scriptPackages;
 }
