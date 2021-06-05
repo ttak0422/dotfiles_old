@@ -41,7 +41,7 @@ let
       repo = "itchyny/lightline.vim";
       hookAdd = ''
         let g:lightline = {
-          \ 'colorscheme': 'ayu_light',
+          \ 'colorscheme': 'one',
           \ 'active': {
           \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
           \ },
@@ -107,6 +107,9 @@ let
       repo = "ayu-theme/ayu-vim";
       hookAdd = ''
       '';
+    }
+    { 
+      repo = "rakr/vim-one";
     }
     # {
     #   repo = "tomasr/molokai";
@@ -279,8 +282,8 @@ let
 
             " カラースキーム
             set termguicolors
-            let ayucolor="light"
-            colorscheme ayu
+            set background=light
+            colorscheme one
 
             set encoding=utf-8
             scriptencoding utf-8
