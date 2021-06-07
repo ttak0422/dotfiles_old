@@ -10,6 +10,7 @@
       "karabiner-elements"
       "font-hack-nerd-font"
       "font-fira-code"
+      "keycastr"
     ];
   };
 }
