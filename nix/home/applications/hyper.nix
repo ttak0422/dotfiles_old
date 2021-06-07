@@ -4,8 +4,8 @@ let
   boolToString = b: if b then "true" else "false";
   updateChannel = "stable";
   fontSize = 20;
-  fontFamily =
-    ''"Hack Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace'';
+  fontFamily = ''
+    "Hack Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace'';
   fontWeight = "normal";
   fontWeightBold = "bold";
   lineHeight = 1;
@@ -50,10 +50,10 @@ let
   quickEdit = false;
   macOptionSelectionMode = "vertical";
   webGLRenderer = true;
-  plugins = [ 
-    "hyper-iceberg"     # theme
+  plugins = [
+    "hyper-iceberg" # theme
     "hyperborder"
-    "hyperlinks"        # url
+    "hyperlinks" # url
     # "hyperterm-overlay" # overlay
   ];
   config = ''

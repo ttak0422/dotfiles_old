@@ -1,7 +1,7 @@
 # cat clone
-{ config, pkgs, lib, ... }: 
+{ config, pkgs, lib, ... }:
 
-let 
+let
   config' = ''
     --theme="GitHub"
   '';
