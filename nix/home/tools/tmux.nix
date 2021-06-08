@@ -48,7 +48,11 @@ let
     { plugin = tmuxPlugins.yank; }
     { plugin = tmuxPlugins.open; }
     { plugin = tmuxPlugins.copycat; }
-    { plugin = tmuxPlugins.jump; }
+    { plugin = tmuxPlugins.jump; 
+      extraConfig = ''
+        set -g @jump-key 'Space'
+      '';
+    }
   ];
   shebang = ''
     #!${pkgs.bash}/bin/bash
