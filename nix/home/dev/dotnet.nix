@@ -1,3 +1,3 @@
 { config, pkgs, lib, ... }: {
-  home.packages = with pkgs; [ dotnet-sdk_3 mono6 ];
+  home.packages = with pkgs; [ dotnet-sdk_5 mono ];
 }

@@ -3,7 +3,7 @@
 
 let
   config' = ''
-    --theme="GitHub"
+    --theme="OneHalfLight"
   '';
 in {
   home = {

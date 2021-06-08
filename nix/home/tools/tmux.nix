@@ -7,11 +7,11 @@ let
   defaultShell = "${pkgs.zsh}/bin/zsh";
   statusInterval = 60;
   resizeAmount = 5;
-  lSimbol = "\\ue0b8";
-  lSimbol' = "\\ue0b9";
+  lSimbol = "\\ue0b0";
+  lSimbol' = "\\ue0b1";
   lSimbol'' = "\\ue0b0";
-  rSimbol = "\\ue0ba";
-  rSimbol' = "\\ue0bb";
+  rSimbol = "\\ue0b2";
+  rSimbol' = "\\ue0b3";
   rSimbol'' = "\\ue0b2";
 
   colors = {
@@ -36,9 +36,7 @@ let
       '';
     }
     {
-      # TODO:
-      # plugin = tmuxPlugins.mkTmuxPlugin {
-      plugin = tmuxPlugins.mkDerivation {
+      plugin = tmuxPlugins.mkTmuxPlugin {
         name = "tmux-better-mouse-mode";
         pluginName = "tmux-better-mouse-mode";
         src = sources."tmux-better-mouse-mode";
@@ -47,52 +45,14 @@ let
         set-option -g mouse on
       '';
     }
-    #     {
-    #       plugin = tmuxPlugins.mkDerivation { 
-    #         name = "tmux-current-pane-hostname";
-    #         pluginName = "tmux-current-pane-hostname";
-    #         src = sources."tmux-current-pane-hostname";
-    #       };
-    #     }
-    #     { 
-    #       # TODO:
-    #       # plugin = tmuxPlugins.mkTmuxPlugin {
-    #       plugin = tmuxPlugins.mkDerivation {
-    #         name = "tmux-power";
-    #         pluginName = "tmux-power";
-    #         rtpFilePath = "tmux-power.tmux";
-    #         src = sources."tmux-power";
-    #       };
-    #       extraConfig = ''
-    #         set -g @tmux_power_theme 'snow'
-    #         set -g @tmux_power_date_icon ' ' # set it to a blank will disable the icon
-    #         set -g @tmux_power_time_icon ' ' # emoji can be used if your terminal supports
-    #         set -g @tmux_power_user_icon 'U'
-    #         set -g @tmux_power_session_icon 'S'
-    #         set -g @tmux_power_upload_speed_icon 
-    #       '';
-    #     }
-    #     { 
-    #       plugin = tmuxPlugins.prefix-highlight;
-    #       extraConfig = ''
-    #       '';
-    #     }
-    #     {
-    #       plugin = tmuxPlugins.mkDerivation {
-    #         name = "web-reachable";
-    #         pluginName = "web-reachable";
-    #         rtpFilePath = "web-reachable.tmux";
-    #         src = sources."tmux-web-reachable";
-    #       };
-    #       extraConfig = ''
-    #         set -g @tmux_power_show_web_reachable true
-    #       '';
-    #     }
+    { plugin = tmuxPlugins.yank; }
+    { plugin = tmuxPlugins.open; }
+    { plugin = tmuxPlugins.copycat; }
+    { plugin = tmuxPlugins.jump; }
   ];
   shebang = ''
     #!${pkgs.bash}/bin/bash
   '';
-  #scripts = lib.mapAttrsToList (k: v: v) (builtins.mapAttrs (k: v: pkgs.writeScriptBin k (shebang + v)) {
   scriptDefinitions = {
     TMUX_LOA = ''
       uptime | awk -F "[:,]"  '{printf "LOA:%s %s %s\n",$(NF - 2),$(NF - 1), $NF}'

@@ -51,10 +51,10 @@ let
   macOptionSelectionMode = "vertical";
   webGLRenderer = true;
   plugins = [
-    "hyper-iceberg" # theme
     "hyperborder"
     "hyperlinks" # url
     # "hyperterm-overlay" # overlay
+    "hyper-ayu-light"
   ];
   config = ''
     config: {

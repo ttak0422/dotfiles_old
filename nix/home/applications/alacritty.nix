@@ -4,73 +4,54 @@ let
   fontSize = 16;
   padding = fontSize / 2;
   fontFamily = "Hack Nerd Font Mono";
-  #   # ayu
-  #   light = {
-  #     primary = {
-  #       background = "#FAFAFA";
-  #       foreground = "#575F66";
-  #     };
-  #     normal = {
-  #       black = "#FAFAFA"; # 0
-  #       red = "#F07178"; # 1
-  #       green = "#86B300"; # 2
-  #       yellow = "#FF6A00"; # 3
-  #       blue = "#36A3D9"; # 4
-  #       magenta = "#A37ACC"; #5
-  #       cyan = "#4CBF99"; # 6
-  #       white = "#575F66"; # 7
-  #     };
-  #     bright = {
-  #       black = "#828C99"; # 8
-  #       red = "#FF3333"; # 9
-  #       green = "#86B300";# 10
-  #       yellow = "#FF6A00"; # 11
-  #       blue = "#36A3D9"; # 12
-  #       magenta = "#A37ACC"; # 13
-  #       cyan = "#4CBF99"; # 14
-  #       white = "#ABB0B6"; # 15
-  #     };
-  #   };
-  # one (https://github.com/alacritty/alacritty/wiki/Color-schemes)
-  light = {
-    primary = {
-      background = "#fafafa";
-      foreground = "#383a42";
-    };
-    cursor = {
-      text = "CellBackground";
-      cursor = "#526eff";
-    };
-    normal = {
-      black = "#696c77"; # 0
-      red = "#e45649"; # 1
-      green = "#50a14f"; # 2
-      yellow = "#c18401"; # 3
-      blue = "#4078f2"; # 4
-      magenta = "#a626a4"; # 5
-      cyan = "#0184bc"; # 6
-      white = "#a0a1a7"; # 7
-    };
-  };
   config = ''
-    schemes:
-      one_light: &light
-        primary:
-          background: '${light.primary.background}'
-          foreground: '${light.primary.foreground}'
-        cursor:
-          text: ${light.cursor.text}
-          cursor: '${light.cursor.cursor}'
-        normal:
-          black: '${light.normal.black}'
-          red: '${light.normal.red}'
-          green: '${light.normal.green}'
-          yellow: '${light.normal.yellow}'
-          blue: '${light.normal.blue}'
-          magenta: '${light.normal.magenta}'
-          cyan: '${light.normal.cyan}'
-          white: '${light.normal.white}'
-    colors: *light
+    colors:
+      primary:
+        foreground: '#6c7680'
+        background: '#fafafa'
+      normal:
+        black: '#000000'
+        red: '#f07171'
+        green: '#86b300'
+        yellow: '#f2ae49'
+        blue: '#399ee6'
+        magenta: '#a37acc'
+        cyan: '#4cbf99'
+        white: '#c7c7c7'
+      bright:
+        black: '#686868'
+        red: '#f07171'
+        green: '#86b300'
+        yellow: '#f2ae49'
+        blue: '#399ee6'
+        magenta: '#a37acc'
+        cyan: '#4cbf99'
+        white: '#d1d1d1'
+      dim:
+        black:   '#14151b'
+        red:     '#ff2222'
+        green:   '#1ef956'
+        yellow:  '#ebf85b'
+        blue:    '#4d5b86'
+        magenta: '#ff46b0'
+        cyan:    '#59dffc'
+        white:   '#e6e6d1'    
+      cursor:
+        text: CellBackground
+        cursor: CellForeground
+      vi_mode_cursor:
+        text: CellBackground 
+        cursor: CellForeground
+      search:
+        matches:
+          foreground: '#44475a'
+          background: '#50fa7b'
+        focused_match:
+          foreground: '#44475a'
+          background: '#ffb86c'
+      selection:
+        text: CellForeground
+        background: '#e8eef4'
     env:
       TERM: screen-256color
     window:
