@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "Shougo",
         "repo": "dein.vim",
-        "rev": "d045ebcca1714d48e6e4cf56c9924d371dac3325",
-        "sha256": "0dycirc85jhlv7zvnlvg5xcr0jflwkckxigcbaiqqz9igyclxvqy",
+        "rev": "3e05e1f92656d5b42576c69c8e1785486a2d0dad",
+        "sha256": "11zwfagj3ig0v5bcbjnksdi48c9l1s7362v723rajnkpxzxaslvm",
         "type": "tarball",
-        "url": "https://github.com/Shougo/dein.vim/archive/d045ebcca1714d48e6e4cf56c9924d371dac3325.tar.gz",
+        "url": "https://github.com/Shougo/dein.vim/archive/3e05e1f92656d5b42576c69c8e1785486a2d0dad.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-kubectl-completions": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "6d7aa865f958bd86ae57de153d349055d8bdfee2",
-        "sha256": "0544g9bjmsgzggn54081qls9vh32ahq5ja2rydw2bc54nvz32zcx",
+        "rev": "61e380e6859517ad6f21e8650e55ff3f0bcf2a32",
+        "sha256": "1jvkz12n2mbv0qnjwkjk83yblwmfs0jlsr928q90hi3xz0vny12m",
         "type": "tarball",
-        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/6d7aa865f958bd86ae57de153d349055d8bdfee2.tar.gz",
+        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/61e380e6859517ad6f21e8650e55ff3f0bcf2a32.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "tmux-better-mouse-mode": {
@@ -113,10 +113,10 @@
         "homepage": null,
         "owner": "zsh-users",
         "repo": "zsh-autosuggestions",
-        "rev": "ae315ded4dba10685dbbafbfa2ff3c1aefeb490d",
-        "sha256": "0h52p2waggzfshvy1wvhj4hf06fmzd44bv6j18k3l9rcx6aixzn6",
+        "rev": "a411ef3e0992d4839f0732ebeb9823024afaaaa8",
+        "sha256": "1g3pij5qn2j7v7jjac2a63lxd97mcsgw6xq6k5p7835q9fjiid98",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-autosuggestions/archive/ae315ded4dba10685dbbafbfa2ff3c1aefeb490d.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-autosuggestions/archive/a411ef3e0992d4839f0732ebeb9823024afaaaa8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zsh-syntax-highlighting": {
@@ -125,10 +125,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "ebef4e55691f62e630318d56468e5798367aa81c",
-        "sha256": "0qimb90655hkm64mjqcn48kqq38cbfxlfhs324cbdi9gqpdi6q4b",
+        "rev": "0e1bb14452e3fc66dcc81531212e1061e02c1a61",
+        "sha256": "09ncmyqlk9a3h470z0wgbkrznb5zyc9dj96011wm89rdxc1irxk2",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/ebef4e55691f62e630318d56468e5798367aa81c.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/0e1bb14452e3fc66dcc81531212e1061e02c1a61.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
