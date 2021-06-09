@@ -7,13 +7,8 @@ let
   defaultShell = "${pkgs.zsh}/bin/zsh";
   statusInterval = 60;
   resizeAmount = 5;
-  lSimbol = "\\ue0b0";
-  lSimbol' = "\\ue0b1";
-  lSimbol'' = "\\ue0b0";
-  rSimbol = "\\ue0b2";
-  rSimbol' = "\\ue0b3";
-  rSimbol'' = "\\ue0b2";
-
+  lStatusSimbol = "\\ue0b1";
+  rStatusSimbol = "\\ue0b3";
   colors = {
     accent = "yellow";
     statusLeft = "cyan";
@@ -45,10 +40,34 @@ let
         set-option -g mouse on
       '';
     }
+    #    {
+    #      plugin = tmuxPlugins.mkTmuxPlugin {
+    #        name = "tmux-prefix-highlight";
+    #        pluginName = "tmux-prefix-highlight";
+    #        src = sources."tmux-prefix-highlight";
+    #      };
+    #      extraConfig = ''
+    #        set -g @prefix_highlight_show_copy_mode 'on'
+    #        set -g @prefix_highlight_show_sync_mode 'on'
+    #        set -g @prefix_highlight_fg 'white'
+    #        set -g @prefix_highlight_bg 'blue'
+    #        set -g @prefix_highlight_empty_attr 'fg=default,bg=green'
+    #        set -g @prefix_highlight_copy_mode_attr 'fg=black,bg=yellow,bold'
+    #        set -g @prefix_highlight_sync_mode_attr 'fg=black,bg=green'
+    #
+    #        set -g @prefix_highlight_empty_prompt '    '
+    #        set -g @prefix_highlight_prefix_prompt 'Wait'
+    #        set -g @prefix_highlight_copy_prompt 'Copy'
+    #        set -g @prefix_highlight_sync_prompt 'Sync'
+    #        set -g @prefix_highlight_output_prefix ' '
+    #        set -g @prefix_highlight_output_suffix ' '
+    #      '';
+    #    }
     { plugin = tmuxPlugins.yank; }
     { plugin = tmuxPlugins.open; }
     { plugin = tmuxPlugins.copycat; }
-    { plugin = tmuxPlugins.jump; 
+    {
+      plugin = tmuxPlugins.jump;
       extraConfig = ''
         set -g @jump-key 'Space'
       '';
@@ -69,17 +88,41 @@ let
         echo 1;
       fi
     '';
+    TMUX_BORDER_UPDATE = ''
+      zoomed=''${1:-0}
+      num=`tmux list-panes | wc -l`;
+      if [[ 1 = $num || 1 = $zoomed ]]; then
+        tmux set pane-border-status off
+      else
+        tmux set pane-border-status top
+      fi
+    '';
+    # WIP
+    # TMUX_BORDER_UPDATEではPainが2つの時に片方を削除しても設定が反映されなかったため削除向けに
+    TMUX_BORDER_UPDATE2 = ''
+      tmux kill-pane
+      num=`tmux list-panes | wc -l`;
+      if [[ 1 = $num ]]; then
+        tmux set pane-border-status off
+      else
+        tmux set pane-border-status top
+      fi
+    '';
   };
   scripts = builtins.mapAttrs (k: v: pkgs.writeScriptBin k (shebang + v))
     scriptDefinitions;
   scriptPackages = lib.mapAttrsToList (k: v: v) scripts;
+  borderUpdate = ''
+    run-shell "${scripts.TMUX_BORDER_UPDATE}/bin/TMUX_BORDER_UPDATE #{window_zoomed_flag}"'';
+  borderUpdate2 =
+    ''run-shell "${scripts.TMUX_BORDER_UPDATE2}/bin/TMUX_BORDER_UPDATE2"'';
   extraConfig = ''
     set-option -ga terminal-overrides ",screen-256color:Tc"
     set-option -g bell-action none 
     set-option -g renumber-windows on
     set-option -g status-interval ${toString statusInterval}
 
-    bind c new-window
+    bind c new-window\; ${borderUpdate}
     bind d detach-client
     bind : command-prompt
     bind [ copy-mode
@@ -87,10 +130,7 @@ let
     bind t clock-mode
     bind w choose-window
     bind s choose-session
-    # pane・pane-borderの切り替え
-    bind z resize-pane -Z\; \
-      if-shell -F "#{window_zoomed_flag}" "set pane-border-status off" "set pane-border-status top"
-
+    bind z resize-pane -Z\; ${borderUpdate}
 
     bind C-n command-prompt -I "" "new -s '%%'"
 
@@ -112,8 +152,8 @@ let
     bind P command-prompt -I "#T" "select-pane -T '%%'"
 
     # close 
-    bind x confirm-before -p "kill-pane #W? (y/n)" kill-pane
-    bind X confirm-before -p "kill-window #W? (y/n)" kill-window
+    bind x confirm-before -p "kill-pane #W? (y/n)" "${borderUpdate2}"
+    bind X confirm-before -p "kill-window #W? (y/n)" "${borderUpdate2}"
 
     # move-window
     bind -r , previous-window
@@ -140,8 +180,8 @@ let
       next-window
 
     # split pane
-    bind | split-window -h -c '#{pane_current_path}'
-    bind - split-window -v -c '#{pane_current_path}'
+    bind | split-window -h -c '#{pane_current_path}'\; ${borderUpdate}
+    bind - split-window -v -c '#{pane_current_path}'\; ${borderUpdate}
 
     # status
     set -g status-left-length 40
@@ -152,7 +192,7 @@ let
     set -g message-style fg=${colors.accent},reverse,bg=default
 
     # status-left
-    set -g status-left "#[fg=${colors.termBg},bg=${colors.statusLeft}]#{?client_prefix,#[fg=${colors.termBg}]#[bg=${colors.accent}],} Session: #S #[default]#[fg=${colors.statusLeft}]#{?client_prefix,#[fg=${colors.accent}],}${lSimbol}#[fg=${colors.statusLeft},bg=${colors.termBg}]#{?window_zoomed_flag, ZOOM ${lSimbol'},}"
+    set -g status-left "#[fg=${colors.statusLeft}]SESSION: #S ${lStatusSimbol} #{?window_zoomed_flag,ZOOM ${lStatusSimbol},}"
 
     # status-center
     set-option -g status-justify "centre"
@@ -160,12 +200,12 @@ let
     set-window-option -g window-status-current-format "#[reverse] #I:#W #[default]"
 
     # status-right
-    set -g status-right "#[fg=${colors.statusRight}]${rSimbol'} #(${scripts.TMUX_LOA}/bin/TMUX_LOA) ${rSimbol}#[fg=${colors.termBg},bg=${colors.statusRight}] %H:%M #[default]"
+    set -g status-right "#[fg=${colors.statusRight}]${rStatusSimbol} #(${scripts.TMUX_LOA}/bin/TMUX_LOA) ${rStatusSimbol} TIME: %H:%M "
 
     # border
     set -g pane-active-border-style ""
     set -g pane-border-style ""
-    set -g pane-border-format "#{?pane_active,${rSimbol''}#[reverse]   #P:#T   #[default]${lSimbol''},}"
+    set -g pane-border-format "#{?client_prefix,#[fg=${colors.termBg}]#[bg=${colors.accent}],#[fg=${colors.termBg}]#[bg=${colors.termFg}]}#{?pane_active, #P:#T ,}"
     set -g pane-border-status top
 
     # default shell
