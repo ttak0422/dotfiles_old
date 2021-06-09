@@ -20,6 +20,7 @@
       hey # load test tool
       htop # top clone
       jq # JSON processor
+      yq # JSON processor
       neofetch # system information tool
       # niv
       # nixfmt
