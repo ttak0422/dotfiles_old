@@ -206,7 +206,7 @@ let
     set -g pane-active-border-style ""
     set -g pane-border-style ""
     set -g pane-border-format "#[reverse]#{?pane_active, #P:#T ,}"
-    set -g pane-border-status top
+    set -g pane-border-status off
 
     # default shell
     set-option -g default-shell "${defaultShell}"
