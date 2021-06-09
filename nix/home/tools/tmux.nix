@@ -197,7 +197,7 @@ let
     # status-center
     set-option -g status-justify "centre"
     set-window-option -g window-status-format " #I:#W "
-    set-window-option -g window-status-current-format "#[reverse] #I:#W #[default]"
+    set-window-option -g window-status-current-format "#{?client_prefix,#[fg=${colors.accent}],}#[reverse] #I:#W #[default]"
 
     # status-right
     set -g status-right "#[fg=${colors.statusRight}]${rStatusSimbol} #(${scripts.TMUX_LOA}/bin/TMUX_LOA) ${rStatusSimbol} TIME: %H:%M "
@@ -205,7 +205,7 @@ let
     # border
     set -g pane-active-border-style ""
     set -g pane-border-style ""
-    set -g pane-border-format "#{?client_prefix,#[fg=${colors.termBg}]#[bg=${colors.accent}],#[fg=${colors.termBg}]#[bg=${colors.termFg}]}#{?pane_active, #P:#T ,}"
+    set -g pane-border-format "#[reverse]#{?pane_active, #P:#T ,}"
     set -g pane-border-status top
 
     # default shell
