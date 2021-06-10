@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   imports = [
     ./applications
-    #    ./dev
+    ./dev
     ./git
     ./scripts
     ./services
