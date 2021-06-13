@@ -336,6 +336,9 @@ in {
         set showtabline=2
         " statusline
         set laststatus=2
+
+        " mouse
+        set mouse=a
       '';
     };
   };
