@@ -33,7 +33,7 @@ let
     }
     {
       description = "create local server";
-      command = "python -m http.server 8080";
+      command = "python -m http.server <port=8080>";
       tag = [ "python" "server" ];
       output = "simple server";
     }
@@ -45,10 +45,6 @@ let
       description = "Dockernized Terraform";
       command =
         "docker run --rm -i -v $PWD:/work -w /work -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION hashicorp/terraform:0.14.8";
-    }
-    {
-      description = "nix repl";
-      command = "nix repl '<nixpkgs>'";
     }
   ];
 in {
