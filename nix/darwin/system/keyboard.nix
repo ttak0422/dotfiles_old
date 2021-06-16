@@ -3,5 +3,8 @@
     enableKeyMapping = true;
     remapCapsLockToControl = true;
   };
-  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain = {
+    NSAutomaticDashSubstitutionEnabled = false;
+    ApplePressAndHoldEnabled = false;
+  };
 }
