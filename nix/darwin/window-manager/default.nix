@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
-  imports = [ 
-    ./skhd.nix 
+  imports = [
+    ./skhd.nix
     # ./spacebar.nix 
-    ./yabai.nix 
+    ./yabai.nix
   ];
 }
