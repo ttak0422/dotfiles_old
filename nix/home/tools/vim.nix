@@ -250,10 +250,10 @@ let
     endif
   '';
 in {
-  #      nixpkgs.overlays = [
-  #        (import
-  #        (builtins.fetchTarball { url = sources.neovim-nightly-overlay.url; }))
-  #      ];
+  nixpkgs.overlays = [
+    (import
+      (builtins.fetchTarball { url = sources.neovim-nightly-overlay.url; }))
+  ];
   home = {
     packages = lib.lists.unique (lib.lists.flatten (builtins.map (x: x.depends')
       (builtins.filter (x: x ? depends')
@@ -268,7 +268,7 @@ in {
     vim = { enable = true; };
     neovim = {
       enable = true;
-      #          package = pkgs.neovim-nightly;
+      package = pkgs.neovim-nightly;
       plugins = plugins;
       vimdiffAlias = true;
       withNodeJs = true;
