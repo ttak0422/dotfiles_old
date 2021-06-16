@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "Shougo",
         "repo": "dein.vim",
-        "rev": "3e05e1f92656d5b42576c69c8e1785486a2d0dad",
-        "sha256": "11zwfagj3ig0v5bcbjnksdi48c9l1s7362v723rajnkpxzxaslvm",
+        "rev": "ef68eb6f08f20eebc3973e771447a54386a71f07",
+        "sha256": "01kf2s55d4rslwfjvpgf7a95h8v4wfmsgn4rkqcxpwq3gb0bg8i7",
         "type": "tarball",
-        "url": "https://github.com/Shougo/dein.vim/archive/3e05e1f92656d5b42576c69c8e1785486a2d0dad.tar.gz",
+        "url": "https://github.com/Shougo/dein.vim/archive/ef68eb6f08f20eebc3973e771447a54386a71f07.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-kubectl-completions": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "61e380e6859517ad6f21e8650e55ff3f0bcf2a32",
-        "sha256": "1jvkz12n2mbv0qnjwkjk83yblwmfs0jlsr928q90hi3xz0vny12m",
+        "rev": "9af17721a9338b3e1ea4faa7f971a48ca1baf84d",
+        "sha256": "0cqax6pzj22las5qz8jcynbbkgpglxgyl2wq4d69jdmzh707k1n0",
         "type": "tarball",
-        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/61e380e6859517ad6f21e8650e55ff3f0bcf2a32.tar.gz",
+        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/9af17721a9338b3e1ea4faa7f971a48ca1baf84d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "tmux-better-mouse-mode": {
