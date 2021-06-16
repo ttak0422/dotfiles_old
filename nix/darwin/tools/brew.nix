@@ -11,6 +11,7 @@
       "font-hack-nerd-font"
       "font-fira-code"
       "keycastr"
+      "vscodium"
     ];
   };
 }
