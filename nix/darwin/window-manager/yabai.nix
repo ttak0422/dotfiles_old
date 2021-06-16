@@ -10,7 +10,7 @@ in {
   services.yabai = {
     enable = true;
     package = pkgs.yabai;
-    enableScriptingAddition = true;
+    enableScriptingAddition = false;
     config = {
       mouse_follows_focus = "off";
       focus_follows_mouse = "off";
@@ -23,13 +23,13 @@ in {
       auto_balance = "on";
       mouse_action1 = "move";
       mouse_action2 = "resize";
-      window_opacity = "on";
+      window_opacity = "off";
       active_window_opacity = "1.0";
       normal_window_opacity = "1.0";
     };
     extraConfig = spaces + "\n" + rules + ''
-      yabai -m space --gap abs:12
-      yabai -m config external_bar all:0:26         
+      yabai -m space --gap abs:12         
     '';
+    # yabai -m config external_bar all:0:26
   };
 }

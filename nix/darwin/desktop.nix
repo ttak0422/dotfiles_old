@@ -2,7 +2,7 @@
   imports = [
     ./system
     ./tools
-    # ./window-manager 
+    ./window-manager 
   ];
   programs.zsh.enable = true;
   nix.nixPath = [
