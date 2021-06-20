@@ -88,7 +88,7 @@ let
         echo 1;
       fi
     '';
-    TMUX_BORDER_UPDATE = ''
+    TMUX_UPDATE_BORDER = ''
       zoomed=''${1:-0}
       num=`tmux list-panes | wc -l`;
       if [[ 1 = $num || 1 = $zoomed ]]; then
@@ -97,9 +97,7 @@ let
         tmux set pane-border-status top
       fi
     '';
-    # WIP
-    # TMUX_BORDER_UPDATEではPainが2つの時に片方を削除しても設定が反映されなかったため削除向けに
-    TMUX_BORDER_UPDATE2 = ''
+    TMUX_KILL_PANE_AND_UPDATE_BORDER = ''
       tmux kill-pane
       num=`tmux list-panes | wc -l`;
       if [[ 1 = $num ]]; then
@@ -113,9 +111,9 @@ let
     scriptDefinitions;
   scriptPackages = lib.mapAttrsToList (k: v: v) scripts;
   borderUpdate = ''
-    run-shell "${scripts.TMUX_BORDER_UPDATE}/bin/TMUX_BORDER_UPDATE #{window_zoomed_flag}"'';
+    run-shell "${scripts.TMUX_UPDATE_BORDER}/bin/TMUX_UPDATE_BORDER #{window_zoomed_flag}"'';
   borderUpdate2 =
-    ''run-shell "${scripts.TMUX_BORDER_UPDATE2}/bin/TMUX_BORDER_UPDATE2"'';
+    ''run-shell "${scripts.TMUX_KILL_PANE_AND_UPDATE_BORDER}/bin/TMUX_KILL_PANE_AND_UPDATE_BORDR"'';
   extraConfig = ''
     set-option -ga terminal-overrides ",screen-256color:Tc"
     set-option -g bell-action none 
