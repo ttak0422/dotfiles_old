@@ -113,7 +113,7 @@ let
   borderUpdate = ''
     run-shell "${scripts.TMUX_UPDATE_BORDER}/bin/TMUX_UPDATE_BORDER #{window_zoomed_flag}"'';
   borderUpdate2 =
-    ''run-shell "${scripts.TMUX_KILL_PANE_AND_UPDATE_BORDER}/bin/TMUX_KILL_PANE_AND_UPDATE_BORDR"'';
+    ''run-shell "${scripts.TMUX_KILL_PANE_AND_UPDATE_BORDER}/bin/TMUX_KILL_PANE_AND_UPDATE_BORDER"'';
   extraConfig = ''
     set-option -ga terminal-overrides ",screen-256color:Tc"
     set-option -g bell-action none 
