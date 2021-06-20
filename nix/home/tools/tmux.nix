@@ -209,6 +209,9 @@ let
     # default shell
     set-option -g default-shell "${defaultShell}"
     set -g default-command "${defaultShell}"
+    
+    # run
+    run-shell "${scripts.TMUX_UPDATE_BORDER}/bin/TMUX_UPDATE_BORDER #{window_zoomed_flag}";
   '';
 in {
   programs.zsh.enable = true;
