@@ -1,12 +1,6 @@
 { config, pkgs, lib, ... }:
 with lib;
-let
-  mkSpaces = { space, label }: "yabai -m space ${space} --label ${label}";
-  mkRules = { app, rule }: "yabai -m rule --add app=${app} ${rule}";
-  f = strings.concatMapStringsSep "\n";
-  spaces = f mkSpaces [ ];
-  rules = f mkRules [ ];
-in {
+{
   services.yabai = {
     enable = true;
     package = pkgs.yabai;
@@ -27,8 +21,17 @@ in {
       active_window_opacity = "1.0";
       normal_window_opacity = "1.0";
     };
-    extraConfig = spaces + "\n" + rules + ''
+    extraConfig = ''
+      yabai -m rule --add app='Finder' manage=off
+      yabai -m rule --add app='zoom.us' manage=off
+      yabai -m rule --add app='Docker*' manage=off
+      yabai -m rule --add app='AnyConnect' manage=off
+      yabai -m rule --add app='システム環境設定' manage=off
       yabai -m space --gap abs:12         
+      yabai -m config mouse_modifier               alt
+      yabai -m config mouse_action1                move
+      yabai -m config mouse_action2                resize
+      yabai -m config mouse_drop_action            swap
     '';
     # yabai -m config external_bar all:0:26
   };
