@@ -69,6 +69,10 @@ in {
         name = "zsh-256color";
         src = sources.zsh-256color;
       }
+      {
+        name = "zsh-vimode-visual";
+        src = sources.zsh-vimode-visual;
+      }
     ];
 
   };

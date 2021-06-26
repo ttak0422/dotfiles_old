@@ -130,5 +130,17 @@
         "type": "tarball",
         "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/0e1bb14452e3fc66dcc81531212e1061e02c1a61.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "zsh-vimode-visual": {
+        "branch": "master",
+        "description": "Implement the vim-like visual mode to vi-mode of zsh",
+        "homepage": null,
+        "owner": "b4b4r07",
+        "repo": "zsh-vimode-visual",
+        "rev": "1e39cf896d87e367f76d84f8db4a79506fc556c1",
+        "sha256": "0m4080ayb83wwmjzgqiv6qylxgyb61dlwrlr1qq1n74didb5cldd",
+        "type": "tarball",
+        "url": "https://github.com/b4b4r07/zsh-vimode-visual/archive/1e39cf896d87e367f76d84f8db4a79506fc556c1.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
