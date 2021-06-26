@@ -16,6 +16,10 @@ in {
       # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
+      # Instant prompt
+      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      fi
 
       # abbrs
       source ${sources.zsh-abbrev-alias}/abbrev-alias.plugin.zsh
