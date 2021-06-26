@@ -9,6 +9,7 @@ in {
   home.packages = with pkgs; [ zsh-powerlevel10k ];
   programs.zsh = {
     enable = true;
+    defaultKeymap = "viins";
     initExtra = ''
       test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
       # test -e "/etc/static/bashrc" && source "/etc/static/bashrc"
