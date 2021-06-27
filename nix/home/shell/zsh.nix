@@ -10,14 +10,18 @@ in {
   programs.zsh = {
     enable = true;
     defaultKeymap = "viins";
+    # memo
+    # prompt_charの変更はp10kで可能
+    # typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='$fg[blue]❯'
+    # typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='$fg[green]CMD ❯'
+    # typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='$fg[magenta]VIS ❯'
     initExtra = ''
-      test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
-      # test -e "/etc/static/bashrc" && source "/etc/static/bashrc"
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
       # Instant prompt
+      # zshrcの更新を反映するにはzwcの削除が必要
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi
@@ -46,9 +50,6 @@ in {
       }
       zle -N peco-history-selection
       bindkey '^R' peco-history-selection
-
-      # kubectl
-      # source <(kubectl completion zsh)
     '';
     shellAliases = shared.shellAliases;
     profileExtra = "";
