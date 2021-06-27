@@ -3,7 +3,6 @@
 
 let
   config' = ''
-    --theme="OneHalfLight"
   '';
 in {
   home = {
