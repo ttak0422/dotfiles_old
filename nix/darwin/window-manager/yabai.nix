@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
-with lib;
-{
+with lib; {
   services.yabai = {
     enable = true;
     package = pkgs.yabai;
