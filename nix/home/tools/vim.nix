@@ -280,7 +280,7 @@ in {
 
         " カラースキーム
         set termguicolors
-        set background=light
+        set background=dark
         colorscheme one
 
         set encoding=utf-8

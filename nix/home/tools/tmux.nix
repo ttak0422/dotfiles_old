@@ -11,10 +11,10 @@ let
   rStatusSimbol = "\\ue0b3";
   colors = {
     accent = "yellow";
-    statusLeft = "cyan";
-    statusRight = "#da3e39";
-    termBg = "#fafafa";
-    termFg = "#494b53";
+    statusLeft = "green";
+    statusRight = "green";
+    termBg = "#282c34";
+    termFg = "#abb2bf";
   };
   plugins = with pkgs; [
     {

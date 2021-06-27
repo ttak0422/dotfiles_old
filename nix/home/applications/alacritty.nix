@@ -5,53 +5,26 @@ let
   padding = fontSize / 2;
   fontFamily = "Hack Nerd Font Mono";
   config = ''
+    # Colors (One Dark - https://github.com/atom/atom/tree/master/packages/one-dark-syntax)
     colors:
       primary:
-        foreground: '#6c7680'
-        background: '#fafafa'
-      normal:
-        black: '#000000'
-        red: '#f07171'
-        green: '#86b300'
-        yellow: '#f2ae49'
-        blue: '#399ee6'
-        magenta: '#a37acc'
-        cyan: '#4cbf99'
-        white: '#c7c7c7'
-      bright:
-        black: '#686868'
-        red: '#f07171'
-        green: '#86b300'
-        yellow: '#f2ae49'
-        blue: '#399ee6'
-        magenta: '#a37acc'
-        cyan: '#4cbf99'
-        white: '#d1d1d1'
-      dim:
-        black:   '#14151b'
-        red:     '#ff2222'
-        green:   '#1ef956'
-        yellow:  '#ebf85b'
-        blue:    '#4d5b86'
-        magenta: '#ff46b0'
-        cyan:    '#59dffc'
-        white:   '#e6e6d1'    
+        background: '#282c34'
+        foreground: '#abb2bf'
       cursor:
-        text: CellBackground
-        cursor: CellForeground
-      vi_mode_cursor:
-        text: CellBackground 
-        cursor: CellForeground
-      search:
-        matches:
-          foreground: '#44475a'
-          background: '#50fa7b'
-        focused_match:
-          foreground: '#44475a'
-          background: '#ffb86c'
+        text:       CellBackground
+        cursor:     '#528bff' # syntax-cursor-color
       selection:
-        text: CellForeground
-        background: '#e8eef4'
+        text:       CellForeground
+        background: '#3e4451' # syntax-selection-color
+      normal:
+        black:      '#5c6370' # mono-3
+        red:        '#e06c75' # red 1
+        green:      '#98c379'
+        yellow:     '#e5c07b' # orange 2
+        blue:       '#61afef'
+        magenta:    '#c678dd'
+        cyan:       '#56b6c2'
+        white:      '#828997' # mono-2
     env:
       TERM: screen-256color
     window:
