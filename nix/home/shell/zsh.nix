@@ -50,6 +50,10 @@ in {
       }
       zle -N peco-history-selection
       bindkey '^R' peco-history-selection
+
+      # https://unix.stackexchange.com/questions/368231/going-over-start-of-insert-action-in-z-shell-vi-mode
+      bindkey -M viins '^?' backward-delete-char
+      bindkey -M viins '^H' backward-delete-char
     '';
     shellAliases = shared.shellAliases;
     profileExtra = "";
