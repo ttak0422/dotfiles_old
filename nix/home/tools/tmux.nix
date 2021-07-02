@@ -147,7 +147,7 @@ let
     # rename
     bind W command-prompt -I "#W" "rename-window '%%'"
     bind S command-prompt -I "#S" "rename-session '%%'"
-    bind P command-prompt -I "#T" "select-pane -T '%%'"
+    bind P command-prompt -I "" "select-pane -T '%%'"
 
     # close 
     bind x confirm-before -p "kill-pane #W? (y/n)" "${borderUpdate2}"
