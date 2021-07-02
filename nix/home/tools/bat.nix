@@ -1,9 +1,7 @@
 # cat clone
 { config, pkgs, lib, ... }:
 
-let
-  config' = ''
-  '';
+let config' = "";
 in {
   home = {
     packages = [ pkgs.bat ];
