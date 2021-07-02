@@ -49,11 +49,26 @@ let
     ${mod} - z : yabai -m window --toggle zoom-fullscreen
     # float window
     ${mod} - f : yabai -m window --toggle float && yabai -m window --grid 10:10:2:1:7:8
+
+    # term
+    cmd - return : ${SWAP_TERM}/bin/SWAP_TERM
       '';
+  SWAP_TERM = pkgs.writeScriptBin "SWAP_TERM" ''
+    #!/usr/bin/osascript
+    tell application "System Events"
+      set activeApp to name of first application process whose frontmost is true
+      if visible of application process "Alacritty"
+        set visible of application process "Alacritty" to false
+      else
+        activate application "Alacritty"
+      end if
+    end tell
+  '';
 in {
   services.skhd = {
     enable = true;
     package = pkgs.skhd;
     skhdConfig = config;
   };
+  environment.systemPackages = [ SWAP_TERM ];
 }
