@@ -186,7 +186,7 @@ let
     set -g status-right-length 80
 
     # color
-    set -g status-style fg=${colors.termFg},bg=${colors.termBg}
+    set -g status-style fg=${colors.termFg}
     set -g message-style fg=${colors.accent},reverse,bg=default
 
     # status-left
