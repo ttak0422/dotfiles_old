@@ -4,6 +4,7 @@ let
   fontSize = 16;
   padding = fontSize / 2;
   fontFamily = "Hack Nerd Font Mono";
+  backgroundOpacity = 0.90;
   config = ''
     # Colors (One Dark - https://github.com/atom/atom/tree/master/packages/one-dark-syntax)
     colors:
@@ -32,6 +33,7 @@ let
       padding:
         x: ${toString padding}
         y: ${toString padding}
+    background_opacity: ${toString backgroundOpacity}
     key_bindings:
       - { key: Minus, mods: Command|Shift, action: IncreaseFontSize } # JISキーボードで文字サイズを変更するため
       - { key: Backslash, mods: Alt, chars: "\x5c" } # JISキーボードのMacでバックスラッシュを入力するため
