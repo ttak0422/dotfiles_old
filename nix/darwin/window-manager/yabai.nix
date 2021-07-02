@@ -25,6 +25,7 @@ with lib; {
       yabai -m rule --add app='zoom.us' manage=off
       yabai -m rule --add app='Docker*' manage=off
       yabai -m rule --add app='AnyConnect' manage=off
+      yabai -m rule --add app='Alacritty' manage=off
       yabai -m rule --add app='システム環境設定' manage=off
       yabai -m space --gap abs:12         
       yabai -m config mouse_modifier               alt
