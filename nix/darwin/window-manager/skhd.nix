@@ -56,7 +56,6 @@ let
   SWAP_TERM = pkgs.writeScriptBin "SWAP_TERM" ''
     #!/usr/bin/osascript
     tell application "System Events"
-      set activeApp to name of first application process whose frontmost is true
       if visible of application process "Alacritty"
         set visible of application process "Alacritty" to false
       else
