@@ -32,7 +32,7 @@ with lib; {
       yabai -m config mouse_action1                move
       yabai -m config mouse_action2                resize
       yabai -m config mouse_drop_action            swap
+      yabai -m config external_bar all:0:26
     '';
-    # yabai -m config external_bar all:0:26
   };
 }
