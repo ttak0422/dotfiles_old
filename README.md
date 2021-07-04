@@ -6,6 +6,8 @@
 <img  src="https://img.shields.io/github/license/ttak0422/dotfiles?style=for-the-badge&color=black">
 </div>
 
+![image](https://user-images.githubusercontent.com/15827817/124383528-e74c9f00-dd07-11eb-8565-e4a7b687f35a.png)
+
 ## About
 
 実験中...
@@ -14,26 +16,17 @@
 ├── locals                  # local configs
 └── nix                     ### nix ###
     ├── darwin              ## nix-darwin ##
-    │   ├── system          # system configuration
-    │   ├── tools           # some services that can only be defined in nix-darwin
-    │   └── window-manager  # yabai
+    │   ├── system          # deck, finder, keyboard, ...
+    │   ├── tools           # brew, lorri (for darwin), ...
+    │   └── window-manager  # yabai, spacebar, skhd, ...
     ├── home                ## home-manager ##
-    │   ├── dev             # python, go, ...
-    │   ├── git             # git
-    │   ├── nixos           # some package that can only be defined for nixos
-    │   ├── scripts         # some scripts
-    │   ├── shell           # bash, zsh, fish
-    │   ├── tools           # cui
-    │   └── virtualization  # docker, k8s, ...
-    └── nixos               ## nixos ##
-        ├── applications    # gui application
-        │   └── vscode      # vscode
-        ├── language        # ime, fonts, ...
-        ├── networking      # network
-        ├── services        # service
-        │   └── xserver     # x window system
-        ├── utils           # e.g. tlp
-        └── virtualization  # docker, vm, ...
+        ├── dev             # python, go, ...
+        ├── git             # git
+        ├── nixos           # about nixos
+        ├── scripts         # some scripts
+        ├── shell           # bash, zsh, fish
+        ├── tools           # bat, exa, procs, ...
+        └── virtualization  # docker, k8s, ...
 ```
 
 ## Usage
@@ -49,7 +42,7 @@ home-manager -f nix/home/home.nix switch
 
 ```bash
 # nix-darwin
-darwin-rebuild -I darwin-config=./nix/darwin/desktop.nix switch 
+darwin-rebuild -I darwin-config=./nix/darwin/full.nix switch     
 
 # home-manager
 home-manager -f nix/home/home.nix switch  
@@ -65,31 +58,20 @@ sudo nixos-rebuild -I nixos-config=./nix/nixos/thinkpad-extreme-configuration.ni
 home-manager -f nix/home/nixos.nix switch  
 ```
 
-## MEMO
-
-### 参照
+### References
 
 - [nix](https://nixos.org/manual/nix/stable/)
-
-    ```bash
-    # linux
-    curl -L https://nixos.org/nix/install | sh
-    
-    # darwin
-    sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
-    ```
 
 - [nix-darwin](https://github.com/LnL7/nix-darwin)
 
 - [home-manager](https://github.com/nix-community/home-manager)
 
-### 設定について
+- [niv](https://github.com/nmattia/niv)
 
-**git**
-
-`locals/git.json`
+### local settings (wip...)
 
 ```bash
+# git (locals/git.json)
 {
     "name": "ttak0422",
     "email": "bgdaewalkman@gmail.com"
