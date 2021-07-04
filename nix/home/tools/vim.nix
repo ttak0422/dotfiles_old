@@ -327,11 +327,6 @@ in {
         set expandtab
         set smartindent
 
-        " clipboard
-        set clipboard+=${
-          if pkgs.stdenv.isDarwin then "unnamed" else "unnamedplus"
-        }
-
         " tab 
         set showtabline=2
         " statusline
