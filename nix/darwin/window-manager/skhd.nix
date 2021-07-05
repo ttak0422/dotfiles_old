@@ -51,7 +51,7 @@ let
     ${mod} - f : yabai -m window --toggle float && yabai -m window --grid 10:10:2:1:7:8
 
     # term
-    cmd - return : ${SWAP_TERM}/bin/SWAP_TERM
+    ${mod} - return : ${SWAP_TERM}/bin/SWAP_TERM
       '';
   SWAP_TERM = pkgs.writeScriptBin "SWAP_TERM" ''
     #!/usr/bin/osascript
