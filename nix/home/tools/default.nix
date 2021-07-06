@@ -25,6 +25,7 @@
       # niv
       # nixfmt
       pkg-config # compile helper
+      pwgen # password generator
       ranger # cui filer
       redis # kvs
       ripgrep # grep clone
