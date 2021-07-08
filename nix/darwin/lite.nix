@@ -3,7 +3,7 @@
     ./system
     ./tools/brew.nix
     ./window-manager/skhd.nix
-    ./window-manager/yabai-lite.nix
+    ./window-manager/yabai.nix
   ];
   programs.zsh.enable = true;
   nix.nixPath = [
