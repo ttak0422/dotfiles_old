@@ -70,11 +70,26 @@ let
       '';
   SWAP_TERM = pkgs.writeScriptBin "SWAP_TERM" ''
     #!/usr/bin/osascript
+    
+    on checkRunning (processName)
+      tell application "System Events" to (name of processes) contains processName
+    end checkRunning
+    
+    on getFrontmost ()
+      tell application "System Events"
+        name of first window of (first application process whose frontmost is true) 
+      end tell
+    end getFrontmost
+    
+    set term to "Alacritty"
+    set preTermRunning to checkRunning (term)
+    set preFrontmost to getFrontmost ()
+    
+    tell application term to activate -- 高速化のため
+    
     tell application "System Events"
-      if visible of application process "Alacritty"
-        set visible of application process "Alacritty" to false
-      else
-        activate application "Alacritty"
+      if preTermRunning and preFrontmost = term then
+        set visible of application process term to false
       end if
     end tell
   '';
