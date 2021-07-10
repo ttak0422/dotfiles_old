@@ -54,13 +54,13 @@ let
     ${mod} - f : yabai -m window --toggle float && yabai -m window --grid 10:10:2:1:7:8
 
     # [WIP] dense padding
-    ${mod} - x : yabai -m config top_padding ${toString densePadding} & \
+    shift + ${mod} - x : yabai -m config top_padding ${toString densePadding} & \
       yabai -m config left_padding ${toString densePadding} & \
       yabai -m config right_padding ${toString densePadding} & \
       yabai -m config bottom_padding ${toString densePadding}
     
     # [WIP] sparse padding
-    ${mod} - c : yabai -m config top_padding ${toString sparsePaddingV} & \
+    shift + ${mod} - c : yabai -m config top_padding ${toString sparsePaddingV} & \
       yabai -m config left_padding ${toString sparsePaddingH} & \
       yabai -m config right_padding ${toString sparsePaddingH} & \
       yabai -m config bottom_padding ${toString sparsePaddingV}
