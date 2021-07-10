@@ -74,24 +74,24 @@ let
   SWAP_TERM = pkgs.writeScriptBin "SWAP_TERM" ''
     #!/usr/bin/osascript
     
-    on checkRunning (processName)
-      tell application "System Events" to (name of processes) contains processName
-    end checkRunning
-    
-    on getFrontmost ()
+    on checkFrontmost (name)
       tell application "System Events"
-        name of first window of (first application process whose frontmost is true) 
+        try 
+          set n to name of first window of (first application process whose frontmost is true) 
+          return n = name
+        on error  
+          return false
+        end try
       end tell
-    end getFrontmost
+    end checkFrontmost
     
     set term to "Alacritty"
-    set preTermRunning to checkRunning (term)
-    set preFrontmost to getFrontmost ()
+    set termActive to checkFrontmost (term)
     
     tell application term to activate -- 高速化のため
     
     tell application "System Events"
-      if preTermRunning and preFrontmost = term then
+      if termActive then
         set visible of application process term to false
       end if
     end tell
@@ -109,6 +109,5 @@ in {
     package = pkgs.skhd;
     skhdConfig = config;
   };
-  environment.systemPackages = [ SWAP_TERM ];
   environment.systemPackages = [ SWAP_TERM CHROME ];
 }
