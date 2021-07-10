@@ -67,6 +67,9 @@ let
 
     # term
     ${mod} - return : ${SWAP_TERM}/bin/SWAP_TERM
+    
+    # chrome
+    ${mod} - c : ${CHROME}/bin/CHROME
       '';
   SWAP_TERM = pkgs.writeScriptBin "SWAP_TERM" ''
     #!/usr/bin/osascript
@@ -92,6 +95,13 @@ let
         set visible of application process term to false
       end if
     end tell
+    
+  '';
+  CHROME = pkgs.writeScriptBin "CHROME" ''
+    #!/usr/bin/osascript
+    tell application "Google Chrome"
+      make new window
+    end tell
   '';
 in {
   services.skhd = {
@@ -100,4 +110,5 @@ in {
     skhdConfig = config;
   };
   environment.systemPackages = [ SWAP_TERM ];
+  environment.systemPackages = [ SWAP_TERM CHROME ];
 }
