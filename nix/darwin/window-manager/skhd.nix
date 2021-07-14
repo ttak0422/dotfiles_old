@@ -87,9 +87,9 @@ let
     
     set term to "Alacritty"
     set termActive to checkFrontmost (term)
-    
+    delay 0.1
     tell application term to activate -- 高速化のため
-    
+    delay 0.1
     tell application "System Events"
       if termActive then
         set visible of application process term to false
