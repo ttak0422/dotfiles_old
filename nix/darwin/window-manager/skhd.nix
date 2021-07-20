@@ -54,26 +54,30 @@ let
     ${mod} - f : yabai -m window --toggle float && yabai -m window --grid 10:10:2:1:7:8
 
     # [WIP] dense padding
-    shift + ${mod} - x : yabai -m config top_padding ${toString densePadding} & \
+    shift + ${mod} - x : yabai -m config top_padding ${
+      toString densePadding
+    } & \
       yabai -m config left_padding ${toString densePadding} & \
       yabai -m config right_padding ${toString densePadding} & \
       yabai -m config bottom_padding ${toString densePadding}
-    
+
     # [WIP] sparse padding
-    shift + ${mod} - c : yabai -m config top_padding ${toString sparsePaddingV} & \
+    shift + ${mod} - c : yabai -m config top_padding ${
+      toString sparsePaddingV
+    } & \
       yabai -m config left_padding ${toString sparsePaddingH} & \
       yabai -m config right_padding ${toString sparsePaddingH} & \
       yabai -m config bottom_padding ${toString sparsePaddingV}
 
     # term
     ${mod} - return : ${SWAP_TERM}/bin/SWAP_TERM
-    
+
     # chrome
     ${mod} - c : ${CHROME}/bin/CHROME
       '';
   SWAP_TERM = pkgs.writeScriptBin "SWAP_TERM" ''
     #!/usr/bin/osascript
-    
+
     on checkFrontmost (name)
       tell application "System Events"
         try 
@@ -84,7 +88,7 @@ let
         end try
       end tell
     end checkFrontmost
-    
+
     set term to "Alacritty"
     set termActive to checkFrontmost (term)
     delay 0.1
@@ -95,7 +99,7 @@ let
         set visible of application process term to false
       end if
     end tell
-    
+
   '';
   CHROME = pkgs.writeScriptBin "CHROME" ''
     #!/usr/bin/osascript

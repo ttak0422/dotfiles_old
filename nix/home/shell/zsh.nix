@@ -54,7 +54,7 @@ in {
       # https://unix.stackexchange.com/questions/368231/going-over-start-of-insert-action-in-z-shell-vi-mode
       bindkey -M viins '^?' backward-delete-char
       bindkey -M viins '^H' backward-delete-char
-      
+
       # https://qiita.com/ssh0/items/a9956a74bff8254a606a
       if [[ ! -n $TMUX ]]; then
         # get the IDs
