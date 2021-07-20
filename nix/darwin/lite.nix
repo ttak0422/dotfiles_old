@@ -1,10 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [
-    ./system
-    ./tools/brew.nix
-    ./window-manager/skhd.nix
-    ./window-manager/yabai.nix
-  ];
+  imports = [ ./system ./tools/brew.nix ./window-manager ];
   programs.zsh.enable = true;
   nix.nixPath = [
     "darwin-config=$HOME/dotfiles/nix/darwin/desktop/configuration.nix"
