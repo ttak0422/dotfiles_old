@@ -1,7 +1,11 @@
 { config, pkgs, lib, ... }: {
   imports = [
     ./applications
-    #    ./dev
+    ./dev/go.nix
+    ./dev/js.nix
+    ./dev/jvm.nix
+    ./dev/python.nix
+    ./dev/ruby.nix
     ./git
     ./scripts
     #    ./services
