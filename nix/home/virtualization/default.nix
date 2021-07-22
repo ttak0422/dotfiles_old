@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   home.packages = with pkgs;
     [
-      awscli
+      awscli2
       azure-cli
       docui
       eksctl
