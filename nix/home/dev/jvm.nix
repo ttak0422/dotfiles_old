@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
   home = {
-    packages = with pkgs; [ scala maven ];
+    packages = with pkgs; [ scala maven gradle kotlin ];
     file = {
       "jdk/openjdk8".source = pkgs.jdk8;
       "jdk/openjdk11".source = pkgs.jdk11;
