@@ -7,12 +7,16 @@
     taps = [ "homebrew/cask-fonts" ];
     casks = [
       "alacritty"
-      "karabiner-elements"
-      "font-hack-nerd-font"
+      "bitwarden"
+      "firefox"
       "font-fira-code"
-      "keycastr"
-      "visual-studio-code"
+      "font-hack-nerd-font"
       "jetbrains-toolbox"
+      "karabiner-elements"
+      "keycastr"
+      "slack"
+      "thunderbird"
+      "visual-studio-code"
     ];
   };
 }
