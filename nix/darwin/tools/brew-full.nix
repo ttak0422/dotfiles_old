@@ -15,7 +15,6 @@
       "karabiner-elements"
       "keycastr"
       "slack"
-      "thunderbird"
       "visual-studio-code"
     ];
   };
