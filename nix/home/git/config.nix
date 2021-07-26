@@ -50,6 +50,8 @@ let
     *.code-workspace
     .ionide
     .vs  
+    .env
+    .envrc
   '';
   template = ''
 
