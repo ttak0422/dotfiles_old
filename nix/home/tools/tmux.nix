@@ -230,5 +230,10 @@ in {
     extraConfig = extraConfig;
     terminal = "screen-256color";
   };
-  home.packages = scriptPackages;
+  home = {
+    packages = scriptPackages;
+    sessionVariables = {
+      LANG = "ja_JP.UTF-8";
+    };
+  };
 }
