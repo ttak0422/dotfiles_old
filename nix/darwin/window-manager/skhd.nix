@@ -70,7 +70,7 @@ let
       yabai -m config bottom_padding ${toString sparsePaddingV}
 
     # term
-    ${mod} - return : ${SWAP_TERM}/bin/SWAP_TERM
+    ${mod} - t : /usr/local/bin/alacritty
 
     # chrome
     ${mod} - c : ${CHROME}/bin/CHROME
