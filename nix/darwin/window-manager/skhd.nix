@@ -16,17 +16,11 @@ let
     shift + ${mod} - j : yabai -m window --swap south
     shift + ${mod} - k : yabai -m window --swap north
     shift + ${mod} - l : yabai -m window --swap east
-    # move window
-    shift + ${mod} - 1 : yabai -m window --space 1
-    shift + ${mod} - 2 : yabai -m window --space 2
-    shift + ${mod} - 3 : yabai -m window --space 3
-    shift + ${mod} - 4 : yabai -m window --space 4
-    shift + ${mod} - 5 : yabai -m window --space 5
-    shift + ${mod} - 6 : yabai -m window --space 6
-    shift + ${mod} - 7 : yabai -m window --space 7
-    shift + ${mod} - 8 : yabai -m window --space 8
-    shift + ${mod} - 9 : yabai -m window --space 9
-    shift + ${mod} - 0 : yabai -m window --space 10
+    # move display
+    shift + ${mod} - 1 : yabai -m display --focus 1
+    shift + ${mod} - 2 : yabai -m display --focus 2
+    shift + ${mod} - 3 : yabai -m display --focus 3
+    shift + ${mod} - 4 : yabai -m display --focus 4
     # move space
     ${mod} - 1 : yabai -m space --focus 1
     ${mod} - 2 : yabai -m space --focus 2
