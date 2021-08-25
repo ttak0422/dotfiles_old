@@ -2,13 +2,13 @@
   home = {
     packages = with pkgs; [ scala maven gradle kotlin ];
     file = {
-      "jdk/openjdk8".source = pkgs.jdk8;
-      "jdk/openjdk11".source = pkgs.jdk11;
-      "jdk/openjdk16".source = pkgs.jdk16;
+      "jdk/adoptopenjdk8".source = pkgs.adoptopenjdk-openj9-bin-8;
+      "jdk/adoptopenjdk11".source = pkgs.adoptopenjdk-openj9-bin-11;
+      "jdk/adoptopenjdk16".source = pkgs.adoptopenjdk-openj9-bin-16;
     };
     sessionVariables = {
-      PATH = "$HOME/jdk/openjdk11/bin:$PATH";
-      JAVA_HOME = "$HOME/jdk/openjdk11";
+      PATH = "$HOME/jdk/adoptopenjdk11/bin:$PATH";
+      JAVA_HOME = "$HOME/jdk/adoptopenjdk11";
     };
   };
 }
