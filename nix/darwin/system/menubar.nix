@@ -1,3 +1,3 @@
 { config, pkgs, lib, ... }: {
-  system.defaults.NSGlobalDomain._HIHideMenuBar = true;
+  system.defaults.NSGlobalDomain._HIHideMenuBar = false;
 }
