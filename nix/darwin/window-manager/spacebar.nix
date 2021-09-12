@@ -13,8 +13,8 @@
     space_icon_color = "0xffffffff";
     battery_icon_color = "0xffd75f5f";
     clock_icon_color = "0xffa8a8a8";
-    space_icon_strip = "         ";
-    space_icon = "";
+    space_icon_strip = "・ ・ ・ ・ ・ ・ ・ ・ ・";
+    space_icon = "・";
     clock_icon = " ";
     clock_format = ''"%y/%m/%d %R"'';
   };
