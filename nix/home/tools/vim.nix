@@ -1,4 +1,3 @@
-# TODO vim/default.nix
 { config, pkgs, lib, ... }:
 
 let
@@ -38,6 +37,20 @@ let
   deinPluginsList = [
     { repo = "ryanoasis/vim-devicons"; }
     { repo = "mengelbrecht/lightline-bufferline"; }
+    { repo = "easymotion/vim-easymotion";
+      hookAdd = ''
+        " <Leader>f{char} to move to {char}
+        map  <Leader>f <Plug>(easymotion-bd-f)
+        nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+        " s{char}{char} to move to {char}{char}
+        map <Leader>s <Plug>(easymotion-bd-f2)
+
+        " Move to word
+        map  <Leader>w <Plug>(easymotion-bd-w)
+        nmap <Leader>w <Plug>(easymotion-overwin-w)
+      '';
+      }
     {
       repo = "itchyny/lightline.vim";
       hookAdd = ''
@@ -52,7 +65,6 @@ let
           \ 'component_expand': {
           \   'buffers': 'lightline#bufferline#buffers'
           \ },
-          \ 'component_type': {
           \   'buffers': 'tabsel'
           \ },
           \ 'component_function': {
@@ -277,6 +289,9 @@ in {
       extraConfig = ''
         " プラグイン読み込み
         exec 'source' '${builtins.getEnv "HOME" + "/" + deinConfigPath}'
+
+        " Leader
+        let mapleader="\<Space>"
 
         " カラースキーム
         set termguicolors
