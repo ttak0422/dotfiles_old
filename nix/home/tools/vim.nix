@@ -59,20 +59,28 @@ let
           \ 'active': {
           \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
           \ },
-          \ 'tabline': { 'left': [ ['buffers'] ],
-          \   'right': [ ['close'] ]
+          \ 'tabline': {
+          \   'left': [ [ 'buffers'] ],
+          \   'right': [ [ 'close' ] ],
+          \ },
+          \ 'separator': { 
+          \   'left': "\ue0b0", 
+          \   'right': "\ue0b2",
+          \ },
+          \ 'subseparator': { 
+          \   'left': "\ue0b1", 
+          \   'right': "\ue0b3",
+          \ },
+          \ 'component_function': {
+          \   'filename': 'LightlineFilename'
           \ },
           \ 'component_expand': {
           \   'buffers': 'lightline#bufferline#buffers'
           \ },
-          \   'buffers': 'tabsel'
+          \ 'component_type': {
+          \   'buffers': 'tabsel',
           \ },
-          \ 'component_function': {
-          \   'filename': 'LightlineFilename'
           \ }
-          \ }
-        let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
-        let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
         function! LightlineFilename()
           return expand('%')
         endfunction
@@ -119,8 +127,14 @@ let
       hookAdd = "";
     }
     {
-      repo = "rakr/vim-one";
+      repo = "dracula/vim";
+      hookAdd = ''
+        colorscheme dracula
+      '';
     }
+    # {
+    #   repo = "rakr/vim-one";
+    # }
     # {
     #   repo = "tomasr/molokai";
     #   hookAdd = ''
@@ -296,7 +310,6 @@ in {
         " カラースキーム
         set termguicolors
         set background=dark
-        colorscheme one
 
         set encoding=utf-8
         scriptencoding utf-8
