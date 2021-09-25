@@ -37,7 +37,8 @@ let
   deinPluginsList = [
     { repo = "ryanoasis/vim-devicons"; }
     { repo = "mengelbrecht/lightline-bufferline"; }
-    { repo = "easymotion/vim-easymotion";
+    {
+      repo = "easymotion/vim-easymotion";
       hookAdd = ''
         " <Leader>f{char} to move to {char}
         map  <Leader>f <Plug>(easymotion-bd-f)
@@ -50,7 +51,7 @@ let
         map  <Leader>w <Plug>(easymotion-bd-w)
         nmap <Leader>w <Plug>(easymotion-overwin-w)
       '';
-      }
+    }
     {
       repo = "itchyny/lightline.vim";
       hookAdd = ''

@@ -232,8 +232,6 @@ in {
   };
   home = {
     packages = scriptPackages;
-    sessionVariables = {
-      LANG = "ja_JP.UTF-8";
-    };
+    sessionVariables = { LANG = "ja_JP.UTF-8"; };
   };
 }
