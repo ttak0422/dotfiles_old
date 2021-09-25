@@ -2,7 +2,7 @@
 let dotnet-tool-path = "${config.home.homeDirectory}/.dotnet/tools";
 in {
   home = {
-    packages = with pkgs; [ dotnet-sdk_5 mono ];
+    packages = with pkgs; [ (with dotnetCorePackages; combinePackages [ dotnet-sdk_3 dotnet-sdk_5 ]) ];
     sessionVariables = { PATH = "$PATH:${dotnet-tool-path}"; };
   };
 }
