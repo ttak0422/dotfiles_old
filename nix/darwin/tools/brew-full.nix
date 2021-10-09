@@ -8,6 +8,7 @@
     casks = [
       "alacritty"
       "bitwarden"
+      "cyberduck"
       "firefox"
       "font-fira-code"
       "font-hack-nerd-font"
